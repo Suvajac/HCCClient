@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import main.Main;
+import net.etfbl.Main;
 
 public class LoginController {
     @FXML
@@ -24,9 +24,9 @@ public class LoginController {
         BorderPane borderPane = loader.load();
         Stage stage = new Stage();
 
-        RootLayoutController controller = loader.getController();
+        /*RootLayoutController controller = loader.getController();
         controller.setStage(stage);
-        controller.setUsername(usernameTextField.getText());
+        controller.setUsername(usernameTextField.getText());*/
 
         FXMLLoader tabLoader = new FXMLLoader(Main.class.getResource("/view/tabPane.fxml"));
         JFXTabPane tabPane = tabLoader.load();
