@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="600.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="51.0" layoutY="48.0" styleClass="nameLabel" text="Meni" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
+      <Label layoutX="51.0" layoutY="91.0" styleClass="piceHranaLabel" text="Pice" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="341.0" layoutY="80.0" styleClass="piceHranaLabel" text="Hrana" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="48.0" layoutY="126.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="48.0" layoutY="155.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="48.0" layoutY="184.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="48.0" layoutY="213.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" AnchorPane.leftAnchor="50.0" />
+      <Label layoutX="341.0" layoutY="184.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
+      <Label layoutX="341.0" layoutY="213.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
+      <Label layoutX="341.0" layoutY="126.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
+      <Label layoutX="341.0" layoutY="155.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
+      <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="570.0" ripplerFill="#fae596" styleClass="naruciButton" text="Naruči" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="50.0" />
+      <JFXTimePicker defaultColor="#173e43" layoutX="48.0" layoutY="502.0" prefHeight="28.0" prefWidth="157.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="50.0" />
+      <JFXComboBox focusColor="#173e43" layoutX="300.0" layoutY="503.0" unFocusColor="#173e43" />
+      <Label layoutX="242.0" layoutY="502.0" styleClass="piceHranaLabel" text="Sto:" />
+      <JFXButton layoutX="215.0" layoutY="123.0" text="+" />
+      <JFXButton layoutX="242.0" layoutY="123.0" text="-" />
+   </children>
+</AnchorPane>
