@@ -2,13 +2,12 @@ package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class RacunRecepcionarController {
 
@@ -44,11 +43,9 @@ public class RacunRecepcionarController {
     @FXML
     void handlePrikazi(ActionEvent event) {
     	if (!ucitajRacun(tfKorisnickoIme.getText())) {
-    		Alert dialog = new Alert(AlertType.INFORMATION);
-    		dialog.setTitle("Greska");
-    		dialog.setHeaderText( "Nepostojeci korisnik");
-    		dialog.setContentText("Ne postoji korisnik sa imenom \"" + tfKorisnickoIme.getText() + "\".");
-    		dialog.showAndWait();
+    		Dialogs.showErrorDialog("Greska", 
+    								"Nepostojeci korisnik", 
+    								"Ne postoji korisnik sa imenom \"" + tfKorisnickoIme.getText() + "\".");
     	}
     }
     

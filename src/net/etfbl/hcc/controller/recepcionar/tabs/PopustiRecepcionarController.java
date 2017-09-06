@@ -2,12 +2,11 @@ package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class PopustiRecepcionarController {
 
@@ -40,11 +39,7 @@ public class PopustiRecepcionarController {
     			throw new NumberFormatException();
     		}
     	} catch (NumberFormatException ex) {
-    		Alert dialog = new Alert(AlertType.INFORMATION);
-    		dialog.setTitle("Greska");
-    		dialog.setHeaderText("Nevalidna vrijednost");
-    		dialog.setContentText("Unesite broj izmedju 0 i 100.");
-    		dialog.showAndWait();
+    		Dialogs.showErrorDialog("Greska", "Nevalidna vrijednost", "Unesite broj izmedju 0 i 100.");
     	}
     }
 

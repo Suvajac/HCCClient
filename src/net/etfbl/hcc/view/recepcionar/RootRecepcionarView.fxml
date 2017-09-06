@@ -7,7 +7,11 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.recepcionar.RootRecepcionarController">
    <children>
@@ -15,12 +19,28 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="798.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <GridPane layoutX="20.0" layoutY="2.0" prefHeight="57.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <Label fx:id="lblUsername" text="Logged in as: Username" />
-                        <Button fx:id="btnLogout" mnemonicParsing="false" text="Logout" />
+                        <Label text="RECEPCIJA">
+                           <font>
+                              <Font name="System Bold Italic" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label fx:id="lblCurrentUser" text="Trenutni korisnik: Username" />
+                              <Button fx:id="btnLogout" mnemonicParsing="false" text="Logout" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </GridPane>
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
