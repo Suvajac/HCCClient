@@ -1,5 +1,7 @@
 package net.etfbl.hcc.view;
 
+import net.etfbl.hcc.Main;
+
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
@@ -9,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import net.etfbl.Main;
 
 public class LoginController {
     @FXML

@@ -1,4 +1,4 @@
-package net.etfbl;
+package net.etfbl.hcc;
 
 import net.etfbl.hcc.view.LoginController;
 
