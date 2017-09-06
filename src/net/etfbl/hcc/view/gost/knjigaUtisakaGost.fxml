@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<ScrollPane id="knjigaUtisakaScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="1366.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <GridPane alignment="CENTER" prefHeight="566.0" prefWidth="1366.0" vgap="30.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane layoutX="554.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="crveniStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="226.0" prefHeight="150.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="zutiStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="226.0" prefHeight="150.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="zeleniStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0" GridPane.rowIndex="2">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="crveniStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="226.0" prefHeight="150.0" prefWidth="280.0" GridPane.columnIndex="1">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="zutiStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="plaviStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="plaviStil" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="165.0" layoutY="60.0" prefHeight="150.0" prefWidth="280.0" GridPane.columnIndex="2">
+               <children>
+                  <AnchorPane prefHeight="40.0" prefWidth="280.0" styleClass="utisakHeader">
+                     <children>
+                        <Label text="Label" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Label text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label prefHeight="85.0" prefWidth="260.0" text="Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri." wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="45.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="utisak" />
+                  <String fx:value="zeleniStil" />
+               </styleClass>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </content>
+</ScrollPane>

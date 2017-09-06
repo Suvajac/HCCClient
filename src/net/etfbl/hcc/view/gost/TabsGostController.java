@@ -3,6 +3,7 @@ package net.etfbl.hcc.view.gost;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +31,9 @@ public class TabsGostController {
     	try{
     		AnchorPane uslugeAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluga.fxml"));
     		uslugeTab.setContent(uslugeAnchorPane);
+    		
+    		ScrollPane knjigaUtisakaScrollPane = (ScrollPane) FXMLLoader.load(Main.class.getResource("view/gost/knjigaUtisakaGost.fxml"));
+    		knjigaUtisakaTab.setContent(knjigaUtisakaScrollPane);
     	}
     	catch(IOException e){
     		e.printStackTrace();
