@@ -1,9 +1,9 @@
 package net.etfbl.hcc.controller;
 
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.view.gost.RootGostController;
 
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,24 +21,27 @@ public class LoginController {
 	private Stage primaryStage;
 
 	public void handleLogin() throws IOException {
-//		FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/rootLayout.fxml"));
-//		BorderPane borderPane = loader.load();
-//		Stage stage = new Stage();
-//
-//		RootLayoutController controller = loader.getController();
-//		controller.setStage(stage);
-//		controller.setUsername(usernameTextField.getText());
-//
-//		FXMLLoader tabLoader = new FXMLLoader(Main.class.getResource("view/tabPane.fxml"));
-//		JFXTabPane tabPane = tabLoader.load();
-//
-//		borderPane.setCenter(tabPane);
-//
-//		Scene scene = new Scene(borderPane);
-//
-//		stage.setScene(scene);
-//		stage.setFullScreen(true);
-//		stage.show();
+		
+		if(usernameTextField.getText().equals("g")){
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"));
+			BorderPane borderPane = loader.load();
+			Stage stage = new Stage();
+
+			RootGostController controller = loader.getController();
+			controller.setStage(stage);
+			controller.init();
+			
+			
+			Scene scene = new Scene(borderPane);
+
+			stage.setScene(scene);
+			stage.setFullScreen(true);
+			stage.show();
+		}
+		else if(usernameTextField.getText().equals("r")){
+			
+		}
+		
 	}
 
 	public void handleCancel() {
