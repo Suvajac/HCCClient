@@ -164,3 +164,69 @@
     -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
 }
 
+/*****************K NJ I G A  U T I S A K A**********************/
+
+#knjigaUtisakaScrollPane{
+	-fx-background-color: #eaf1f1;
+}
+
+#knjigaUtisakaScrollPane GridPane{
+	-fx-background-color: #eaf1f1;
+}
+
+#knjigaUtisakaScrollPane .utisak{
+	-fx-font-size:16px;
+	-fx-effect: dropshadow(three-pass-box, black, 30, 0, 0, 0);
+}
+
+.zeleniStil{
+	-fx-background-color:#b2f18c;
+}
+
+.plaviStil{
+	-fx-background-color:#a9c9ff;
+}
+
+.zutiStil{
+	-fx-background-color:#f7f26d;
+}
+
+.crveniStil{
+	-fx-background-color:#ff5959;
+}
+
+#knjigaUtisakaScrollPane .utisak .utisakHeader{
+	-fx-border-width:0 0 2 0;
+	-fx-border-color:#173e43;
+	-fx-border-bottom-style:solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
