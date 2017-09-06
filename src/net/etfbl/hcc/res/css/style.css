@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Merienda+One');
+
+/****************L O G I N*****************************/
+.loginAnchorPane{
+    -fx-background-color: #eaf1f1;
+}
+
+.loginAnchorPane .loginHeader{
+    -fx-background-color: #173e43;
+}
+
+.loginAnchorPane .loginHeader Label{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 40px;
+    -fx-font-family: "Calibri";
+}
+
+.loginAnchorPane JFXTextField, .loginAnchorPane JFXPasswordField{
+    -fx-text-fill: #173e43;
+    -fx-font-size: 20px;
+}
+
+.loginAnchorPane JFXButton{
+    -fx-background-color: #173e43;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+}
+
+
+/****************S T A R T   P A G E*******************/
+
+#rootBorderPane{
+    -fx-background-color: #eaf1f1;
+}
+
+/****************H E A D E R***************************/
+#headerAnchorPane{
+    -fx-background-color:#173e43;
+    -fx-max-height: 130px;
+}
+
+#username{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 72px;
+    -fx-font-family: "Calibri";
+}
+
+.otherLabel{
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 36px;
+}
+
+.headerButtons{
+    -fx-text-fill: #fcfcfc;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 30pt;
+}
+
+.lanSelected{
+    -fx-background-color: #fae596;
+}
+
+
+/****************B U T T O N**************************/
+
+.uslugeButton{
+    -fx-background-color: none;
+}
+
+.selectedButton{
+    -fx-background-color: #fae596;
+    -fx-effect: dropshadow( three-pass-box , black , 40 , 0, 0 , 0 );
+}
+
+.uslugeButtonLabel{
+    -fx-text-fill: #173e43;
+    -fx-font-size: 24px;
+}
+
+/****************T A B   P A N E**********************/
+
+.jfx-tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #173e43;
+}
+
+.jfx-tab-pane .headers-region{
+    -fx-pref-height: 60px;
+}
+
+.jfx-tab-pane .tab-header-area{
+    -fx-padding: 0 0 20px 0;
+}
+
+.jfx-tab-pane .tab-selected-line{
+    -fx-background-color: #fae596;
+}
+
+.tab{
+    -fx-padding: 10px 40px 5px 40px;
+}
+
+.tab .tab-label{
+    -fx-font-size: 36px;
+    -fx-font-family: "Calibri";
+    -fx-text-fill: #ffffff;
+}
+
+.tab:selected .tab-label{
+    -fx-text-fill: #ffffff;
+}
+
+#infoAnchorPane{
+    -fx-background-color: #3fb0ac;
+    -fx-effect: dropshadow( three-pass-box , black , 50 , 0, 0 , 0 );
+}
+
+/*****************M E N U  A N C H O R P A N E****************/
+
+
+.nameLabel{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 36px;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
+    -fx-font-family: "Calibri";
+}
+
+.piceHranaLabel{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
+    -fx-font-family: "Calibri";
+}
+
+.stavkaLabel{
+    -fx-font-size: 15px;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Calibri";
+}
+
+.stavkaLabel:hover{
+    -fx-text-fill: #fae596;
+    -fx-effect: dropshadow(three-pass-box, black, 2,0.3,0, 0);
+    -fx-cursor: hand;
+}
+
+.naruciButton{
+    -fx-font-size: 36px;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Calibri";
+}
+
+.naruciButton .text{
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
+}
+
+.jfx-time-picker .time-picker-display-node{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-font-family: "Calibri"
+}
+
+.jfx-time-picker .time-picker-display-node .text {
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
+}
+
