@@ -1,4 +1,4 @@
-package net.etfbl.view;
+package net.etfbl.hcc.view;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTabPane;
