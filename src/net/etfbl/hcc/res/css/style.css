@@ -201,7 +201,13 @@
 	-fx-border-bottom-style:solid;
 }
 
+#knjigaUtisakaScrollPane .button{
+	-fx-background-color:#fae596;
+}
 
+#knjigaUtisakaScrollPane .button Pane Label{
+	-fx-font-size:35px;
+}
 
 
 

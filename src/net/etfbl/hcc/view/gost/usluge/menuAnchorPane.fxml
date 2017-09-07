@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="600.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="600.0" stylesheets="@../../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="51.0" layoutY="48.0" styleClass="nameLabel" text="Meni" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
       <Label layoutX="51.0" layoutY="91.0" styleClass="piceHranaLabel" text="Pice" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
