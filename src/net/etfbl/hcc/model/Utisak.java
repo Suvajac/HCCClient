@@ -3,7 +3,7 @@ package net.etfbl.hcc.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Utisak implements Serializable{
+public class Utisak implements Serializable,Comparable{
 	private int idUtiska;
 	private String tekst;
 	private Date datum;
@@ -38,6 +38,13 @@ public class Utisak implements Serializable{
 			return false;
 		return true;
 	}
+	
+	public int compareTo(Object o){
+		Utisak u = (Utisak) o;
+		long time =u.getDatum().getTime()-this.datum.getTime();
+		return (int) time;
+	}
+	
 	public Korisnik getKorisnik() {
 		return korisnik;
 	}

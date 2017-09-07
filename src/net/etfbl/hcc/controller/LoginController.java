@@ -1,6 +1,7 @@
 package net.etfbl.hcc.controller;
 
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.view.gost.RootGostController;
 
 import com.jfoenix.controls.JFXPasswordField;
@@ -28,6 +29,7 @@ public class LoginController {
 			Stage stage = new Stage();
 
 			RootGostController controller = loader.getController();
+			RootGostController.gost = new Gost("username","ime","prezime","asd","asd");
 			controller.setStage(stage);
 			controller.init();
 			
