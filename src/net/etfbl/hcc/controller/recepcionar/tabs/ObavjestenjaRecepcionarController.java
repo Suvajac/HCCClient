@@ -15,6 +15,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -93,9 +94,9 @@ public class ObavjestenjaRecepcionarController {
 			Label lblId = new Label("ID: " + obavjestenje.getId());
 			Label lblTimestamp = new Label("Vrijeme: " + obavjestenje.getTimestamp());
 			
-			HBox hbInfo = new HBox();
-			hbInfo.setSpacing(10);
-			hbInfo.getChildren().addAll(lblId, lblTimestamp);
+			HBox hbHeader = new HBox();
+			hbHeader.setSpacing(200);
+			hbHeader.getChildren().addAll(lblId, lblTimestamp);
 			
 			TextArea textArea = new TextArea(obavjestenje.getText());
 			textArea.setEditable(false);
@@ -109,7 +110,7 @@ public class ObavjestenjaRecepcionarController {
 			vbContent.setPadding(new Insets(10, 10, 10, 10));
 			vbContent.setSpacing(10);
 			vbContent.setAlignment(Pos.CENTER);
-			vbContent.getChildren().addAll(hbInfo, textArea, btnClose);
+			vbContent.getChildren().addAll(hbHeader, textArea, btnClose);
 			
 			Scene scene = new Scene(vbContent);
 			primaryStage = new Stage();
@@ -124,7 +125,6 @@ public class ObavjestenjaRecepcionarController {
 		}
 
 	}
-
 
 }
 
