@@ -25,7 +25,6 @@ public class PopustiGostController{
 		
 		status.setText("Kod " + kod + " je validan.");
 		
-		
 	}
 	
 
