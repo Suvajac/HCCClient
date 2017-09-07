@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.jfoenix.controls.JFXTextArea;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import net.etfbl.hcc.model.Utisak;
@@ -14,6 +15,12 @@ public class DodajUtisakController {
 	
 	KnjigaUtisakaGostController controller;
 	private AnchorPane anchorPane;
+	
+	public void initialize(){
+		Platform.runLater(() -> {
+			textArea.requestFocus();
+		});
+	}
 	
 	@FXML
 	public void handleDodaj(){

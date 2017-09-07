@@ -215,7 +215,6 @@
 }
 
 .utisakFull{
-	-fx-background-color:#ffffff;
 	-fx-effect: dropshadow(three-pass-box, black, 30, 0, 0, 0);
 }
 
