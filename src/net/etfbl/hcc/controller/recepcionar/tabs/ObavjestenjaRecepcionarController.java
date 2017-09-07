@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import net.etfbl.hcc.util.ColumnResizer;
 
 public class ObavjestenjaRecepcionarController {
 
@@ -32,16 +32,9 @@ public class ObavjestenjaRecepcionarController {
 	@FXML
 	void initialize() {
 		// Set cell value factories
-		colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-		colText.setCellValueFactory(new PropertyValueFactory<>("text"));
-
-		colRead.setCellValueFactory(param -> {
-			SimpleStringProperty property = new SimpleStringProperty();
-			String value = param.getValue().read ? "Da" : "Ne";
-			property.setValue(value);
-			return property;
-		});
-		colAction.setCellValueFactory(new PropertyValueFactory<>("dummy"));
+		colDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getTimestamp().toString()));
+		colText.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getText()));
+		colRead.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().isRead() ? "Da" : "Ne"));
 		colAction.setCellFactory(param -> {
 			final TableCell<ObavjestenjeTest, String> cell = new TableCell<ObavjestenjeTest, String>() {
 
@@ -63,19 +56,20 @@ public class ObavjestenjaRecepcionarController {
 			};
 			return cell;
 		});
-		
+
 		// Populate table
 		ObservableList<ObavjestenjeTest> list = FXCollections.observableArrayList();
 		list.addAll(
-				new ObavjestenjeTest(LocalDateTime.now(), "Najkrace moguce obavjestenje ikada"),
-				new ObavjestenjeTest(LocalDateTime.now(), "Najkrace moguce obavjestenje ikada"),
-				new ObavjestenjeTest(LocalDateTime.now(), "Najkrace moguce obavjestenje ikada"),
-				new ObavjestenjeTest(LocalDateTime.now(), "Najkrace moguce obavjestenje ikada"));
+				new ObavjestenjeTest("Najkrace moguce obavjestenje ikada", LocalDateTime.now()),
+				new ObavjestenjeTest("Najkrace moguce obavjestenje ikada", LocalDateTime.now()),
+				new ObavjestenjeTest("Najkrace moguce obavjestenje ikada", LocalDateTime.now()),
+				new ObavjestenjeTest("Najkrace moguce obavjestenje ikada", LocalDateTime.now()));
 		table.setItems(list);
+		ColumnResizer.resize(new Double[]{40.0, 40.0, 10.0, 10.0}, table);
 	}
 
 	private void handleShow(ObavjestenjeTest o) {
-		o.read = true;
+		o.setRead(false);
 		table.refresh();
 	}
 
@@ -83,17 +77,42 @@ public class ObavjestenjaRecepcionarController {
 
 class ObavjestenjeTest {
 
-	LocalDateTime timestamp;
-	String text;
-	boolean read;
+	private boolean read;
+	private String text;
+	private LocalDateTime timestamp;
 
 	public ObavjestenjeTest() {
-		
+		super();
 	}
 
-	public ObavjestenjeTest(LocalDateTime timestamp, String text) {
-		this.timestamp = timestamp;
+	public ObavjestenjeTest(String text, LocalDateTime timestamp) {
+		super();
 		this.text = text;
+		this.timestamp = timestamp;
+	}
+
+	public boolean isRead() {
+		return read;
+	}
+
+	public void setRead(boolean read) {
+		this.read = read;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public LocalDateTime getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
 	}
 
 }
