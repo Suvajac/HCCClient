@@ -11,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class RegistracijaRecepcionarController {
 	
@@ -21,6 +22,9 @@ public class RegistracijaRecepcionarController {
 
     @FXML
     private PasswordField pfPassword;
+    
+    @FXML
+    private PasswordField pfConfirmPassword;
     
     @FXML
     private TextField tfIme;
@@ -73,11 +77,50 @@ public class RegistracijaRecepcionarController {
 		};
 		dpDatumOd.setConverter(converter);
 		dpDatumDo.setConverter(converter);
+		
+		// Set default dates
+		dpDatumOd.setValue(LocalDate.now());
+		dpDatumDo.setValue(dpDatumOd.getValue().plusDays(7));
     }
 
     @FXML
     void handlePotvrdi(ActionEvent event) {
-
+    	if (inputValid()) {
+    		
+    	}
     }
-
+    
+    private boolean inputValid() {
+    	String message = "";
+    	
+    	if (tfUsername.getText() == null || tfUsername.getText().trim().length() == 0) {
+    		message += "- Nedostaje korisnicko ime\n";
+    	}
+    	if (pfPassword.getText() == null || pfPassword.getText().length() < 8) {
+    		message += "- Lozinka ne moze imati manje od 8 karaktera\n";
+    	}
+    	if  (!pfPassword.getText().equals(pfConfirmPassword.getText())) {
+    		message += "- Lozinke se ne podudaraju\n";
+    	}
+    	if (tfIme.getText() == null || tfIme.getText().trim().length() == 0) {
+    		message += "- Nedostaje ime\n";
+    	}
+    	if (tfPrezime.getText() == null || tfPrezime.getText().trim().length() == 0) {
+    		message += "- Nedostaje prezime\n";
+    	}
+    	if (tfBrojTelefona.getText() == null || tfBrojTelefona.getText().trim().length() == 0) {
+    		message += "- Nedostaje broj telefona\n";
+    	}
+    	if (dpDatumOd.getValue().compareTo(dpDatumDo.getValue()) >= 0) {
+    		message += "- Nevalidan datum\n";
+    	}
+    	
+    	if (message.length() == 0) {
+    		return true;
+    	} else {
+    		Dialogs.showErrorDialog("Greska", "Nevalidan unos", "Prepravite sljedeca polja:\n" + message);
+    		return false;
+    	}
+    }
+    
 }

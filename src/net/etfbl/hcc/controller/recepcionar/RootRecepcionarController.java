@@ -45,6 +45,7 @@ public class RootRecepcionarController {
 
 		// Load fxmls into tabs
 		try {
+			loadIntoTab(tabObavjestenja, "/net/etfbl/hcc/view/recepcionar/tabs/ObavjestenjaRecepcionarView.fxml");
 			loadIntoTab(tabRegistracija, "/net/etfbl/hcc/view/recepcionar/tabs/RegistracijaRecepcionarView.fxml");
 			loadIntoTab(tabRacun, "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
 			loadIntoTab(tabPopusti, "/net/etfbl/hcc/view/recepcionar/tabs/PopustiRecepcionarView.fxml");
