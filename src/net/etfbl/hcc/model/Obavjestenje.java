@@ -8,13 +8,11 @@ public class Obavjestenje implements Serializable{
 	private int idObavjestenje;
 	private String tekst;
 	private Date datum;
-	private boolean procitano;
 
-	public Obavjestenje(int idObavjestenje, String tekst, Date datum, boolean procitano) {
+	public Obavjestenje(int idObavjestenje, String tekst, Date datum) {
 		this.idObavjestenje = idObavjestenje;
 		this.tekst = tekst;
 		this.datum = datum;
-		this.procitano = procitano;
 	}
 
 	public Obavjestenje() {
@@ -65,14 +63,6 @@ public class Obavjestenje implements Serializable{
 
 	public void setDatum(Date datum) {
 		this.datum = datum;
-	}
-
-	public boolean isProcitano() {
-		return procitano;
-	}
-
-	public void setProcitano(boolean procitano) {
-		this.procitano = procitano;
 	}
 
 }
