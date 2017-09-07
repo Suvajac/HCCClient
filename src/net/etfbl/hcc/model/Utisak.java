@@ -18,6 +18,11 @@ public class Utisak implements Serializable,Comparable{
 		this.datum = datum;
 		this.korisnik=k;
 	}
+	public int compareTo(Object o){
+		Utisak u = (Utisak) o;
+		long time =u.getDatum().getTime()-this.datum.getTime();
+		return (int) time;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -38,13 +43,6 @@ public class Utisak implements Serializable,Comparable{
 			return false;
 		return true;
 	}
-	
-	public int compareTo(Object o){
-		Utisak u = (Utisak) o;
-		long time =u.getDatum().getTime()-this.datum.getTime();
-		return (int) time;
-	}
-	
 	public Korisnik getKorisnik() {
 		return korisnik;
 	}
