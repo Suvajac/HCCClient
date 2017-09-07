@@ -36,8 +36,8 @@ public class TabsGostController {
     		AnchorPane popustiAnchorPane=(AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/popustiGost.fxml"));
     		popustiTab.setContent(popustiAnchorPane);
     		
-    		ScrollPane knjigaUtisakaScrollPane = (ScrollPane) FXMLLoader.load(Main.class.getResource("view/gost/knjigaUtisakaGost.fxml"));
-    		knjigaUtisakaTab.setContent(knjigaUtisakaScrollPane);
+    		StackPane knjigaUtisakaStackPane = (StackPane) FXMLLoader.load(Main.class.getResource("view/gost/knjigaUtisakaGost.fxml"));
+    		knjigaUtisakaTab.setContent(knjigaUtisakaStackPane);
     	}
     	catch(IOException e){
     		e.printStackTrace();
