@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -39,7 +40,12 @@ public class LoginController {
 			stage.show();
 		}
 		else if(usernameTextField.getText().equals("r")){
+			Parent root = FXMLLoader.load(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
+			Scene scene = new Scene(root);
 			
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.show();
 		}
 		
 	}
