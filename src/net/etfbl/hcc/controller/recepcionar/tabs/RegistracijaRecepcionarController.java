@@ -75,31 +75,31 @@ public class RegistracijaRecepcionarController {
     	String message = "";
     	
     	if (tfKorisnickoIme.getText() == null || tfKorisnickoIme.getText().trim().isEmpty()) {
-    		message += "- Nedostaje korisnicko ime\n";
+    		message += "Nedostaje korisnicko ime.\n";
     	}
     	if (pfLozinka.getText() == null || pfLozinka.getText().length() < 8) {
-    		message += "- Lozinka ne moze imati manje od 8 karaktera\n";
+    		message += "Lozinka ne moze imati manje od 8 karaktera.\n";
     	}
-    	if  (!pfPotvrdiLozinku.getText().equals(pfPotvrdiLozinku.getText())) {
-    		message += "- Lozinke se ne podudaraju\n";
+    	if  (!pfLozinka.getText().equals(pfPotvrdiLozinku.getText())) {
+    		message += "Lozinke se ne podudaraju.\n";
     	}
     	if (tfIme.getText() == null || tfIme.getText().trim().isEmpty()) {
-    		message += "- Nedostaje ime\n";
+    		message += "Nedostaje ime.\n";
     	}
     	if (tfPrezime.getText() == null || tfPrezime.getText().trim().isEmpty()) {
-    		message += "- Nedostaje prezime\n";
+    		message += "Nedostaje prezime.\n";
     	}
     	if (tfBrojTelefona.getText() == null || tfBrojTelefona.getText().trim().isEmpty()) {
-    		message += "- Nedostaje broj telefona\n";
+    		message += "Nedostaje broj telefona.\n";
     	}
     	if (dpDatumOd.getValue().compareTo(dpDatumDo.getValue()) >= 0) {
-    		message += "- Nevalidan datum\n";
+    		message += "Nevalidan datum.\n";
     	}
     	
     	if (message.isEmpty()) {
     		return true;
     	} else {
-    		Dialogs.showErrorDialog("Greska", "Nevalidan unos", "Prepravite sljedeca polja:\n" + message);
+    		Dialogs.showErrorDialog("Greska", "Ispravite sljedeca polja:", message);
     		return false;
     	}
     }
