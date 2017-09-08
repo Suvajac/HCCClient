@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SportUsluga extends Usluga implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private ArrayList<SportskaOprema> listaOpreme;
 	private SportTermin sportTermin;
 
@@ -13,8 +18,8 @@ public class SportUsluga extends Usluga implements Serializable{
 		sportTermin=null;
 	}
 
-	public SportUsluga(int idUsluge, String naziv, Stavka s) {
-		super(idUsluge, naziv, s);
+	public SportUsluga(int idUsluge, String naziv,double c) {
+		super(idUsluge, naziv,c);
 		listaOpreme=new ArrayList<SportskaOprema>();
 		sportTermin=null;
 		// TODO Auto-generated constructor stub

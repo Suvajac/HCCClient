@@ -3,15 +3,22 @@ package net.etfbl.hcc.model;
 import java.io.Serializable;
 
 public class WellnessUsluga extends Usluga implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private WellnessTermin wellnessTermin;
+
+
 
 	public WellnessUsluga() {
 		// TODO Auto-generated constructor stub
 		wellnessTermin=null;
 	}
 
-	public WellnessUsluga(int idUsluge, String naziv, Stavka s) {
-		super(idUsluge, naziv, s);
+	public WellnessUsluga(int idUsluge, String naziv,double c) {
+		super(idUsluge, naziv,c);
 		wellnessTermin=null;
 		// TODO Auto-generated constructor stub
 	}

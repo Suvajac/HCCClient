@@ -10,8 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.model.Gost;
 
 public class RootGostController {
+	public static Gost gost;
+	
 	@FXML
 	private BorderPane borderPane;
 	

@@ -3,7 +3,12 @@ package net.etfbl.hcc.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Utisak implements Serializable{
+public class Utisak implements Serializable,Comparable<Object>{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int idUtiska;
 	private String tekst;
 	private Date datum;
@@ -17,6 +22,11 @@ public class Utisak implements Serializable{
 		this.tekst = tekst;
 		this.datum = datum;
 		this.korisnik=k;
+	}
+	public int compareTo(Object o){
+		Utisak u = (Utisak) o;
+		long time =u.getDatum().getTime()-this.datum.getTime();
+		return (int) time;
 	}
 	@Override
 	public int hashCode() {

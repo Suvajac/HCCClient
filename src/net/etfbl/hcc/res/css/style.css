@@ -195,7 +195,12 @@
 	-fx-background-color:#ff5959;
 }
 
-#knjigaUtisakaScrollPane .utisak .utisakHeader{
+.utisak:hover{
+	-fx-opacity:0.9;
+	-fx-cursor:hand;
+}
+
+.utisakHeader{
 	-fx-border-width:0 0 2 0;
 	-fx-border-color:#173e43;
 	-fx-border-bottom-style:solid;
@@ -209,9 +214,37 @@
 	-fx-font-size:35px;
 }
 
+.utisakFull{
+	-fx-effect: dropshadow(three-pass-box, black, 30, 0, 0, 0);
+}
 
+.utisakFull .utisakHeader Label{ 
+	-fx-font-size:35px;
+}
 
+.utisakFull .utisakHeader JFXButton{
+	-fx-font-size:35px;
+	-fx-border-width:0 0 0 1;
+	-fx-border-color:#000000;
+	-fx-text-fill:#000000;
+}
 
+.utisakFull Label{
+	-fx-font-size:25px;
+}
+
+#dodajUtisakAnchorPane{
+	-fx-background-color:#fae596;
+	-fx-effect: dropshadow(three-pass-box, black, 30, 0, 0, 0);
+
+}
+
+.dodajUtisakButtons{
+	-fx-font-size: 25px;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Calibri";
+	-fx-background-color:#173e43;
+}
 
 
 

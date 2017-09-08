@@ -4,42 +4,32 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 
-<ScrollPane id="knjigaUtisakaScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="1366.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.KnjigaUtisakaGostController">
-   <content>
-      <GridPane fx:id="gridPane" alignment="CENTER" prefHeight="566.0" prefWidth="1366.0" vgap="30.0">
-        <columnConstraints>
-          <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <padding>
-            <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <children>
-            <JFXButton buttonType="RAISED" prefHeight="150.0" prefWidth="280.0" text=" " textOverrun="CLIP">
-               <graphic>
-                  <Pane prefHeight="150.0" prefWidth="280.0">
-                     <children>
-                        <Label layoutX="116.0" layoutY="31.0" text="+" />
-                        <Label layoutX="32.0" layoutY="82.0" text="Dodaj utisak" />
-                     </children>
-                  </Pane>
-               </graphic>
-            </JFXButton>
-         </children>
-      </GridPane>
-   </content>
-</ScrollPane>
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.KnjigaUtisakaGostController">
+   <children>
+      <ScrollPane id="knjigaUtisakaScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="1366.0" stylesheets="@../../res/css/style.css">
+         <content>
+            <FlowPane fx:id="flowPane" hgap="100.0" prefWidth="1366.0" vgap="30.0">
+               <children>
+                  <JFXButton buttonType="RAISED" prefHeight="150.0" prefWidth="280.0" text=" ">
+                     <graphic>
+                        <Pane>
+                           <children>
+                              <Label layoutX="91.0" text="+" />
+                              <Label layoutX="19.0" layoutY="63.0" text="Dodaj utisak" />
+                           </children>
+                        </Pane>
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="150.0" right="150.0" top="30.0" />
+               </padding>
+            </FlowPane>
+         </content>
+      </ScrollPane>
+   </children>
+</StackPane>

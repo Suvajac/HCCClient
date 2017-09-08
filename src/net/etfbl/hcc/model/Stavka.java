@@ -5,17 +5,20 @@ import java.util.Date;
 
 public class Stavka implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int idStavke;
-	private double cijena;
 	private Date datum;
 	private Usluga usluga;
 
 	public Stavka() {
 		// TODO Auto-generated constructor stub
 	}
-	public Stavka(int idStavke, double cijena, Date datum,Usluga u) {
+	public Stavka(int idStavke, Date datum,Usluga u) {
 		this.idStavke = idStavke;
-		this.cijena = cijena;
 		this.datum = datum;
 		this.usluga=u;
 	}
@@ -51,12 +54,6 @@ public class Stavka implements Serializable{
 	}
 	public void setIdStavke(int idStavke) {
 		this.idStavke = idStavke;
-	}
-	public double getCijena() {
-		return cijena;
-	}
-	public void setCijena(double cijena) {
-		this.cijena = cijena;
 	}
 	public Date getDatum() {
 		return datum;

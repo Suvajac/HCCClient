@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import net.etfbl.hcc.Main;
+
 import java.io.IOException;
 
 public class TabsGostController {
@@ -34,8 +36,8 @@ public class TabsGostController {
     		AnchorPane popustiAnchorPane=(AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/popustiGost.fxml"));
     		popustiTab.setContent(popustiAnchorPane);
     		
-    		ScrollPane knjigaUtisakaScrollPane = (ScrollPane) FXMLLoader.load(Main.class.getResource("view/gost/knjigaUtisakaGost.fxml"));
-    		knjigaUtisakaTab.setContent(knjigaUtisakaScrollPane);
+    		StackPane knjigaUtisakaStackPane = (StackPane) FXMLLoader.load(Main.class.getResource("view/gost/knjigaUtisakaGost.fxml"));
+    		knjigaUtisakaTab.setContent(knjigaUtisakaStackPane);
     	}
     	catch(IOException e){
     		e.printStackTrace();
