@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Gost extends Korisnik implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Racun racun;
 	private Soba soba;
 	private Date DatumOd;

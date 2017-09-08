@@ -5,6 +5,11 @@ import java.util.Date;
 
 public class Obavjestenje implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int idObavjestenje;
 	private String tekst;
 	private Date datum;
