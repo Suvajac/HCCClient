@@ -9,7 +9,7 @@ import net.etfbl.hcc.Main;
 
 public class UslugaController {
 	@FXML
-    private JFXButton meniButton;
+    private JFXButton restoranButton;
     @FXML
     private JFXButton sobaButton;
     @FXML
@@ -19,36 +19,45 @@ public class UslugaController {
     @FXML
     private AnchorPane infoAnchorPane;
     
-    public void handleMeniButton() throws Exception{
-    	AnchorPane menuAncorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/menuAnchorPane.fxml"));
+    public void initialize(){
+    	try{
+    		handleRestoranButton();
+    	}
+    	catch(Exception e){
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void handleRestoranButton() throws Exception{
+    	AnchorPane restoranAncorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/restoran.fxml"));
     	infoAnchorPane.getChildren().clear();
-    	infoAnchorPane.getChildren().add(menuAncorPane);
-    	addClassOnButton(meniButton);
+    	infoAnchorPane.getChildren().add(restoranAncorPane);
+    	addClassOnButton(restoranButton);
   }
 
   public void handleSportButton() throws Exception{
-      	AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/sportAnchorPane.fxml"));
+      	AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/sport.fxml"));
       	infoAnchorPane.getChildren().clear();
       	infoAnchorPane.getChildren().add(sportAnchorPane);
       	addClassOnButton(sportButton);
   }
 
   public void handleWellnessButton() throws Exception{
-      AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/wellnessAnchorPane.fxml"));
+      AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/wellness.fxml"));
       infoAnchorPane.getChildren().clear();
       infoAnchorPane.getChildren().add(sportAnchorPane);
       addClassOnButton(wellnessButton);
   }
 
   public void handleSobaButton() throws Exception{
-      AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/sobaAnchorPane.fxml"));
+      AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/soba.fxml"));
       infoAnchorPane.getChildren().clear();
       infoAnchorPane.getChildren().add(sportAnchorPane);
       addClassOnButton(sobaButton);
   }
 
   public void addClassOnButton(JFXButton button){
-      meniButton.getStyleClass().remove("selectedButton");
+      restoranButton.getStyleClass().remove("selectedButton");
       sportButton.getStyleClass().remove("selectedButton");
       sobaButton.getStyleClass().remove("selectedButton");
       wellnessButton.getStyleClass().remove("selectedButton");

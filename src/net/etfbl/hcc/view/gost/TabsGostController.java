@@ -17,7 +17,7 @@ public class TabsGostController {
 	@FXML
 	private Tab uslugeTab;
 	@FXML
-	private Tab obavjestenjaTab;
+	private Tab oglasnaTablaTab;
 	@FXML
 	private Tab popustiTab;
 	@FXML
@@ -38,6 +38,9 @@ public class TabsGostController {
     		
     		StackPane knjigaUtisakaStackPane = (StackPane) FXMLLoader.load(Main.class.getResource("view/gost/knjigaUtisakaGost.fxml"));
     		knjigaUtisakaTab.setContent(knjigaUtisakaStackPane);
+    		
+    		StackPane oglasnaTablaStackPane = (StackPane) FXMLLoader.load(Main.class.getResource("view/gost/oglasnaTablaGost.fxml"));
+    		oglasnaTablaTab.setContent(oglasnaTablaStackPane);
     	}
     	catch(IOException e){
     		e.printStackTrace();
