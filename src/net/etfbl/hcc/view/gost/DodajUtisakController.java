@@ -32,6 +32,7 @@ public class DodajUtisakController {
 	
 	@FXML
 	private void handleCancel(){
+		controller.getStackPane().getChildren().remove(anchorPane);
 		anchorPane.toBack();
 		controller.getFlowPane().toFront();
 	}

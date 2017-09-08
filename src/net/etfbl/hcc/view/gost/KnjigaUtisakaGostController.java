@@ -90,7 +90,6 @@ public class KnjigaUtisakaGostController {
 		JFXButton josUtisakaButton = new JFXButton();
 		josUtisakaButton.setPrefWidth(280);
 		josUtisakaButton.setPrefHeight(150);
-		josUtisakaButton.getStylesheets().add("button");
 		josUtisakaButton.setOnAction((e) -> {
 			handleJosUtisaka();
 		});
@@ -115,7 +114,6 @@ public class KnjigaUtisakaGostController {
 		JFXButton dodajUtisakButton = new JFXButton();
 		dodajUtisakButton.setPrefWidth(280);
 		dodajUtisakButton.setPrefHeight(150);
-		dodajUtisakButton.getStylesheets().add("button");
 		dodajUtisakButton.setOnAction((e) -> {
 			handleDodajUtisak();
 		});
@@ -173,6 +171,7 @@ public class KnjigaUtisakaGostController {
 			JFXButton closeButton = new JFXButton("X");
 			headerAnchorPane.getChildren().add(closeButton);
 			closeButton.setOnAction(ev -> {
+				stackPane.getChildren().remove(parent);
 				parent.toBack();
 				flowPane.toFront();
 			});
@@ -287,6 +286,16 @@ public class KnjigaUtisakaGostController {
 
 	public void setFlowPane(FlowPane flowPane) {
 		this.flowPane = flowPane;
+	}
+
+
+	public StackPane getStackPane() {
+		return stackPane;
+	}
+
+
+	public void setStackPane(StackPane stackPane) {
+		this.stackPane = stackPane;
 	}
 	
 	
