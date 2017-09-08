@@ -5,16 +5,16 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class RootRecepcionarController {
 
 	@FXML
-	private Label lblUsername;
+	private TextField tfTrenutniKorisnik;
 
 	@FXML
 	private Button btnLogout;
@@ -60,8 +60,11 @@ public class RootRecepcionarController {
 		
 	}
 	
+	/*
+	 * Pomocna metoda za ucitavanje fxml fajlova u tabove ovog kontrolera.
+	 */
 	private void loadIntoTab(Tab tab, String fxml) throws IOException {
-		Node root = FXMLLoader.load(getClass().getResource(fxml));
+		Parent root = FXMLLoader.load(getClass().getResource(fxml));
 		AnchorPane pane = (AnchorPane) tab.getContent();
 		pane.getChildren().add(root);
 		AnchorPane.setBottomAnchor(root, 0.0);

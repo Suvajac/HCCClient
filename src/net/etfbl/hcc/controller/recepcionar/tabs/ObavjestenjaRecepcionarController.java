@@ -15,12 +15,12 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.etfbl.hcc.util.ColumnResizer;
+import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class ObavjestenjaRecepcionarController {
 
@@ -28,44 +28,48 @@ public class ObavjestenjaRecepcionarController {
 	private TableView<ObavjestenjeTest> table;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colDate;
+	private TableColumn<ObavjestenjeTest, String> colVrijeme;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colText;
+	private TableColumn<ObavjestenjeTest, String> colTekst;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colRead;
+	private TableColumn<ObavjestenjeTest, String> colProcitano;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colAction;
+	private TableColumn<ObavjestenjeTest, String> colAkcija;
 
 	@FXML
 	void initialize() {
 		// Set cell value factories
-		colDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getTimestamp().toString()));
-		colText.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getText()));
-		colRead.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().isRead() ? "Da" : "Ne"));
-		colAction.setCellFactory(param -> {
-			final TableCell<ObavjestenjeTest, String> cell = new TableCell<ObavjestenjeTest, String>() {
-
-				final Button btnShow = new Button("Detaljno");
-
-				@Override
-				public void updateItem(String item, boolean empty) {
-					super.updateItem(item, empty);
-					if (empty) {
-						setGraphic(null);
-						setText(null);
-					} else {
-						ObavjestenjeTest o = getTableView().getItems().get(getIndex());
-						btnShow.setOnAction(event -> handleShow(o));
-						setGraphic(btnShow);
-						setText(null);
-					}
-				}
-			};
-			return cell;
-		});
+		colVrijeme.setCellValueFactory(
+				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getVrijeme())));
+		colTekst.setCellValueFactory(
+				param -> new SimpleStringProperty(param.getValue().getTekst()));
+		colProcitano.setCellValueFactory(
+				param -> new SimpleStringProperty(param.getValue().isProcitano() ? "Da" : "Ne"));
+		colAkcija.setCellFactory(
+				param -> {
+					final TableCell<ObavjestenjeTest, String> cell = new TableCell<ObavjestenjeTest, String>() {
+		
+						final Button btnDetaljno = new Button("Detaljno");
+		
+						@Override
+						public void updateItem(String item, boolean empty) {
+							super.updateItem(item, empty);
+							if (empty) {
+								setGraphic(null);
+								setText(null);
+							} else {
+								ObavjestenjeTest o = getTableView().getItems().get(getIndex());
+								btnDetaljno.setOnAction(event -> handleShow(o));
+								setGraphic(btnDetaljno);
+								setText(null);
+							}
+						}
+					};
+					return cell;
+				});
 
 		// Populate table
 		ObservableList<ObavjestenjeTest> list = FXCollections.observableArrayList();
@@ -79,26 +83,31 @@ public class ObavjestenjaRecepcionarController {
 	}
 
 	private void handleShow(ObavjestenjeTest o) {
-		o.setRead(true);
+		o.setProcitano(true);
 		table.refresh();
 		ObavjestenjeDialog dialog = new ObavjestenjeDialog(o);
 		dialog.showAndWait();
 	}
-
-	private class ObavjestenjeDialog {
+	
+	private static class ObavjestenjeDialog {
 		
 		private Stage primaryStage;
 		
 		public ObavjestenjeDialog(ObavjestenjeTest obavjestenje) {
-
-			Label lblId = new Label("ID: " + obavjestenje.getId());
-			Label lblTimestamp = new Label("Vrijeme: " + obavjestenje.getTimestamp());
+			
+			Label lbl1 = new Label("ID:");
+			lbl1.setStyle("-fx-font-weight: bold;");
+			Label lblId = new Label("" + obavjestenje.getId());
+			
+			Label lbl2 = new Label("Vrijeme:");
+			lbl2.setStyle("-fx-font-weight: bold;");
+			Label lblTimestamp = new Label("" + TemporalStringConverters.toString(obavjestenje.getVrijeme()));
 			
 			HBox hbHeader = new HBox();
-			hbHeader.setSpacing(200);
-			hbHeader.getChildren().addAll(lblId, lblTimestamp);
+			hbHeader.setSpacing(5);
+			hbHeader.getChildren().addAll(lbl1, lblId, lbl2, lblTimestamp);
 			
-			TextArea textArea = new TextArea(obavjestenje.getText());
+			TextArea textArea = new TextArea(obavjestenje.getTekst());
 			textArea.setEditable(false);
 			textArea.setPrefWidth(400);
 			textArea.setPrefHeight(300);
@@ -133,9 +142,9 @@ class ObavjestenjeTest {
 	private static int counter;
 	
 	private int id;
-	private boolean read;
-	private String text;
-	private LocalDateTime timestamp;
+	private boolean procitano;
+	private String tekst;
+	private LocalDateTime vrijeme;
 
 	public ObavjestenjeTest() {
 		super();
@@ -143,34 +152,10 @@ class ObavjestenjeTest {
 		id = counter;
 	}
 
-	public ObavjestenjeTest(String text, LocalDateTime timestamp) {
+	public ObavjestenjeTest(String tekst, LocalDateTime vrijeme) {
 		this();
-		this.text = text;
-		this.timestamp = timestamp;
-	}
-
-	public boolean isRead() {
-		return read;
-	}
-
-	public void setRead(boolean read) {
-		this.read = read;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public LocalDateTime getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(LocalDateTime timestamp) {
-		this.timestamp = timestamp;
+		this.tekst = tekst;
+		this.vrijeme = vrijeme;
 	}
 
 	public int getId() {
@@ -179,6 +164,30 @@ class ObavjestenjeTest {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isProcitano() {
+		return procitano;
+	}
+
+	public void setProcitano(boolean procitano) {
+		this.procitano = procitano;
+	}
+
+	public String getTekst() {
+		return tekst;
+	}
+
+	public void setTekst(String tekst) {
+		this.tekst = tekst;
+	}
+
+	public LocalDateTime getVrijeme() {
+		return vrijeme;
+	}
+
+	public void setVrijeme(LocalDateTime vrijeme) {
+		this.vrijeme = vrijeme;
 	}
 
 }

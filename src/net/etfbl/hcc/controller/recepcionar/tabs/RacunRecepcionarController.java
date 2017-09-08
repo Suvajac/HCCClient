@@ -3,7 +3,6 @@ package net.etfbl.hcc.controller.recepcionar.tabs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,10 +29,15 @@ public class RacunRecepcionarController {
     private TableColumn<Object, String> colDatum;
 
     @FXML
-    private Label lblUkupnaCijena;
+    private TextField tfUkupnaCijena;
 
     @FXML
     private Button btnPlati;
+    
+    @FXML
+    void initialize() {
+    	tfUkupnaCijena.prefWidthProperty().bind(colCijena.widthProperty());
+    }
 
     @FXML
     void handlePlati(ActionEvent event) {

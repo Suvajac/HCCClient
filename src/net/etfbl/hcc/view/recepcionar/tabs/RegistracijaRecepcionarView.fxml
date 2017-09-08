@@ -24,19 +24,19 @@
                         <VBox>
                            <children>
                               <Label text="Korisničko ime:" />
-                              <TextField fx:id="tfUsername" prefWidth="310.0" />
+                              <TextField fx:id="tfKorisnickoIme" prefWidth="310.0" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0">
                            <children>
                               <Label text="Lozinka:" />
-                              <PasswordField fx:id="pfPassword" prefWidth="310.0" />
+                              <PasswordField fx:id="pfLozinka" prefWidth="310.0" />
                            </children>
                         </VBox>
                         <VBox layoutX="20.0" layoutY="72.0">
                            <children>
                               <Label text="Potvrdi lozinku:" />
-                              <PasswordField fx:id="pfConfirmPassword" prefWidth="310.0" />
+                              <PasswordField fx:id="pfPotvrdiLozinku" prefWidth="310.0" />
                            </children>
                         </VBox>
                         <HBox spacing="10.0">
@@ -83,13 +83,13 @@
                               <VBox>
                                  <children>
                                     <Label text="Datum od:" />
-                                    <DatePicker fx:id="dpDatumOd" prefWidth="150.0" />
+                                    <DatePicker fx:id="dpDatumOd" editable="false" prefWidth="150.0" />
                                  </children>
                               </VBox>
                               <VBox>
                                  <children>
                                     <Label text="Datum do:" />
-                                    <DatePicker fx:id="dpDatumDo" prefWidth="150.0" />
+                                    <DatePicker fx:id="dpDatumDo" editable="false" prefWidth="150.0" />
                                  </children>
                               </VBox>
                            </children>

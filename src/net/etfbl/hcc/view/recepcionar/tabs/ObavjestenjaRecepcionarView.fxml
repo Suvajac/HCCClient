@@ -9,10 +9,10 @@
    <children>
       <TableView fx:id="table" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn fx:id="colDate" prefWidth="75.0" resizable="false" text="Datum" />
-            <TableColumn fx:id="colText" prefWidth="75.0" resizable="false" text="Tekst" />
-            <TableColumn fx:id="colRead" prefWidth="75.0" resizable="false" text="Procitano" />
-            <TableColumn fx:id="colAction" prefWidth="75.0" resizable="false" text="Akcija" />
+          <TableColumn fx:id="colVrijeme" prefWidth="75.0" resizable="false" text="Vrijeme" />
+            <TableColumn fx:id="colTekst" prefWidth="75.0" resizable="false" text="Tekst" />
+            <TableColumn fx:id="colProcitano" prefWidth="75.0" resizable="false" text="Procitano" />
+            <TableColumn fx:id="colAkcija" prefWidth="75.0" resizable="false" text="Akcija" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
