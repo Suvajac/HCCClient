@@ -5,9 +5,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.view.gost.usluge.RestoranController;
 
 public class UslugaController {
+	@FXML
+	public StackPane stackPane;
 	@FXML
     private JFXButton restoranButton;
     @FXML
@@ -29,7 +33,12 @@ public class UslugaController {
     }
     
     public void handleRestoranButton() throws Exception{
-    	AnchorPane restoranAncorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/restoran.fxml"));
+    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/usluge/restoran.fxml"));
+    	AnchorPane restoranAncorPane = (AnchorPane) loader.load();
+    	
+    	RestoranController controller = loader.getController();
+    	controller.setStackPane(stackPane);
+    	
     	infoAnchorPane.getChildren().clear();
     	infoAnchorPane.getChildren().add(restoranAncorPane);
     	addClassOnButton(restoranButton);

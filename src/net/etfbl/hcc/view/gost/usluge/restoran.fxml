@@ -10,61 +10,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="600.0" stylesheets="@../../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="600.0" stylesheets="@../../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.usluge.RestoranController">
    <children>
       <Label layoutX="51.0" layoutY="48.0" styleClass="nameLabel" text="Restoran" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="126.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="126.0" styleClass="restoranScrollPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <content>
             <AnchorPane prefHeight="300.0" prefWidth="600.0">
                <children>
                   <Label styleClass="piceHranaLabel" text="Hrana" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0" />
                   <Label styleClass="piceHranaLabel" text="Piće" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="0.0" />
-                  <VBox prefWidth="230.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
-                     <children>
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="10.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="33.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="56.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="79.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="102.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="125.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="148.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="171.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="171.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="194.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="217.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="240.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="263.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                     </children>
-                  </VBox>
-                  <VBox layoutX="291.0" prefWidth="230.0" spacing="5.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
-                     <children>
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="10.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="28.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="46.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="64.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="82.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="100.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="118.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                        <Label layoutX="10.0" layoutY="136.0" styleClass="stavkaLabel" text="Coca Cola...................3EUR" />
-                     </children>
-                  </VBox>
+                  <VBox fx:id="hranaVBox" prefWidth="230.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0" />
+                  <VBox fx:id="piceVBox" layoutX="291.0" prefWidth="230.0" spacing="5.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="570.0" ripplerFill="#fae596" styleClass="naruciButton" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0" />
-      <JFXTimePicker defaultColor="#173e43" layoutX="48.0" layoutY="502.0" prefHeight="28.0" prefWidth="135.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="50.0" />
-      <JFXComboBox focusColor="#173e43" layoutX="329.0" layoutY="502.0" unFocusColor="#173e43" AnchorPane.bottomAnchor="45.0" />
-      <Label layoutX="201.0" layoutY="497.0" styleClass="piceHranaLabel" text="Broj mjesta" AnchorPane.bottomAnchor="43.0" />
-      <JFXButton layoutX="406.0" layoutY="2.0" text=" " AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0">
+      <JFXTimePicker fx:id="vrijemeTimePicker" defaultColor="#173e43" layoutX="48.0" layoutY="502.0" prefHeight="28.0" prefWidth="135.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="50.0" />
+      <JFXComboBox fx:id="brojStolicaComboBox" focusColor="#173e43" layoutX="329.0" layoutY="502.0" styleClass="brojStolicaComboBox" unFocusColor="#173e43" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="70.0" />
+      <Label layoutX="201.0" layoutY="497.0" styleClass="piceHranaLabel" text="Broj stolica" AnchorPane.bottomAnchor="43.0" AnchorPane.rightAnchor="180.0" />
+      <JFXButton layoutX="406.0" layoutY="2.0" onAction="#handleKorpa" text=" " AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="5.0">
          <graphic>
             <AnchorPane>
                <children>
@@ -73,6 +37,7 @@
                         <Image url="@../../../res/img/korpa.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="brojacLabel" text="0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </graphic>
