@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.UslugaController">
    <children>
-      <JFXButton fx:id="meniButton" buttonType="RAISED" onAction="#handleMeniButton" ripplerFill="#fae596" styleClass="uslugeButton" text=" " textOverrun="CLIP" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="40.0">
+      <JFXButton fx:id="restoranButton" buttonType="RAISED" onAction="#handleRestoranButton" ripplerFill="#fae596" styleClass="uslugeButton" text=" " textOverrun="CLIP" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="40.0">
          <graphic>
             <Pane>
                <children>
