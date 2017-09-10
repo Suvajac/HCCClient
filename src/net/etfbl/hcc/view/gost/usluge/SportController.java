@@ -1,38 +1,34 @@
 package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTimePicker;
+import com.jfoenix.controls.JFXDatePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
+import net.etfbl.hcc.model.Oprema;
 import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.view.gost.KorpaController;
-import net.etfbl.hcc.view.gost.UslugaController;
 
-public class RestoranController {
+public class SportController {
 	@FXML
-	private VBox hranaVBox;
+	private VBox opremaVBox;
 	@FXML
-	private VBox piceVBox;
+	private JFXDatePicker datumDatePicker;
 	@FXML
-	private JFXTimePicker vrijemeTimePicker;
-	@FXML
-	private JFXComboBox<String> brojStolicaComboBox;
+	private JFXComboBox<String> vrijemeComboBox;
 	@FXML
 	private Label brojacLabel;
 	
@@ -47,26 +43,28 @@ public class RestoranController {
 		korpa = new Korpa();
 		
 		for(int i=0;i<5;i++){
-			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
-			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
-			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
-			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
-			meni.add(p1);
-			meni.add(p2);
-			meni.add(p3);
-			meni.add(p4);
+			Oprema o1 = new Oprema(1, "Kopacke Addidas", 1, "43");
+			Oprema o2 = new Oprema(2, "Kopacke Addidasl", 1, "42");
+			Oprema o3 = new Oprema(3, "Kopacke Addidas", 1, "44");
+			Oprema o4 = new Oprema(4, "Majica", 1, "L");
+			Oprema o5 = new Oprema(5, "Sorc", 1, "L");
+			meni.add(o1);
+			meni.add(o2);
+			meni.add(o3);
+			meni.add(o4);
+			meni.add(o5);
 		}
 		
-		brojStolicaComboBox.getItems().addAll("2","3","4","5","6","7");
-		vrijemeTimePicker.setValue(LocalTime.now().plusMinutes(30));
+		datumDatePicker.setValue(LocalDate.now());
+		
 		prikaziMeni();
 		brojacLabel.setText("");
 	}
 	
 	@FXML
-	public void handleKorpa(){
+	public void handleOprema(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/restoranKorpa.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/opremaKorpa.fxml"));
 			AnchorPane korpaAnchorPane = (AnchorPane) loader.load();
 			AnchorPane.setTopAnchor(korpaAnchorPane,5.0);
 			AnchorPane.setLeftAnchor(korpaAnchorPane,383.0);
@@ -88,13 +86,18 @@ public class RestoranController {
 		}
 	}
 	
+	@FXML
+	public void handleNaruci(){
+		
+	}
+	
 	public void prikaziMeni(){
 		for(Proizvod p : meni){
 			StringBuilder tackeSb = new StringBuilder();
-			for(int i=0;i<36-p.getNaziv().length()-(p.getCijena()+"").length();i++){
+			for(int i=0;i<90-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
 			}
-			Label label = new Label(p.getNaziv()+tackeSb.toString()+p.getCijena()+" EUR");
+			Label label = new Label(p.getNaziv()+" vel. "+((Oprema)p).getVelicina()+tackeSb.toString()+p.getCijena()+" EUR");
 			label.getStyleClass().add("stavkaLabel");
 			label.setOnMouseClicked((e) ->{
 				korpa.add(mapaLabelProizvod.get(label));
@@ -104,15 +107,10 @@ public class RestoranController {
 				else{
 					brojacLabel.setText(korpa.getListaProizvoda().size()+"");
 				}
-				handleKorpa();
+				handleOprema();
 			});
 			mapaLabelProizvod.put(label, p);
-			if(p.getTip().equals("Hrana")){
-				hranaVBox.getChildren().add(label);
-			}
-			else if(p.getTip().equals("Pice")){	
-				piceVBox.getChildren().add(label);
-			}
+			opremaVBox.getChildren().add(label);
 		}
 	}
 	

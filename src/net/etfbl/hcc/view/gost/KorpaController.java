@@ -14,19 +14,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import net.etfbl.hcc.model.Korpa;
+import net.etfbl.hcc.model.Oprema;
 import net.etfbl.hcc.model.Proizvod;
 
 public class KorpaController {
 	@FXML
-	private VBox vBox;
+	protected VBox vBox;
 	@FXML
-	private Label ukupnoLabel;
+	protected Label ukupnoLabel;
 	
-	private Korpa korpa;
-	private Map<Proizvod, Label> mapaProizvoda;
-	private StackPane stackPane;
-	private AnchorPane parent;
-	private Label brojacLabel;
+	protected Korpa korpa;
+	protected Map<Proizvod, Label> mapaProizvoda;
+	protected StackPane stackPane;
+	protected AnchorPane parent;
+	protected Label brojacLabel;
 
 	public void prikaziProizvode(){
 		AnchorPane headAnchorPane = new AnchorPane();
@@ -46,7 +47,15 @@ public class KorpaController {
 			if(mapaProizvoda.get(p)==null){
 				AnchorPane anchorPane = new AnchorPane();
 				anchorPane.setPrefHeight(30);
-				Label naziv = new Label(p.getNaziv());
+				String nazivStr = new String();
+				if(p instanceof Oprema){
+					Oprema o = (Oprema) p;
+					nazivStr = o.getNaziv()+" vel. "+o.getVelicina();
+				}
+				else{
+					nazivStr = p.getNaziv();
+				}
+				Label naziv = new Label(nazivStr);
 				AnchorPane.setTopAnchor(naziv,10.0);
 				AnchorPane.setLeftAnchor(naziv,0.0);
 			

@@ -115,7 +115,7 @@
     -fx-effect: dropshadow( three-pass-box , black , 50 , 0, 0 , 0 );
 }
 
-/*****************R E S T O R A N    A N C H O R P A N E****************/
+/******************************U S L U G E********************************/
 
 
 .nameLabel{
@@ -123,6 +123,7 @@
     -fx-font-size: 36px;
     -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
     -fx-font-family: "Calibri";
+	-fx-font-weight:bold;
 }
 
 .piceHranaLabel{
@@ -130,18 +131,22 @@
     -fx-font-size: 24px;
     -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
     -fx-font-family: "Calibri";
+	-fx-font-weight:bold;
+
 }
 
 .stavkaLabel{
-    -fx-font-size: 15px;
+    -fx-font-size: 13px;
     -fx-text-fill: #000000;
-    -fx-font-family: "Calibri";
+	-fx-font-weight:bold;
 }
 
 .stavkaLabel:hover{
     -fx-text-fill: #fae596;
-    -fx-effect: dropshadow(three-pass-box, black, 2,0.3,0, 0);
+    -fx-effect: none;
     -fx-cursor: hand;
+	-fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
+	-fx-font-weight:bold;
 }
 
 .restoranScrollPane{
@@ -153,13 +158,10 @@
 }
 
 .naruciButton{
+	-fx-background-color:#fae596;
     -fx-font-size: 36px;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #173e43;
     -fx-font-family: "Calibri";
-}
-
-.naruciButton .text{
-    -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
 }
 
 .jfx-time-picker .time-picker-display-node{
@@ -171,6 +173,52 @@
 .jfx-time-picker .time-picker-display-node .text {
     -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
 }
+
+.jfx-date-picker .date-picker-display-node{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-font-family: "Calibri";
+}
+
+.jfx-date-picker .date-picker-display-node .text {
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 0);
+}
+
+.brojacLabel{
+	-fx-font-size:25px;
+	-fx-font-weight:bold;
+	-fx-text-fill:#fae596;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
+
+}
+
+/*.jfx-combo-box .list-view .list-cell{
+	-fx-background-color:#173e43;
+}
+
+.jfx-combo-box .list-view .list-cell:hover{
+	-fx-background-color:#fae596;
+}
+
+.jfx-combo-box .list-view .list-cell:hover > .cell{
+	-fx-text-fill:red;
+}
+
+.jfx-combo-box .list-view .list-cell:selected{
+	-fx-background-color:#fae596;
+}
+
+.jfx-combo-box .list-cell .text{
+	-fx-text-fill:red;
+}
+
+.jfx-combo-box .cell{
+	-fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
+    -fx-font-family: "Calibri";
+	-fx-font-weight:bold;
+}*/
 
 /*****************K NJ I G A  U T I S A K A**********************/
 

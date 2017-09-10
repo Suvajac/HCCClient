@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="600.0" stylesheets="@../../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.usluge.SportController">
    <children>
-      <Label layoutX="77.0" layoutY="48.0" text="Sport" />
+      <Label layoutX="51.0" layoutY="48.0" styleClass="nameLabel" text="Sportske usluge" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="126.0" prefHeight="280.0" prefWidth="600.0" styleClass="restoranScrollPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <content>
+            <AnchorPane prefHeight="300.0" prefWidth="600.0">
+               <children>
+                  <Label styleClass="piceHranaLabel" text="Oprema" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="opremaVBox" prefWidth="480.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <JFXButton layoutX="406.0" layoutY="2.0" onAction="#handleOprema" text=" " AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="5.0">
+         <graphic>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/img/korpa.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="32.0" layoutY="423.0" styleClass="piceHranaLabel" text="Datum:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="410.0" />
+      <JFXDatePicker fx:id="datumDatePicker" defaultColor="#173e43" layoutX="105.0" layoutY="422.0" prefWidth="160.0" styleClass="jfx-time-picker" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="407.0" />
+      <Label layoutX="385.0" layoutY="422.0" styleClass="piceHranaLabel" text="Vrijeme:" AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="410.0" />
+      <JFXComboBox fx:id="vrijemeComboBox" focusColor="#173e43" layoutX="483.0" layoutY="424.0" prefWidth="100.0" unFocusColor="#173e43" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="415.0" />
+      <JFXButton buttonType="RAISED" layoutX="228.0" layoutY="470.0" onAction="#handleNaruci" styleClass="naruciButton" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="25.0" />
+      <Label fx:id="brojacLabel" styleClass="brojacLabel" text="0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="7.0" />
    </children>
 </AnchorPane>

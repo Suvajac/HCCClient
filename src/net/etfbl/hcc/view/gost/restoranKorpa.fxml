@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="korpaAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.KorpaController">
+   <children>
+      <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="254.0" layoutY="14.0" text="Korpa" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="5.0" />
+            <JFXButton onAction="#handleClose" styleClass="closeButton" text=" X " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <ScrollPane hbarPolicy="NEVER" layoutY="70.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <content>
+            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="600.0">
+               <padding>
+                  <Insets left="50.0" right="50.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Label fx:id="ukupnoLabel" layoutX="37.0" layoutY="434.0" styleClass="ukupnoLabel" text="Ukupno: " AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
+   </children>
+</AnchorPane>

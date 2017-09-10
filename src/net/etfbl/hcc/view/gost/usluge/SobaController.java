@@ -1,38 +1,27 @@
 package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTimePicker;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.view.gost.KorpaController;
-import net.etfbl.hcc.view.gost.UslugaController;
 
-public class RestoranController {
+public class SobaController {
 	@FXML
 	private VBox hranaVBox;
 	@FXML
 	private VBox piceVBox;
-	@FXML
-	private JFXTimePicker vrijemeTimePicker;
-	@FXML
-	private JFXComboBox<String> brojStolicaComboBox;
 	@FXML
 	private Label brojacLabel;
 	
@@ -51,22 +40,32 @@ public class RestoranController {
 			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
 			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
 			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
+			Proizvod p5 = new Proizvod(5,"Hrana","Presnac",0.3);
 			meni.add(p1);
 			meni.add(p2);
 			meni.add(p3);
 			meni.add(p4);
+			meni.add(p5);
 		}
 		
-		brojStolicaComboBox.getItems().addAll("2","3","4","5","6","7");
-		vrijemeTimePicker.setValue(LocalTime.now().plusMinutes(30));
 		prikaziMeni();
 		brojacLabel.setText("");
 	}
 	
 	@FXML
+	public void handlePospremanjeSobe(){
+		
+	}
+	
+	@FXML
+	public void handleVeseraj(){
+		
+	}
+	
+	@FXML
 	public void handleKorpa(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/restoranKorpa.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/korpa.fxml"));
 			AnchorPane korpaAnchorPane = (AnchorPane) loader.load();
 			AnchorPane.setTopAnchor(korpaAnchorPane,5.0);
 			AnchorPane.setLeftAnchor(korpaAnchorPane,383.0);
