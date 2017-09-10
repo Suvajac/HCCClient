@@ -109,7 +109,7 @@ public class OglasiRecepcionarController {
 			Scene scene = new Scene(vbContent);
 			primaryStage = new Stage();
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Oglas");
+			primaryStage.setTitle("Novi oglas");
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
 		}
