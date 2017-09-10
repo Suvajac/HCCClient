@@ -97,18 +97,14 @@ public class ObavjestenjaRecepcionarController {
 		private Stage primaryStage;
 		
 		public ObavjestenjeDialog(ObavjestenjeTest obavjestenje) {
-			
-			Label lbl1 = new Label("ID:");
-			lbl1.setStyle("-fx-font-weight: bold;");
-			Label lblId = new Label("" + obavjestenje.getId());
-			
-			Label lbl2 = new Label("Vrijeme:");
-			lbl2.setStyle("-fx-font-weight: bold;");
+
+			Label label = new Label("Vrijeme:");
+			label.setStyle("-fx-font-weight: bold;");
 			Label lblTimestamp = new Label("" + TemporalStringConverters.toString(obavjestenje.getVrijeme()));
 			
 			HBox hbHeader = new HBox();
 			hbHeader.setSpacing(5);
-			hbHeader.getChildren().addAll(lbl1, lblId, lbl2, lblTimestamp);
+			hbHeader.getChildren().addAll(label, lblTimestamp);
 			
 			TextArea textArea = new TextArea(obavjestenje.getTekst());
 			textArea.setEditable(false);
@@ -128,7 +124,7 @@ public class ObavjestenjaRecepcionarController {
 			Scene scene = new Scene(vbContent);
 			primaryStage = new Stage();
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Obavjestenje");
+			primaryStage.setTitle("Obavjestenje " + obavjestenje.getId());
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
 		}

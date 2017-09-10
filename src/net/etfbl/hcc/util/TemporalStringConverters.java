@@ -22,7 +22,7 @@ public class TemporalStringConverters {
 
 			@Override
 			public LocalDate fromString(String string) {
-				if (string != null && string.isEmpty()) {
+				if (string != null && !string.isEmpty()) {
 					return LocalDate.parse(string, dateFormatter);
 				} else {
 					return null;
@@ -42,7 +42,7 @@ public class TemporalStringConverters {
 
 			@Override
 			public LocalTime fromString(String string) {
-				if (string != null && string.isEmpty()) {
+				if (string != null && !string.isEmpty()) {
 					return LocalTime.parse(string, timeFormatter);
 				} else {
 					return null;

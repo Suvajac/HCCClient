@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../res/css/recepcionar_style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="net.etfbl.hcc.controller.recepcionar.tabs.ProizvodiRecepcionarController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../res/css/recepcionar_style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.recepcionar.tabs.ProizvodiRecepcionarController">
    <children>
       <HBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="colNaziv" prefWidth="75.0" text="Naziv" />
                 <TableColumn fx:id="colCijena" prefWidth="75.0" text="Cijena" />
