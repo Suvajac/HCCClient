@@ -12,22 +12,9 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../res/css/recepcionar_style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.recepcionar.tabs.PopustiRecepcionarController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-               <children>
-                  <Label text="Procenat:" />
-                  <TextField fx:id="tfProcenat" alignment="CENTER" prefWidth="75.0" />
-                  <Label text="\%" />
-                  <HBox alignment="CENTER_RIGHT" spacing="10.0">
-                     <children>
-                        <Button fx:id="btnDodaj" mnemonicParsing="false" onAction="#handleDodaj" prefWidth="65.0" text="Dodaj" />
-                        <Button fx:id="btnObrisi" mnemonicParsing="false" onAction="#handleObrisi" prefWidth="65.0" text="Obriši" />
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="colKod" prefWidth="75.0" text="Kod" />
                 <TableColumn fx:id="colProcenat" prefWidth="75.0" text="Procenat" />
@@ -37,8 +24,42 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
+            <VBox prefWidth="200.0" spacing="10.0" HBox.hgrow="NEVER">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="Kod:" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <TextField fx:id="tfKod" prefWidth="200.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Procenat:" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <TextField fx:id="tfProcenat" prefWidth="180.0" />
+                              <Label styleClass="my-bold-label" text="\%" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnDodaj" mnemonicParsing="false" onAction="#handleDodaj" prefWidth="65.0" text="Dodaj" />
+                        <Button fx:id="btnObrisi" mnemonicParsing="false" onAction="#handleObrisi" prefWidth="65.0" text="Obriši" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </VBox>
          </children>
-      </VBox>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

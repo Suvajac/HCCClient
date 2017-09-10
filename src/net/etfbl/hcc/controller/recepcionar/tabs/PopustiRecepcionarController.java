@@ -23,6 +23,9 @@ public class PopustiRecepcionarController {
     private TableColumn<Object, String> colAktivan;
 
     @FXML
+    private TextField tfKod;
+    
+    @FXML
     private TextField tfProcenat;
 
     @FXML
@@ -33,19 +36,41 @@ public class PopustiRecepcionarController {
 
     @FXML
     void handleDodaj(ActionEvent event) {
-    	try {
-    		Double procenat = new Double(tfProcenat.getText());
-    		if (procenat <= 0 || procenat > 100) {
-    			throw new NumberFormatException();
-    		}
-    	} catch (NumberFormatException ex) {
-    		Dialogs.showErrorDialog("Greska", "Nevalidna vrijednost", "Unesite broj izmedju 0 i 100.");
+    	if (inputValid()) {
+    		
     	}
     }
 
     @FXML
     void handleObrisi(ActionEvent event) {
 
+    }
+    
+    /**
+     * Validates the user input in the text fields.
+     */
+    private boolean inputValid() {
+    	String message = "";
+    	
+    	if (tfKod.getText() == null | tfKod.getText().isEmpty()) {
+    		message += "Nedostaje kod.\n";
+    	}
+    	
+    	try {
+    		Double procenat = new Double(tfProcenat.getText());
+    		if (procenat <= 0 || procenat > 100) {
+    			throw new NumberFormatException();
+    		}
+    	} catch (NumberFormatException ex) {
+    		message += "Procenat mora biti broj izmedju 0 i 100.\n";
+    	}
+    	
+    	if (message.isEmpty()) {
+    		return true;
+    	} else {
+    		Dialogs.showErrorDialog("Greska", "Ispravite sljedeca polja:", message);
+    		return false;
+    	}
     }
 
 }
