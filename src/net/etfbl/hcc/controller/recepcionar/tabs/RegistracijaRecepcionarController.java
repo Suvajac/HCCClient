@@ -47,25 +47,34 @@ public class RegistracijaRecepcionarController {
     void initialize() {
     	// Populate choice box
     	cbBrojKreveta.getItems().addAll(1, 2, 3, 4);
-    	cbBrojKreveta.setValue(1);
     	
     	// Set proper string converter
 		dpDatumOd.setConverter(TemporalStringConverters.getLocalDateConverter());
 		dpDatumDo.setConverter(TemporalStringConverters.getLocalDateConverter());
 		
-		// Set default dates
-		dpDatumOd.setValue(LocalDate.now());
-		dpDatumDo.setValue(dpDatumOd.getValue().plusDays(7));
+		// Set default values
+		clearFields();
     }
 
     @FXML
     void handlePotvrdi(ActionEvent event) {
     	if (inputValid()) {
-    		
+    		clearFields();
     	}
     	// Clear sensitive data
 		pfLozinka.setText("");
 		pfPotvrdiLozinku.setText("");
+    }
+    
+    private void clearFields() {
+    	tfKorisnickoIme.setText("");
+    	pfLozinka.setText("");
+    	pfPotvrdiLozinku.setText("");
+    	tfIme.setText("");
+    	tfPrezime.setText("");
+    	cbBrojKreveta.setValue(cbBrojKreveta.getItems().get(0));
+    	dpDatumOd.setValue(LocalDate.now());
+    	dpDatumDo.setValue(dpDatumOd.getValue().plusDays(7));
     }
     
     /**

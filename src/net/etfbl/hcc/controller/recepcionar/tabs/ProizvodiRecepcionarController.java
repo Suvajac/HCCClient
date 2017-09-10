@@ -75,6 +75,7 @@ public class ProizvodiRecepcionarController {
 			proizvod.setCijena(new Double(tfCijena.getText()));
 			proizvod.setTip(cmbTip.getValue());
 			list.add(proizvod);
+			clearFields();
 		}
 	}
 
@@ -84,6 +85,12 @@ public class ProizvodiRecepcionarController {
 		if (proizvod != null) {
 			list.remove(proizvod);
 		}
+	}
+	
+	private void clearFields() {
+		tfNaziv.setText("");
+		tfCijena.setText("");
+		cmbTip.setValue("");
 	}
 	
 	/**
@@ -97,7 +104,7 @@ public class ProizvodiRecepcionarController {
     	}
     	
     	try {
-    		Double cijena = new Double(tfCijena.getText());
+    		Double cijena = Double.valueOf(tfCijena.getText());
     		if (cijena < 0) {
     			throw new NumberFormatException();
     		}
@@ -106,7 +113,7 @@ public class ProizvodiRecepcionarController {
     	}
     	
     	if (cmbTip.getValue() == null || cmbTip.getValue().trim().isEmpty()) {
-    		message += "Nedostaje tip proizvoda\n";
+    		message += "Nedostaje tip proizvoda.\n";
     	}
     	
     	if (message.isEmpty()) {

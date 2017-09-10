@@ -66,6 +66,7 @@ public class PopustiRecepcionarController {
     		popust.setProcenat(Double.valueOf(tfProcenat.getText()));
     		popust.setAktivan(true);
     		list.add(popust);
+    		clearFields();
     	}
     }
 
@@ -75,6 +76,11 @@ public class PopustiRecepcionarController {
     	if (popust != null) {
     		list.remove(popust);
     	}
+    }
+    
+    private void clearFields() {
+    	tfKod.setText("");
+    	tfProcenat.setText("");
     }
     
     /**
@@ -88,7 +94,7 @@ public class PopustiRecepcionarController {
     	}
     	
     	try {
-    		Double procenat = new Double(tfProcenat.getText());
+    		Double procenat = Double.valueOf(tfProcenat.getText());
     		if (procenat <= 0 || procenat >= 100) {
     			throw new NumberFormatException();
     		}
