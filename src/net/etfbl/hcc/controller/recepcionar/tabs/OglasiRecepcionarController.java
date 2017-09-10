@@ -22,6 +22,8 @@ import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class OglasiRecepcionarController {
+	
+	private ObservableList<OglasTest> list;
 
     @FXML
     private TableView<OglasTest> table;
@@ -47,7 +49,7 @@ public class OglasiRecepcionarController {
 				param -> new SimpleStringProperty(param.getValue().getTekst()));
 
 		// Populate table
-		ObservableList<OglasTest> list = FXCollections.observableArrayList();
+		list = FXCollections.observableArrayList();
 		list.addAll(
 				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),
 				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),

@@ -23,6 +23,8 @@ import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class ObavjestenjaRecepcionarController {
+	
+	private ObservableList<ObavjestenjeTest> list;
 
 	@FXML
 	private TableView<ObavjestenjeTest> table;
@@ -72,8 +74,9 @@ public class ObavjestenjaRecepcionarController {
 				});
 
 		// Populate table
-		ObservableList<ObavjestenjeTest> list = FXCollections.observableArrayList();
+		list = FXCollections.observableArrayList();
 		list.addAll(
+				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
 				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
 				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
 				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),

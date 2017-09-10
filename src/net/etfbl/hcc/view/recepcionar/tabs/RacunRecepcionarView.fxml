@@ -18,7 +18,7 @@
                <children>
                   <Label text="Korisničko ime:" />
                   <TextField fx:id="tfKorisnickoIme" />
-                  <Button fx:id="btnPrikazi" mnemonicParsing="false" onAction="#handlePrikazi" prefWidth="65.0" text="Prikaži" />
+                  <Button fx:id="btnPrikazi" mnemonicParsing="false" onAction="#handlePrikazi" prefWidth="65.0" styleClass="my-button" text="Prikaži" />
                </children>
             </HBox>
             <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -41,7 +41,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <Button fx:id="btnPlati" mnemonicParsing="false" onAction="#handlePlati" prefWidth="65.0" text="Plati" />
+                        <Button fx:id="btnPlati" mnemonicParsing="false" onAction="#handlePlati" prefWidth="65.0" styleClass="my-button" text="Plati" />
                      </children>
                   </HBox>
                </children>

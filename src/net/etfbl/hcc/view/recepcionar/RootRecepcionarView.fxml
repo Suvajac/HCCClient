@@ -36,7 +36,7 @@
                      <children>
                         <Label styleClass="my-bold-label" text="Trenutni korisnik:" />
                         <TextField fx:id="tfTrenutniKorisnik" alignment="CENTER" editable="false" />
-                        <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+                        <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" styleClass="my-button" text="Logout" />
                      </children>
                   </HBox>
                </children>
@@ -71,7 +71,7 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                  <Tab fx:id="tabDodajProizvod" text="Dodaj proizvod">
+                  <Tab fx:id="tabProizvodi" text="Proizvodi">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>

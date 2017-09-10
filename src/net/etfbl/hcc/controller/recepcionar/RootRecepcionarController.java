@@ -35,7 +35,7 @@ public class RootRecepcionarController {
 	private Tab tabOglasi;
 
 	@FXML
-	private Tab tabDodajProizvod;
+	private Tab tabProizvodi;
 
 	@FXML
 	private Tab tabKnjigaUtisaka;
@@ -50,6 +50,8 @@ public class RootRecepcionarController {
 			loadIntoTab(tabRacun, "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
 			loadIntoTab(tabPopusti, "/net/etfbl/hcc/view/recepcionar/tabs/PopustiRecepcionarView.fxml");
 			loadIntoTab(tabOglasi, "/net/etfbl/hcc/view/recepcionar/tabs/OglasiRecepcionarView.fxml");
+			loadIntoTab(tabProizvodi, "/net/etfbl/hcc/view/recepcionar/tabs/ProizvodiRecepcionarView.fxml");
+			loadIntoTab(tabKnjigaUtisaka, "/net/etfbl/hcc/view/recepcionar/tabs/KnjigaUtisakaRecepcionarView.fxml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

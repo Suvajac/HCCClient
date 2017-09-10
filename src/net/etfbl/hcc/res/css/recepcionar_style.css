@@ -3,6 +3,10 @@
 	-fx-font-weight: bold;
 }
 
+.my-button{
+	-fx-pref-width: 60;
+}
+
 #table .table-column{
 	-fx-alignment: CENTER;
 }

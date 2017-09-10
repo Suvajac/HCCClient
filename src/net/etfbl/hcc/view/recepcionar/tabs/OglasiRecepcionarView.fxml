@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.recepcionar.tabs.OglasiRecepcionarController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../res/css/recepcionar_style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.recepcionar.tabs.OglasiRecepcionarController">
    <children>
       <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,8 +23,8 @@
             </TableView>
             <HBox alignment="CENTER_RIGHT" spacing="10.0" VBox.vgrow="NEVER">
                <children>
-                  <Button fx:id="btnKreiraj" mnemonicParsing="false" onAction="#handleKreiraj" prefWidth="50.0" text="Kreiraj" />
-                  <Button fx:id="btnObrisi" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleObrisi" prefWidth="50.0" text="Obriši" />
+                  <Button fx:id="btnKreiraj" mnemonicParsing="false" onAction="#handleKreiraj" prefWidth="50.0" styleClass="my-button" text="Kreiraj" />
+                  <Button fx:id="btnObrisi" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleObrisi" prefWidth="50.0" styleClass="my-button" text="Obriši" />
                </children>
             </HBox>
          </children>
