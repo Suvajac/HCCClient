@@ -14,8 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import net.etfbl.hcc.model.Korpa;
-import net.etfbl.hcc.model.Oprema;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SportskaOprema;
 
 public class KorpaController {
 	@FXML
@@ -48,8 +48,8 @@ public class KorpaController {
 				AnchorPane anchorPane = new AnchorPane();
 				anchorPane.setPrefHeight(30);
 				String nazivStr = new String();
-				if(p instanceof Oprema){
-					Oprema o = (Oprema) p;
+				if(p instanceof SportskaOprema){
+					SportskaOprema o = (SportskaOprema) p;
 					nazivStr = o.getNaziv()+" vel. "+o.getVelicina();
 				}
 				else{

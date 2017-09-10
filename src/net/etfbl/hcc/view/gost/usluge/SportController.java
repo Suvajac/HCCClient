@@ -18,8 +18,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
-import net.etfbl.hcc.model.Oprema;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.view.gost.KorpaController;
 
 public class SportController {
@@ -43,11 +43,11 @@ public class SportController {
 		korpa = new Korpa();
 		
 		for(int i=0;i<5;i++){
-			Oprema o1 = new Oprema(1, "Kopacke Addidas", 1, "43");
-			Oprema o2 = new Oprema(2, "Kopacke Addidasl", 1, "42");
-			Oprema o3 = new Oprema(3, "Kopacke Addidas", 1, "44");
-			Oprema o4 = new Oprema(4, "Majica", 1, "L");
-			Oprema o5 = new Oprema(5, "Sorc", 1, "L");
+			SportskaOprema o1 = new SportskaOprema(1, "Kopacke Addidas", 1, "43");
+			SportskaOprema o2 = new SportskaOprema(2, "Kopacke Addidasl", 1, "42");
+			SportskaOprema o3 = new SportskaOprema(3, "Kopacke Addidas", 1, "44");
+			SportskaOprema o4 = new SportskaOprema(4, "Majica", 1, "L");
+			SportskaOprema o5 = new SportskaOprema(5, "Sorc", 1, "L");
 			meni.add(o1);
 			meni.add(o2);
 			meni.add(o3);
@@ -97,7 +97,7 @@ public class SportController {
 			for(int i=0;i<90-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
 			}
-			Label label = new Label(p.getNaziv()+" vel. "+((Oprema)p).getVelicina()+tackeSb.toString()+p.getCijena()+" EUR");
+			Label label = new Label(p.getNaziv()+" vel. "+((SportskaOprema)p).getVelicina()+tackeSb.toString()+p.getCijena()+" EUR");
 			label.getStyleClass().add("stavkaLabel");
 			label.setOnMouseClicked((e) ->{
 				korpa.add(mapaLabelProizvod.get(label));
