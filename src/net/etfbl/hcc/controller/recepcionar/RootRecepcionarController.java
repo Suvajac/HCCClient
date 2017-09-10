@@ -49,6 +49,7 @@ public class RootRecepcionarController {
 			loadIntoTab(tabRegistracija, "/net/etfbl/hcc/view/recepcionar/tabs/RegistracijaRecepcionarView.fxml");
 			loadIntoTab(tabRacun, "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
 			loadIntoTab(tabPopusti, "/net/etfbl/hcc/view/recepcionar/tabs/PopustiRecepcionarView.fxml");
+			loadIntoTab(tabOglasi, "/net/etfbl/hcc/view/recepcionar/tabs/OglasiRecepcionarView.fxml");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

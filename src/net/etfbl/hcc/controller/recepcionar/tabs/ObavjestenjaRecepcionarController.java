@@ -89,7 +89,7 @@ public class ObavjestenjaRecepcionarController {
 		dialog.showAndWait();
 	}
 	
-	private static class ObavjestenjeDialog {
+	private class ObavjestenjeDialog {
 		
 		private Stage primaryStage;
 		
@@ -111,6 +111,7 @@ public class ObavjestenjaRecepcionarController {
 			textArea.setEditable(false);
 			textArea.setPrefWidth(400);
 			textArea.setPrefHeight(300);
+			textArea.setWrapText(true);
 			
 			Button btnClose = new Button("Zatvori");
 			btnClose.setOnAction(e -> primaryStage.close());
@@ -190,4 +191,26 @@ class ObavjestenjeTest {
 		this.vrijeme = vrijeme;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ObavjestenjeTest other = (ObavjestenjeTest) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
 }
