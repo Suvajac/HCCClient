@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Utisak;
 
 public class DodajUtisakController {
@@ -26,6 +27,7 @@ public class DodajUtisakController {
 	public void handleDodaj(){
 		Utisak u = new Utisak(-1,textArea.getText(),new Date(System.currentTimeMillis()),RootGostController.gost);
 		KnjigaUtisakaGostController.listaUtisaka.add(u);
+		Client.getInstance().dodajUtisak(u);
 		controller.iscrtaj();
 		handleCancel();
 	}

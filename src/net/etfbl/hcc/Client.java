@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import net.etfbl.hcc.model.Korisnik;
+import net.etfbl.hcc.model.ObjectHCC;
+import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
 
@@ -41,11 +43,12 @@ public class Client {
 	
 	public Korisnik login(Korisnik k){
 		try{
-			ArrayList<Object> lista = new ArrayList<>();
-			lista.add(k.getUsername());
-			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.getKorisnik",lista);
+			ArrayList<ObjectHCC> lista = new ArrayList<ObjectHCC>();
+			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.getKorisnik");
+			ppout.add(k);
 			out.reset();
 			out.writeObject(ppout);
+			out.flush();
 			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
 			Korisnik retKorisnik = (Korisnik) ppin.getListaObjekata().get(0);
 			if(retKorisnik!=null && retKorisnik.getUsername().equals(k.getUsername()) && retKorisnik.getLozinkaHash().equals(k.getLozinkaHash())){
@@ -61,6 +64,7 @@ public class Client {
 	public void logout(){
 		try{
 			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.logout");
+			out.reset();
 			out.writeObject(ppout);
 			in.close();
 			out.close();
@@ -69,5 +73,23 @@ public class Client {
 		catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean dodajUtisak(Utisak u){
+		try{
+			ArrayList<ObjectHCC> lista = new ArrayList<>();
+			lista.add(u);
+			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.dodaj",lista);
+			out.reset();
+			out.writeObject(ppout);
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			if(ppin!=null){
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
