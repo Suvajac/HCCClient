@@ -1,11 +1,16 @@
 package net.etfbl.hcc;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +39,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         launch(args);
 //    	try {
 //			Socket sock = new Socket(InetAddress.getByName(ConnectionProperty.getInstance().getServerIpAddress()), ConnectionProperty.getInstance().getServerTCPPort());
@@ -51,5 +56,10 @@ public class Main extends Application {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+    	ArrayList<Object> lista = new ArrayList<>();
+    	lista.add(new Korisnik("asd",null,null,null,null));
+        ProtokolPoruka por = new ProtokolPoruka("ovo je neki tip",lista);
+        JSONObject json = new JSONObject(por);
+        System.out.println(json.toString());    
     }
 }

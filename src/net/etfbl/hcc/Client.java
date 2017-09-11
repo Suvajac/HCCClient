@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import net.etfbl.hcc.model.Korisnik;
-import net.etfbl.hcc.model.ObjectHCC;
 import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
@@ -43,7 +42,7 @@ public class Client {
 	
 	public Korisnik login(Korisnik k){
 		try{
-			ArrayList<ObjectHCC> lista = new ArrayList<ObjectHCC>();
+			ArrayList<Object> lista = new ArrayList<>();
 			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.getKorisnik");
 			ppout.add(k);
 			out.reset();
@@ -77,7 +76,7 @@ public class Client {
 	
 	public boolean dodajUtisak(Utisak u){
 		try{
-			ArrayList<ObjectHCC> lista = new ArrayList<>();
+			ArrayList<Object> lista = new ArrayList<>();
 			lista.add(u);
 			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.dodaj",lista);
 			out.reset();
