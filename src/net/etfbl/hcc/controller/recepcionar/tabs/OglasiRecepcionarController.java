@@ -42,13 +42,12 @@ public class OglasiRecepcionarController {
     
     @FXML
     void initialize() {
-		// Set cell value factories
+
 		colDatum.setCellValueFactory(
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
 		colTekst.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getTekst()));
 
-		// Populate table
 		list = FXCollections.observableArrayList();
 		list.addAll(
 				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),

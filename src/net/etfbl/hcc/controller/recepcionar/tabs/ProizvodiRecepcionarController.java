@@ -45,7 +45,7 @@ public class ProizvodiRecepcionarController {
 
 	@FXML
 	void initialize() {
-		// Set cell value factories
+		
 		colNaziv.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getNaziv()));
 		colCijena.setCellValueFactory(
@@ -53,10 +53,8 @@ public class ProizvodiRecepcionarController {
 		colTip.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getTip()));
 		
-		// Set some predefined values into combo box
 		cmbTip.getItems().addAll("Prehrambeni proizvod", "Higijensko sredstvo");
-		
-		// Populate table
+
 		list = FXCollections.observableArrayList();
 		list.addAll(
 				new ProizvodTest("Proizvod1", "Tip1", 10.0),
@@ -87,14 +85,17 @@ public class ProizvodiRecepcionarController {
 		}
 	}
 	
+	/*
+     * Postavlja vrijednosti polja na podrazumijevane.
+     */
 	private void clearFields() {
 		tfNaziv.setText("");
 		tfCijena.setText("");
 		cmbTip.setValue("");
 	}
 	
-	/**
-     * Validates the user input in the text fields.
+	/*
+     * Pomocna metoda za provjeru da li su uneseni podaci ispravni.
      */
     private boolean inputValid() {
     	String message = "";

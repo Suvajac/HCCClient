@@ -43,7 +43,7 @@ public class RootRecepcionarController {
 	@FXML
 	void initialize() {
 
-		// Load fxmls into tabs
+		// Ucitaj sve tabove
 		try {
 			loadIntoTab(tabObavjestenja, "/net/etfbl/hcc/view/recepcionar/tabs/ObavjestenjaRecepcionarView.fxml");
 			loadIntoTab(tabRegistracija, "/net/etfbl/hcc/view/recepcionar/tabs/RegistracijaRecepcionarView.fxml");

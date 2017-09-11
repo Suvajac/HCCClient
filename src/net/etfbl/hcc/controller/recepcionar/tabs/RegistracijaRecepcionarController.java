@@ -45,14 +45,9 @@ public class RegistracijaRecepcionarController {
     
     @FXML
     void initialize() {
-    	// Populate choice box
     	cbBrojKreveta.getItems().addAll(1, 2, 3, 4);
-    	
-    	// Set proper string converter
 		dpDatumOd.setConverter(TemporalStringConverters.getLocalDateConverter());
 		dpDatumDo.setConverter(TemporalStringConverters.getLocalDateConverter());
-		
-		// Set default values
 		clearFields();
     }
 
@@ -61,11 +56,13 @@ public class RegistracijaRecepcionarController {
     	if (inputValid()) {
     		clearFields();
     	}
-    	// Clear sensitive data
 		pfLozinka.setText("");
 		pfPotvrdiLozinku.setText("");
     }
     
+    /*
+     * Postavlja vrijednosti polja na podrazumijevane.
+     */
     private void clearFields() {
     	tfKorisnickoIme.setText("");
     	pfLozinka.setText("");
@@ -77,8 +74,8 @@ public class RegistracijaRecepcionarController {
     	dpDatumDo.setValue(dpDatumOd.getValue().plusDays(7));
     }
     
-    /**
-     * Validates the user input in the text fields.
+    /*
+     * Pomocna metoda za provjeru da li su uneseni podaci ispravni.
      */
     private boolean inputValid() {
     	String message = "";
