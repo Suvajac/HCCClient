@@ -56,10 +56,16 @@ public class Main extends Application {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-    	ArrayList<Object> lista = new ArrayList<>();
-    	lista.add(new Korisnik("asd",null,null,null,null));
-        ProtokolPoruka por = new ProtokolPoruka("ovo je neki tip",lista);
-        JSONObject json = new JSONObject(por);
-        System.out.println(json.toString());    
+//    	ArrayList<Object> lista = new ArrayList<>();
+//    	lista.add(new Korisnik("asd",null,null,null,null));
+//        ProtokolPoruka por = new ProtokolPoruka("ovo je neki tip",lista);
+//        JSONObject json = new JSONObject(por);
+//        Gson gson = new Gson();
+//        ProtokolPoruka poruka = gson.fromJson(json.toString(), ProtokolPoruka.class);
+//        
+//        System.out.println(poruka.getTip());
+//        System.out.println(poruka.getListaObjekata()); 
+//        
+        
     }
 }
