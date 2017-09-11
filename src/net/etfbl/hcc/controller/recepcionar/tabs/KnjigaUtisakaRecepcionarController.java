@@ -34,7 +34,7 @@ public class KnjigaUtisakaRecepcionarController {
     
     @FXML
     void initialize() {
-    	// Set cell value factories
+
     	colDatum.setCellValueFactory(
     			param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
     	colKorisnik.setCellValueFactory(
@@ -42,7 +42,6 @@ public class KnjigaUtisakaRecepcionarController {
     	colTekst.setCellValueFactory(
     			param -> new SimpleStringProperty(param.getValue().getTekst()));
     	
-    	// Populate table
     	list = FXCollections.observableArrayList();
     	list.addAll(
     			new UtisakTest(LocalDate.now(), "NekiKorisnik", "Ovo je najgori hotel ikada! :D"),

@@ -43,7 +43,7 @@ public class ObavjestenjaRecepcionarController {
 
 	@FXML
 	void initialize() {
-		// Set cell value factories
+		
 		colVrijeme.setCellValueFactory(
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getVrijeme())));
 		colTekst.setCellValueFactory(
@@ -73,7 +73,6 @@ public class ObavjestenjaRecepcionarController {
 					return cell;
 				});
 
-		// Populate table
 		list = FXCollections.observableArrayList();
 		list.addAll(
 				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
@@ -84,7 +83,10 @@ public class ObavjestenjaRecepcionarController {
 		table.setItems(list);
 		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
 	}
-
+	
+	/*
+	 * Prikazuje dato obavjestenje u novom dijalogu.
+	 */
 	private void handleShow(ObavjestenjeTest o) {
 		o.setProcitano(true);
 		table.refresh();

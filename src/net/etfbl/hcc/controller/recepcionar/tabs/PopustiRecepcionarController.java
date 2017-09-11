@@ -41,7 +41,7 @@ public class PopustiRecepcionarController {
     
     @FXML
     void initialize() {
-    	// Set cell value factories
+
     	colKod.setCellValueFactory(
     			param -> new SimpleStringProperty(param.getValue().getKod()));
     	colProcenat.setCellValueFactory(
@@ -49,7 +49,6 @@ public class PopustiRecepcionarController {
     	colAktivan.setCellValueFactory(
     			param -> new SimpleStringProperty(param.getValue().getAktivan() ? "Da" : "Ne"));
     	
-    	// Populate table
     	list = FXCollections.observableArrayList();
     	list.addAll(
     			new PopustTest("001", 10.0, true),
@@ -78,13 +77,16 @@ public class PopustiRecepcionarController {
     	}
     }
     
+    /*
+     * Postavlja vrijednosti polja na podrazumijevane.
+     */
     private void clearFields() {
     	tfKod.setText("");
     	tfProcenat.setText("");
     }
     
-    /**
-     * Validates the user input in the text fields.
+    /*
+     * Pomocna metoda za provjeru da li su uneseni podaci ispravni.
      */
     private boolean inputValid() {
     	String message = "";
