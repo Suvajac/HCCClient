@@ -3,6 +3,7 @@ package net.etfbl.hcc.view.gost;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Oglas;
 
 //Poslije nekad promijeniti imena klasa za css da ne budu utisak i utisakHeader
@@ -28,16 +30,18 @@ public class OglasnaTablaGostController {
 	public void initialize(){
 		listaOglasa = new ArrayList<>();
 		Oglas o = new Oglas(-1,"Ovo je neki oglas",new Date(System.currentTimeMillis()));
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
-		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+//		listaOglasa.add(o);
+		listaOglasa = Client.getInstance().getOglasi();
+		Collections.reverse(listaOglasa);
 		
 		for(Oglas og : listaOglasa){
 			iscrtajOglas(og);

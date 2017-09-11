@@ -1,22 +1,13 @@
 package net.etfbl.hcc;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import net.etfbl.hcc.model.Korisnik;
+import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
@@ -25,7 +16,7 @@ public class Client {
 	private static Client instance;	
 	public static Client getInstance(){
 		if(instance==null){
-			return new Client();
+			instance = new Client();
 		}
 		return instance;
 	}
@@ -51,16 +42,16 @@ public class Client {
 	
 	public Korisnik login(Korisnik k){
 		try{
-			k = new Korisnik("bojansuvajac","bojan","suvajac","asdfg","hesh");
-			out.reset();
-			out.writeObject("Korisnik.getKorisnik");
-			out.flush();
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(k.getUsername());
+			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.getKorisnik",lista);
 			
 			out.reset();
-			out.writeObject(k.getUsername());
+			out.writeObject(ppout);
 			out.flush();
 			
-	        Korisnik retKorisnik = (Korisnik) in.readObject();
+	        ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+	        Korisnik retKorisnik = (Korisnik) ppin.getListaObjekata().get(0);
 			if(retKorisnik!=null && retKorisnik.getUsername().equals(k.getUsername()) && retKorisnik.getLozinkaHash().equals(k.getLozinkaHash())){
 				return retKorisnik;
 			}
@@ -72,35 +63,69 @@ public class Client {
 	}
 	
 	public void logout(){
-//		try{
-////			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.logout");
-////			out.reset();
-////			out.writeObject(ppout);
-////			in.close();
-////			out.close();
-////			sock.close();
-//		}
-//		catch(IOException e){
-//			e.printStackTrace();
-//		}
+		try{
+			out.reset();
+			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.logout");
+			out.writeObject(ppout);
+			in.close();
+			out.close();
+			sock.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean dodajUtisak(Utisak u){
-		return true;
-//		try{
-//			ArrayList<Object> lista = new ArrayList<>();
-//			lista.add(u);
-//			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.dodaj",lista);
-//			out.reset();
-//			out.writeObject(ppout);
-//			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
-//			if(ppin!=null){
-//				return true;
-//			}
-//		}
-//		catch(IOException | ClassNotFoundException e){
-//			e.printStackTrace();
-//		}
-//		return false;
+		try{
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(u);
+			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.dodaj",lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			if(ppin!=null){
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public ArrayList<Utisak> getUtisci(){
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.getUtisci");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Utisak> lista = (ArrayList<Utisak>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<Oglas> getOglasi(){
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("Oglas.getOglasi");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Oglas> lista = (ArrayList<Oglas>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
