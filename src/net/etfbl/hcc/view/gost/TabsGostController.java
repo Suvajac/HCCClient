@@ -26,6 +26,7 @@ public class TabsGostController {
 	private Tab knjigaUtisakaTab;
 	
     
+	
 
     public void initialize(){
     	try{

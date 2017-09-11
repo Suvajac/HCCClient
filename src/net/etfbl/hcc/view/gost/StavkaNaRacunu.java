@@ -12,6 +12,7 @@ public class StavkaNaRacunu {
         this.cijena=cijena;
 }
 
+	
 	public String getNaziv() {
 		return naziv;
 	}

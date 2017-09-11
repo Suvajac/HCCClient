@@ -63,6 +63,7 @@ public class RacunGostController{
         ObservableList<StavkaNaRacunu> lista = FXCollections.observableArrayList(stavka1,stavka2,stavka3);
         return lista;
     }
+    
 }
 	
 
