@@ -1,24 +1,11 @@
 package net.etfbl.hcc;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.controller.LoginController;
-import net.etfbl.hcc.model.Gost;
-import net.etfbl.hcc.model.Korisnik;
-import net.etfbl.hcc.util.ConnectionProperty;
-import net.etfbl.hcc.util.ProtokolPoruka;
 
 
 public class Main extends Application {
