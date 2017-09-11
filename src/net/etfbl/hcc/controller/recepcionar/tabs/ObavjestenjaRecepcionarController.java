@@ -83,7 +83,10 @@ public class ObavjestenjaRecepcionarController {
 		table.setItems(list);
 		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
 	}
-
+	
+	/*
+	 * Prikazuje dato obavjestenje u novom dijalogu.
+	 */
 	private void handleShow(ObavjestenjeTest o) {
 		o.setProcitano(true);
 		table.refresh();
