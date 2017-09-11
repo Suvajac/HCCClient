@@ -31,8 +31,8 @@ public class Client {
 	}
 	
 	private Socket sock;
-	private PrintWriter out;
-	private BufferedReader in;
+	private ObjectOutputStream out;
+	private ObjectInputStream in;
 	private InetAddress addr;
 	private int port;
 	
@@ -41,8 +41,8 @@ public class Client {
 			addr = InetAddress.getByName(ConnectionProperty.getInstance().getServerIpAddress());
 			port = ConnectionProperty.getInstance().getServerTCPPort();
 			sock = new Socket(addr,port);
-			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sock.getOutputStream())),true);
-			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			out = new ObjectOutputStream(sock.getOutputStream());
+			in = new ObjectInputStream(sock.getInputStream());
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -51,21 +51,21 @@ public class Client {
 	
 	public Korisnik login(Korisnik k){
 		try{
-			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.getKorisnik");
-			ppout.setObjekti(new Object[]{k});
-			JSONObject json = new JSONObject(ppout);
-			System.out.println(json.toString());
-			out.println(json.toString());
-			JSONObject jsonIn = new JSONObject(in.readLine());
-			ObjectMapper mapper = new ObjectMapper();
-	        ProtokolPoruka ppin = mapper.readValue(jsonIn.toString(), ProtokolPoruka.class);
-	        System.out.println(ppin.getObjekti());
-	        Korisnik retKorisnik = (Korisnik) ppin.getObjekti()[0];
+			k = new Korisnik("bojansuvajac","bojan","suvajac","asdfg","hesh");
+			out.reset();
+			out.writeObject("Korisnik.getKorisnik");
+			out.flush();
+			
+			out.reset();
+			out.writeObject(k.getUsername());
+			out.flush();
+			
+	        Korisnik retKorisnik = (Korisnik) in.readObject();
 			if(retKorisnik!=null && retKorisnik.getUsername().equals(k.getUsername()) && retKorisnik.getLozinkaHash().equals(k.getLozinkaHash())){
 				return retKorisnik;
 			}
 		}
-		catch(IOException | JSONException e){
+		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();
 		}
 		return null;
