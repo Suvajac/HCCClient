@@ -1,0 +1,4 @@
+ServerIpAdress=10.99.17.186
+ServerTCPPort=9001
+MulticastIpAdress=224.0.0.11
+MulticastPort=20000

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import net.etfbl.hcc.Client;
 
 public class HeaderGostController {
 	 @FXML
@@ -17,6 +18,7 @@ public class HeaderGostController {
 	 private Stage stage;
 	 
 	 public void initialize(){
+		 	usernameLabel.setText(RootGostController.gost.getUsername());
 	        handleRS();
 	    }
 
@@ -33,6 +35,7 @@ public class HeaderGostController {
 	    }
 
 	    public void handleLogout(){
+	    	Client.getInstance().logout();
 	        stage.close();
 	    }
 
