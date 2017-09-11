@@ -32,6 +32,8 @@ public class TabsGostController {
     		StackPane uslugeStackPane = (StackPane) FXMLLoader.load(Main.class.getResource("view/gost/usluga.fxml"));
     		uslugeTab.setContent(uslugeStackPane);
     		
+    		AnchorPane racunAnchorPane=(AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/racunGost.fxml"));
+    		racunTab.setContent(racunAnchorPane);
     		
     		AnchorPane popustiAnchorPane=(AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/popustiGost.fxml"));
     		popustiTab.setContent(popustiAnchorPane);
