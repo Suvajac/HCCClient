@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.RacunGostController">
+   <children>
+      <TableView fx:id="tabela" layoutX="107.0" layoutY="152.0" prefHeight="278.0" prefWidth="548.0" />
+      <Label layoutX="305.0" layoutY="107.0" text="FISKALNI RACUN">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="107.0" layoutY="449.0" text="UKUPNO:" />
+      <TextField fx:id="ukupno" layoutX="158.0" layoutY="445.0" />
+      <Label layoutX="299.0" layoutY="483.0" text="*HVALA DOĐITE OPET*">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="102.0" layoutY="54.0" text="HCC Application" />
+      <Label layoutX="107.0" layoutY="81.0" text="Patre 5" />
+   </children>
+</AnchorPane>

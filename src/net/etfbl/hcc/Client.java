@@ -30,7 +30,7 @@ public class Client {
 		try{
 			addr = InetAddress.getByName(ConnectionProperty.getInstance().getServerIpAddress());
 			port = ConnectionProperty.getInstance().getServerTCPPort();
-			Socket sock = new Socket(addr,port);
+			sock = new Socket(addr,port);
 			out = new ObjectOutputStream(sock.getOutputStream());
 			in = new ObjectInputStream(sock.getInputStream());
 		}
@@ -44,6 +44,7 @@ public class Client {
 			ArrayList<Object> lista = new ArrayList<>();
 			lista.add(k.getUsername());
 			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.getKorisnik",lista);
+			out.reset();
 			out.writeObject(ppout);
 			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
 			Korisnik retKorisnik = (Korisnik) ppin.getListaObjekata().get(0);
