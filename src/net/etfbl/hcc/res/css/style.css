@@ -220,9 +220,32 @@
 	-fx-font-weight:bold;
 }*/
 
-/*****************P O P U S T I**********************************/
+/**********************P O P U S T I**********************************/
 
+.popustiAnchorPane{
+	-fx-background-color:#ffffff;
+}
 
+.popustiAnchorPane Label{
+	-fx-font-size:33px;
+	-fx-text-fill:#173e43;
+}
+
+.popustiAnchorPane TextField{
+	-fx-font-size:25px;
+	-fx-border-color: #173e43;
+	-fx-text-fill:#173e43;
+}
+
+.hccLabel{
+	-fx-font-size:70px;
+	-fx-text-fill:#fae596;
+	-fx-font-family:"Merienda One";
+}
+
+.hccLabel .text{
+	-fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
+}
 
 /*****************K NJ I G A  U T I S A K A**********************/
 
