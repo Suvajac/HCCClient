@@ -95,6 +95,26 @@ public class Client {
 		return false;
 	}
 	
+	public boolean obrisiUtisak(Utisak u){
+		try {
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(u);
+			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.obrisi", lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			
+			if("response".equals(ppin.getTip())) {
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public ArrayList<Utisak> getUtisci(){
 		try{
 			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.getUtisci");
@@ -128,4 +148,5 @@ public class Client {
 		}
 		return null;
 	}
+	
 }

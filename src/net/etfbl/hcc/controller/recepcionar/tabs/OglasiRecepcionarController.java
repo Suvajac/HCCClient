@@ -1,6 +1,6 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,21 +18,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class OglasiRecepcionarController {
 	
-	private ObservableList<OglasTest> list;
+	private ObservableList<Oglas> list;
 
     @FXML
-    private TableView<OglasTest> table;
+    private TableView<Oglas> table;
 
     @FXML
-    private TableColumn<OglasTest, String> colDatum;
+    private TableColumn<Oglas, String> colDatum;
 
     @FXML
-    private TableColumn<OglasTest, String> colTekst;
+    private TableColumn<Oglas, String> colTekst;
 
     @FXML
     private Button btnKreiraj;
@@ -46,15 +47,10 @@ public class OglasiRecepcionarController {
 		colDatum.setCellValueFactory(
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
 		colTekst.setCellValueFactory(
-				param -> new SimpleStringProperty(param.getValue().getTekst()));
+				param -> new SimpleStringProperty(param.getValue().getPoruka()));
 
 		list = FXCollections.observableArrayList();
-		list.addAll(
-				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),
-				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),
-				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),
-				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"),
-				new OglasTest(LocalDate.now(), "Tekstualni sadrzaj"));
+		
 		table.setItems(list);
 		ColumnResizer.resize(new Double[] {30.0, 70.0}, table);
     }
@@ -67,7 +63,7 @@ public class OglasiRecepcionarController {
 
     @FXML
     void handleObrisi(ActionEvent event) {
-    	OglasTest oglas = table.getSelectionModel().getSelectedItem();
+    	Oglas oglas = table.getSelectionModel().getSelectedItem();
     	if (oglas != null) {
     		table.getItems().remove(oglas);
     	}
@@ -86,7 +82,7 @@ public class OglasiRecepcionarController {
 
 			Button btnConfirm = new Button("Potvrdi");
 			btnConfirm.setOnAction(e -> {
-				OglasTest oglas = new OglasTest(LocalDate.now(), textArea.getText());
+				Oglas oglas = new Oglas(0, textArea.getText(), LocalDateTime.now());
 				table.getItems().add(oglas);
 				primaryStage.close();
 			});
@@ -119,74 +115,4 @@ public class OglasiRecepcionarController {
 
 	}
 
-}
-
-class OglasTest {
-	
-	private static int counter;
-	private Integer id;
-	private LocalDate datum;
-	private String tekst;
-	
-	public OglasTest() {
-		super();
-		counter++;
-		id = counter;
-	}
-
-	public OglasTest(LocalDate datum, String tekst) {
-		this();
-		this.datum = datum;
-		this.tekst = tekst;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public LocalDate getDatum() {
-		return datum;
-	}
-
-	public void setDatum(LocalDate datum) {
-		this.datum = datum;
-	}
-
-	public String getTekst() {
-		return tekst;
-	}
-
-	public void setTekst(String tekst) {
-		this.tekst = tekst;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OglasTest other = (OglasTest) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}	
-	
 }
