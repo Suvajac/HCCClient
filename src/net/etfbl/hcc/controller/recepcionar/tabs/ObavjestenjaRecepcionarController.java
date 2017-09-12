@@ -13,10 +13,12 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
@@ -46,7 +48,7 @@ public class ObavjestenjaRecepcionarController {
 		colVrijeme.setCellValueFactory(
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
 		colTekst.setCellValueFactory(
-				param -> new SimpleStringProperty(param.getValue().getTekst()));
+				new PropertyValueFactory<>("tekst"));
 		colProcitano.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().isProcitano() ? "Da" : "Ne"));
 		colAkcija.setCellFactory(
@@ -72,7 +74,7 @@ public class ObavjestenjaRecepcionarController {
 					return cell;
 				});
 
-		list = FXCollections.observableArrayList();
+		list = FXCollections.observableArrayList(Client.getInstance().getObavjestenja());
 		table.setItems(list);
 		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
 	}
@@ -81,10 +83,12 @@ public class ObavjestenjaRecepcionarController {
 	 * Prikazuje dato obavjestenje u novom dijalogu.
 	 */
 	private void handleShow(Obavjestenje o) {
-		//o.setProcitano(true);
-		table.refresh();
-		ObavjestenjeDialog dialog = new ObavjestenjeDialog(o);
-		dialog.showAndWait();
+		if (Client.getInstance().procitajObavjestenje(o)) {
+			o.setProcitano(true);
+			table.refresh();
+			ObavjestenjeDialog dialog = new ObavjestenjeDialog(o);
+			dialog.showAndWait();
+		}
 	}
 	
 	private class ObavjestenjeDialog {

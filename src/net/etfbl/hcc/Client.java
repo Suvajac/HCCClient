@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Korisnik;
+import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.model.Utisak;
@@ -127,6 +128,43 @@ public class Client {
 			if("response".equals(ppin.getTip())) {
 				return true;
 			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public ArrayList<Obavjestenje> getObavjestenja(){
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("Obavjestenje.getObavjestenja");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Obavjestenje> lista = (ArrayList<Obavjestenje>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean procitajObavjestenje(Obavjestenje o) {
+		try{
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(o);
+			ProtokolPoruka ppout = new ProtokolPoruka("Obavjestenje.procitajObavjestenje",lista);
+			
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			boolean response = (boolean) ppin.getListaObjekata().get(0);
+			return response;
 		}
 		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();
