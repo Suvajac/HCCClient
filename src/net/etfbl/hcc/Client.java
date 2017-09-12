@@ -5,9 +5,10 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-
+import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Oglas;
+import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
@@ -70,6 +71,7 @@ public class Client {
 			in.close();
 			out.close();
 			sock.close();
+			instance = null;
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -127,5 +129,26 @@ public class Client {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public boolean potvrdiPopust(int kodPopusta, Gost g){
+		try{
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(kodPopusta);
+			lista.add(g);
+			ProtokolPoruka ppout = new ProtokolPoruka("Popust.potvrdiPopust",lista);
+			
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			boolean response = (boolean) ppin.getListaObjekata().get(0);
+			return response;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
