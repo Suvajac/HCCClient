@@ -9,6 +9,7 @@ import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.model.Popust;
+import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
@@ -68,6 +69,14 @@ public class Client {
 			out.reset();
 			ProtokolPoruka ppout = new ProtokolPoruka("Korisnik.logout");
 			out.writeObject(ppout);
+			
+			try{
+				in.readObject();
+			}
+			catch(ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			
 			in.close();
 			out.close();
 			sock.close();
@@ -226,6 +235,23 @@ public class Client {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public ArrayList<Proizvod> getProizvodi(){
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("Proizvod.getProizvodi");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Proizvod> lista = (ArrayList<Proizvod>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
