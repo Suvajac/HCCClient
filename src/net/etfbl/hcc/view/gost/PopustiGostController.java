@@ -2,8 +2,9 @@ package net.etfbl.hcc.view.gost;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import net.etfbl.hcc.Client;
 import javafx.scene.control.Button;
-import com.jfoenix.controls.JFXTextArea;
+import javafx.scene.control.Label;
 
 public class PopustiGostController{
 	
@@ -14,16 +15,18 @@ public class PopustiGostController{
 	private Button potvrdaKoda;
 	
 	@FXML
-	private JFXTextArea status;
-	
-	String kod;
+	private Label statusLabel;
 	
 	public void initialize(){}
 	
-	public void validacijaKoda(){
-		kod=unosKoda.getText();
-		
-		status.setText("Kod " + kod + " je validan.");
+	@FXML
+	public void handlePotvrdi(){
+		boolean response = Client.getInstance().potvrdiPopust(Integer.parseInt(unosKoda.getText()), RootGostController.gost);
+		if(response)
+			statusLabel.setText("Kod je validan.");
+		else{
+			statusLabel.setText("Kod je nevalidan.");
+		}
 		
 	}
 	
