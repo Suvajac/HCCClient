@@ -2,6 +2,7 @@ package net.etfbl.hcc.controller;
 
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.controller.recepcionar.RootRecepcionarController;
 import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Recepcionar;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -22,6 +24,13 @@ public class LoginController {
 	private JFXTextField usernameTextField;
 	@FXML
 	private JFXPasswordField passwordPasswordField;
+	@FXML
+	private Label nevalidanLoginLabel;
+	
+	@FXML
+	private void initialize() {
+		nevalidanLoginLabel.setVisible(false);
+	}
 
 	private Stage primaryStage;
 
@@ -70,14 +79,22 @@ public class LoginController {
 			stage.setScene(scene);
 			stage.setFullScreen(true);
 			stage.show();
+			nevalidanLoginLabel.setVisible(false);
 		}
 		else if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Recepcionar){
-			Parent root = FXMLLoader.load(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
-			Scene scene = new Scene(root);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
+			Parent root = loader.load();
+			RootRecepcionarController controller = loader.getController();
+			controller.setTrenutniKorisnik(ulogovanKorisnik.getUsername());
 			
+			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.show();
+			nevalidanLoginLabel.setVisible(false);
+		} 
+		else {
+			nevalidanLoginLabel.setVisible(true);
 		}
 		
 	}

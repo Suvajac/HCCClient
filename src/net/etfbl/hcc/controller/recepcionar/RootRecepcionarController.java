@@ -7,14 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class RootRecepcionarController {
 
 	@FXML
-	private TextField tfTrenutniKorisnik;
+	private Label lblTrenutniKorisnik;
 
 	@FXML
 	private Button btnLogout;
@@ -55,12 +55,16 @@ public class RootRecepcionarController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	@FXML
 	void handleLogout(ActionEvent event) {
 		
+	}
+	
+	public void setTrenutniKorisnik(String username) {
+		lblTrenutniKorisnik.setText(username);
 	}
 	
 	/*

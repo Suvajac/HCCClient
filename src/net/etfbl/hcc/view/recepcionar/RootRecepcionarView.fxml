@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -35,7 +34,11 @@
                   <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1">
                      <children>
                         <Label styleClass="my-bold-label" text="Trenutni korisnik:" />
-                        <TextField fx:id="tfTrenutniKorisnik" alignment="CENTER" editable="false" />
+                        <Label fx:id="lblTrenutniKorisnik" text="Trenutni korisnik">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                         <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout" styleClass="my-button" text="Logout" />
                      </children>
                   </HBox>
