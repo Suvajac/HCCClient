@@ -10,23 +10,26 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import net.etfbl.hcc.Client;
+import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class ProizvodiRecepcionarController {
 
-	private ObservableList<ProizvodTest> list;
+	private ObservableList<Proizvod> list;
 	
 	@FXML
-	private TableView<ProizvodTest> table;
+	private TableView<Proizvod> table;
 
 	@FXML
-	private TableColumn<ProizvodTest, String> colNaziv;
+	private TableColumn<Proizvod, String> colNaziv;
 
 	@FXML
-	private TableColumn<ProizvodTest, String> colCijena;
+	private TableColumn<Proizvod, String> colCijena;
 
 	@FXML
-	private TableColumn<ProizvodTest, String> colTip;
+	private TableColumn<Proizvod, String> colTip;
 
 	@FXML
 	private ComboBox<String> cmbTip;
@@ -47,40 +50,36 @@ public class ProizvodiRecepcionarController {
 	void initialize() {
 		
 		colNaziv.setCellValueFactory(
-				param -> new SimpleStringProperty(param.getValue().getNaziv()));
-		colCijena.setCellValueFactory(
-				param -> new SimpleStringProperty(String.format("%.2f", param.getValue().getCijena())));
+				new PropertyValueFactory<>("naziv"));
+		colCijena.setCellValueFactory(param -> 
+				new SimpleStringProperty(String.format("%.2f", param.getValue().getCijena())));
 		colTip.setCellValueFactory(
-				param -> new SimpleStringProperty(param.getValue().getTip()));
+				new PropertyValueFactory<>("tip"));
 		
-		cmbTip.getItems().addAll("Prehrambeni proizvod", "Higijensko sredstvo");
+		cmbTip.getItems().addAll("Hrana", "Pice", "Higijensko sredstvo");
 
-		list = FXCollections.observableArrayList();
-		list.addAll(
-				new ProizvodTest("Proizvod1", "Tip1", 10.0),
-				new ProizvodTest("Proizvod2", "Tip2", 15.0),
-				new ProizvodTest("Proizvod3", "Tip3", 10.0),
-				new ProizvodTest("Proizvod4", "Tip4", 5.0),
-				new ProizvodTest("Proizvod5", "Tip5", 3.99));
+		list = FXCollections.observableArrayList(Client.getInstance().getProizvodi());
 		table.setItems(list);
 	}
 
 	@FXML
 	void handleDodaj(ActionEvent event) {
 		if (inputValid()) {
-			ProizvodTest proizvod = new ProizvodTest();
+			Proizvod proizvod = new Proizvod();
 			proizvod.setNaziv(tfNaziv.getText());
 			proizvod.setCijena(new Double(tfCijena.getText()));
 			proizvod.setTip(cmbTip.getValue());
-			list.add(proizvod);
-			clearFields();
+			if (Client.getInstance().dodajProizvod(proizvod)) {
+				list.add(proizvod);
+				clearFields();
+			}
 		}
 	}
 
 	@FXML
 	void handleObrisi(ActionEvent event) {
-		ProizvodTest proizvod = table.getSelectionModel().getSelectedItem();
-		if (proizvod != null) {
+		Proizvod proizvod = table.getSelectionModel().getSelectedItem();
+		if (Client.getInstance().obrisiProizvod(proizvod)) {
 			list.remove(proizvod);
 		}
 	}
@@ -124,85 +123,5 @@ public class ProizvodiRecepcionarController {
     		return false;
     	}
     }
-
-}
-
-class ProizvodTest {
-
-	private static int counter;
-	private Integer id;
-	private String naziv;
-	private String tip;
-	private Double cijena;
-
-	public ProizvodTest() {
-		super();
-		counter++;
-		id = counter;
-	}
-
-	public ProizvodTest(String naziv, String tip, Double cijena) {
-		super();
-		this.naziv = naziv;
-		this.tip = tip;
-		this.cijena = cijena;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNaziv() {
-		return naziv;
-	}
-
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
-	}
-
-	public String getTip() {
-		return tip;
-	}
-
-	public void setTip(String tip) {
-		this.tip = tip;
-	}
-
-	public Double getCijena() {
-		return cijena;
-	}
-
-	public void setCijena(Double cijena) {
-		this.cijena = cijena;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ProizvodTest other = (ProizvodTest) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
 
 }

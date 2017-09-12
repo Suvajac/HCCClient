@@ -275,6 +275,45 @@ public class Client {
 		return false;
 	}
 	
+	public boolean dodajProizvod(Proizvod p) {
+		try{
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(p);
+			ProtokolPoruka ppout = new ProtokolPoruka("Proizvod.dodaj",lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			if(ppin!=null){
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean obrisiProizvod(Proizvod p){
+		try {
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(p);
+			ProtokolPoruka ppout = new ProtokolPoruka("Proizvod.obrisi", lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			
+			if("response".equals(ppin.getTip())) {
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}	
+	
 	public ArrayList<Proizvod> getProizvodi(){
 		try{
 			ProtokolPoruka ppout = new ProtokolPoruka("Proizvod.getProizvodi");

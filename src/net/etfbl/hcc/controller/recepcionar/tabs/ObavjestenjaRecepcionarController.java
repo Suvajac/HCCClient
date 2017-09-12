@@ -45,34 +45,33 @@ public class ObavjestenjaRecepcionarController {
 	@FXML
 	void initialize() {
 		
-		colVrijeme.setCellValueFactory(
-				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
+		colVrijeme.setCellValueFactory(param -> 
+				new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
 		colTekst.setCellValueFactory(
 				new PropertyValueFactory<>("tekst"));
-		colProcitano.setCellValueFactory(
-				param -> new SimpleStringProperty(param.getValue().isProcitano() ? "Da" : "Ne"));
-		colAkcija.setCellFactory(
-				param -> {
-					final TableCell<Obavjestenje, String> cell = new TableCell<Obavjestenje, String>() {
-		
-						final Button btnDetaljno = new Button("Detaljno");
-		
-						@Override
-						public void updateItem(String item, boolean empty) {
-							super.updateItem(item, empty);
-							if (empty) {
-								setGraphic(null);
-								setText(null);
-							} else {
-								Obavjestenje o = getTableView().getItems().get(getIndex());
-								btnDetaljno.setOnAction(event -> handleShow(o));
-								setGraphic(btnDetaljno);
-								setText(null);
-							}
-						}
-					};
-					return cell;
-				});
+		colProcitano.setCellValueFactory(param -> 
+				new SimpleStringProperty(param.getValue().isProcitano() ? "Da" : "Ne"));
+		colAkcija.setCellFactory(param -> {
+			final TableCell<Obavjestenje, String> cell = new TableCell<Obavjestenje, String>() {
+
+				final Button btnDetaljno = new Button("Detaljno");
+
+				@Override
+				public void updateItem(String item, boolean empty) {
+					super.updateItem(item, empty);
+					if (empty) {
+						setGraphic(null);
+						setText(null);
+					} else {
+						Obavjestenje o = getTableView().getItems().get(getIndex());
+						btnDetaljno.setOnAction(event -> handleShow(o));
+						setGraphic(btnDetaljno);
+						setText(null);
+					}
+				}
+			};
+			return cell;
+		});
 
 		list = FXCollections.observableArrayList(Client.getInstance().getObavjestenja());
 		table.setItems(list);
