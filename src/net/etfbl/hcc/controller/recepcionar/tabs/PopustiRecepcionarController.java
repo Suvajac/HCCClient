@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
@@ -50,7 +51,7 @@ public class PopustiRecepcionarController {
     	colAktivan.setCellValueFactory(
     			param -> new SimpleStringProperty(param.getValue().isAktivan() ? "Da" : "Ne"));
     	
-    	list = FXCollections.observableArrayList();
+    	list = FXCollections.observableArrayList(Client.getInstance().getPopusti());
     	table.setItems(list);
     }
 
@@ -61,17 +62,22 @@ public class PopustiRecepcionarController {
     		popust.setKodPopusta(Integer.valueOf(tfKod.getText()));
     		popust.setProcenat(Double.valueOf(tfProcenat.getText()));
     		popust.setAktivan(true);
-    		if (true) {
-    			list.add(popust);
-    			clearFields();
+    		if (!list.contains(popust)) { // Zabrani dodavanje popusta sa istim kodom
+    			if (Client.getInstance().dodajPopust(popust)) {
+        			list.add(popust);
+        			clearFields();
+        		}
+    		} else {
+    			Dialogs.showErrorDialog("Greska", "Nevalidan kod", "Popust sa datim kod vec postoji.");
     		}
+    		
     	}
     }
 
     @FXML
     void handleObrisi(ActionEvent event) {
     	Popust popust = table.getSelectionModel().getSelectedItem();
-    	if (popust != null) {
+    	if (Client.getInstance().obrisiPopust(popust)) {
     		list.remove(popust);
     	}
     }
