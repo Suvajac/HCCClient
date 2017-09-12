@@ -78,6 +78,23 @@ public class Client {
 		}
 	}
 	
+	public ArrayList<Utisak> getUtisci(){
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.getUtisci");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Utisak> lista = (ArrayList<Utisak>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public boolean dodajUtisak(Utisak u){
 		try{
 			ArrayList<Object> lista = new ArrayList<>();
@@ -116,24 +133,7 @@ public class Client {
 		}
 		return false;
 	}
-	
-	public ArrayList<Utisak> getUtisci(){
-		try{
-			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.getUtisci");
-			out.reset();
-			out.writeObject(ppout);
-			out.flush();
-			
-			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
-			ArrayList<Utisak> lista = (ArrayList<Utisak>) ppin.getListaObjekata().get(0);
-			return lista;
-		}
-		catch(IOException | ClassNotFoundException e){
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
+
 	public ArrayList<Oglas> getOglasi(){
 		try{
 			ProtokolPoruka ppout = new ProtokolPoruka("Oglas.getOglasi");
@@ -149,6 +149,62 @@ public class Client {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public ArrayList<Popust> getPopusti() {
+		try {
+			ProtokolPoruka ppout = new ProtokolPoruka("Popust.getPopusti");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Popust> lista = (ArrayList<Popust>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean dodajPopust(Popust p) {
+		try{
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(p);
+			ProtokolPoruka ppout = new ProtokolPoruka("Popust.dodaj",lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			if(ppin!=null){
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean obrisiPopust(Popust p){
+		try {
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(p);
+			ProtokolPoruka ppout = new ProtokolPoruka("Popust.obrisi", lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			
+			if("response".equals(ppin.getTip())) {
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	public boolean potvrdiPopust(int kodPopusta, Gost g){
