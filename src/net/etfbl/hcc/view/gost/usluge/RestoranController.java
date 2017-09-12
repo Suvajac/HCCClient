@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
@@ -37,26 +38,28 @@ public class RestoranController {
 	private Label brojacLabel;
 	
 	private Korpa korpa;
-	private List<Proizvod> meni;
+	public static ArrayList<Proizvod> meni;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
 	
 	public void initialize(){
-		meni= new ArrayList<>();
+		meni= new ArrayList<Proizvod>();
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
+//		
+//		for(int i=0;i<5;i++){
+//			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
+//			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
+//			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
+//			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
+//			meni.add(p1);
+//			meni.add(p2);
+//			meni.add(p3);
+//			meni.add(p4);
+//		}
 		
-		for(int i=0;i<5;i++){
-			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
-			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
-			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
-			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
-			meni.add(p1);
-			meni.add(p2);
-			meni.add(p3);
-			meni.add(p4);
-		}
 		
+		meni = Client.getInstance().getProizvodi();
 		brojStolicaComboBox.getItems().addAll("2","3","4","5","6","7");
 		vrijemeTimePicker.setValue(LocalTime.now().plusMinutes(30));
 		prikaziMeni();
@@ -91,7 +94,7 @@ public class RestoranController {
 	public void prikaziMeni(){
 		for(Proizvod p : meni){
 			StringBuilder tackeSb = new StringBuilder();
-			for(int i=0;i<20-p.getNaziv().length()-(p.getCijena()+"").length();i++){
+			for(int i=0;i<28-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
 			}
 			Label label = new Label(p.getNaziv()+tackeSb.toString()+p.getCijena()+" EUR");
@@ -107,10 +110,10 @@ public class RestoranController {
 				handleKorpa();
 			});
 			mapaLabelProizvod.put(label, p);
-			if(p.getTip().equals("Hrana")){
+			if(p.getTip().equals("jelo")){
 				hranaVBox.getChildren().add(label);
 			}
-			else if(p.getTip().equals("Pice")){	
+			else if(p.getTip().equals("pice")){	
 				piceVBox.getChildren().add(label);
 			}
 		}

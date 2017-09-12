@@ -42,18 +42,20 @@ public class SportController {
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 		
-		for(int i=0;i<5;i++){
-			SportskaOprema o1 = new SportskaOprema(1, "Kopacke Addidas", 1, "43");
-			SportskaOprema o2 = new SportskaOprema(2, "Kopacke Addidasl", 1, "42");
-			SportskaOprema o3 = new SportskaOprema(3, "Kopacke Addidas", 1, "44");
-			SportskaOprema o4 = new SportskaOprema(4, "Majica", 1, "L");
-			SportskaOprema o5 = new SportskaOprema(5, "Sorc", 1, "L");
-			meni.add(o1);
-			meni.add(o2);
-			meni.add(o3);
-			meni.add(o4);
-			meni.add(o5);
-		}
+//		for(int i=0;i<5;i++){
+//			SportskaOprema o1 = new SportskaOprema(1, "Kopacke Addidas", 1, "43");
+//			SportskaOprema o2 = new SportskaOprema(2, "Kopacke Addidasl", 1, "42");
+//			SportskaOprema o3 = new SportskaOprema(3, "Kopacke Addidas", 1, "44");
+//			SportskaOprema o4 = new SportskaOprema(4, "Majica", 1, "L");
+//			SportskaOprema o5 = new SportskaOprema(5, "Sorc", 1, "L");
+//			meni.add(o1);
+//			meni.add(o2);
+//			meni.add(o3);
+//			meni.add(o4);
+//			meni.add(o5);
+//		}
+		
+		meni = RestoranController.meni;
 		
 		datumDatePicker.setValue(LocalDate.now());
 		
