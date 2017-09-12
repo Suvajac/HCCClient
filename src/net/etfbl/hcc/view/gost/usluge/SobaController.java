@@ -90,7 +90,7 @@ public class SobaController {
 	public void prikaziMeni(){
 		for(Proizvod p : meni){
 			StringBuilder tackeSb = new StringBuilder();
-			for(int i=0;i<36-p.getNaziv().length()-(p.getCijena()+"").length();i++){
+			for(int i=0;i<20-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
 			}
 			Label label = new Label(p.getNaziv()+tackeSb.toString()+p.getCijena()+" EUR");

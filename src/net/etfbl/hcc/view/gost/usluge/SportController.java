@@ -94,7 +94,7 @@ public class SportController {
 	public void prikaziMeni(){
 		for(Proizvod p : meni){
 			StringBuilder tackeSb = new StringBuilder();
-			for(int i=0;i<90-p.getNaziv().length()-(p.getCijena()+"").length();i++){
+			for(int i=0;i<45-p.getNaziv().length()-(p.getCijena()+"").length()-((SportskaOprema)p).getVelicina().length();i++){
 				tackeSb.append(".");
 			}
 			Label label = new Label(p.getNaziv()+" vel. "+((SportskaOprema)p).getVelicina()+tackeSb.toString()+p.getCijena()+" EUR");
