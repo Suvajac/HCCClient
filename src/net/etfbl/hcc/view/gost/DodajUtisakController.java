@@ -1,5 +1,6 @@
 package net.etfbl.hcc.view.gost;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.jfoenix.controls.JFXTextArea;
@@ -25,7 +26,7 @@ public class DodajUtisakController {
 	
 	@FXML
 	public void handleDodaj(){
-		Utisak u = new Utisak(-1,textArea.getText(),new Date(System.currentTimeMillis()),RootGostController.gost);
+		Utisak u = new Utisak(-1,textArea.getText(),LocalDateTime.now(),RootGostController.gost);
 		KnjigaUtisakaGostController.listaUtisaka.add(u);
 		Client.getInstance().dodajUtisak(u);
 		controller.iscrtaj();

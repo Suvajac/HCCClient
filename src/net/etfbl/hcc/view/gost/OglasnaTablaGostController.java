@@ -29,7 +29,7 @@ public class OglasnaTablaGostController {
 	
 	public void initialize(){
 		listaOglasa = new ArrayList<>();
-		Oglas o = new Oglas(-1,"Ovo je neki oglas",new Date(System.currentTimeMillis()));
+		Oglas o = new Oglas(-1,"Ovo je neki oglas",LocalDateTime.now());
 //		listaOglasa.add(o);
 //		listaOglasa.add(o);
 //		listaOglasa.add(o);
@@ -68,7 +68,7 @@ public class OglasnaTablaGostController {
 			headerAnchorPane.setPrefHeight(60);
 			headerAnchorPane.getStyleClass().add("utisakHeader");
 			
-			LocalDateTime time = LocalDateTime.ofInstant(o.getDatum().toInstant(),ZoneId.systemDefault());
+			LocalDateTime time = o.getDatum();
 			
 			String dateString = String.format("%02d", time.getHour())+":"+String.format("%02d", time.getMinute())+" "+time.getDayOfMonth()+"."+time.getMonthValue()+"."+time.getYear();
 				
@@ -109,7 +109,7 @@ public class OglasnaTablaGostController {
 		headerAnchorPane.setPrefHeight(40);
 		headerAnchorPane.getStyleClass().add("utisakHeader");
 		
-		LocalDateTime time = LocalDateTime.ofInstant(o.getDatum().toInstant(),ZoneId.systemDefault());
+		LocalDateTime time = o.getDatum();
 	
 		String dateString = String.format("%02d", time.getHour())+":"+String.format("%02d", time.getMinute())+" "+time.getDayOfMonth()+"."+time.getMonthValue()+"."+time.getYear();
 		

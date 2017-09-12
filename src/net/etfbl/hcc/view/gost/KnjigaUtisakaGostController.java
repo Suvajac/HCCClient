@@ -162,7 +162,7 @@ public class KnjigaUtisakaGostController {
 			AnchorPane.setTopAnchor(username, 10.0);
 			AnchorPane.setLeftAnchor(username,20.0);
 				
-			LocalDateTime time = LocalDateTime.ofInstant(u.getDatum().toInstant(),ZoneId.systemDefault());
+			LocalDateTime time = u.getDatum();
 			
 			String dateString = String.format("%02d", time.getHour())+":"+String.format("%02d", time.getMinute())+" "+time.getDayOfMonth()+"."+time.getMonthValue()+"."+time.getYear();
 				
@@ -220,7 +220,7 @@ public class KnjigaUtisakaGostController {
 		AnchorPane.setTopAnchor(username, 5.0);
 		AnchorPane.setLeftAnchor(username,10.0);
 		
-		LocalDateTime time = LocalDateTime.ofInstant(u.getDatum().toInstant(),ZoneId.systemDefault());
+		LocalDateTime time = u.getDatum();
 	
 		String dateString = String.format("%02d", time.getHour())+":"+String.format("%02d", time.getMinute())+" "+time.getDayOfMonth()+"."+time.getMonthValue()+"."+time.getYear();
 		
