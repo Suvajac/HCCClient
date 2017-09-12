@@ -1,7 +1,5 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
-import java.time.LocalDateTime;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,45 +13,45 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class ObavjestenjaRecepcionarController {
 	
-	private ObservableList<ObavjestenjeTest> list;
+	private ObservableList<Obavjestenje> list;
 
 	@FXML
-	private TableView<ObavjestenjeTest> table;
+	private TableView<Obavjestenje> table;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colVrijeme;
+	private TableColumn<Obavjestenje, String> colVrijeme;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colTekst;
+	private TableColumn<Obavjestenje, String> colTekst;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colProcitano;
+	private TableColumn<Obavjestenje, String> colProcitano;
 
 	@FXML
-	private TableColumn<ObavjestenjeTest, String> colAkcija;
+	private TableColumn<Obavjestenje, String> colAkcija;
 
 	@FXML
 	void initialize() {
 		
 		colVrijeme.setCellValueFactory(
-				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getVrijeme())));
+				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
 		colTekst.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getTekst()));
 		colProcitano.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().isProcitano() ? "Da" : "Ne"));
 		colAkcija.setCellFactory(
 				param -> {
-					final TableCell<ObavjestenjeTest, String> cell = new TableCell<ObavjestenjeTest, String>() {
+					final TableCell<Obavjestenje, String> cell = new TableCell<Obavjestenje, String>() {
 		
 						final Button btnDetaljno = new Button("Detaljno");
 		
@@ -64,7 +62,7 @@ public class ObavjestenjaRecepcionarController {
 								setGraphic(null);
 								setText(null);
 							} else {
-								ObavjestenjeTest o = getTableView().getItems().get(getIndex());
+								Obavjestenje o = getTableView().getItems().get(getIndex());
 								btnDetaljno.setOnAction(event -> handleShow(o));
 								setGraphic(btnDetaljno);
 								setText(null);
@@ -75,12 +73,6 @@ public class ObavjestenjaRecepcionarController {
 				});
 
 		list = FXCollections.observableArrayList();
-		list.addAll(
-				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
-				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
-				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
-				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()),
-				new ObavjestenjeTest("Tekstualni sadrzaj", LocalDateTime.now()));
 		table.setItems(list);
 		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
 	}
@@ -88,8 +80,8 @@ public class ObavjestenjaRecepcionarController {
 	/*
 	 * Prikazuje dato obavjestenje u novom dijalogu.
 	 */
-	private void handleShow(ObavjestenjeTest o) {
-		o.setProcitano(true);
+	private void handleShow(Obavjestenje o) {
+		//o.setProcitano(true);
 		table.refresh();
 		ObavjestenjeDialog dialog = new ObavjestenjeDialog(o);
 		dialog.showAndWait();
@@ -99,11 +91,11 @@ public class ObavjestenjaRecepcionarController {
 		
 		private Stage primaryStage;
 		
-		public ObavjestenjeDialog(ObavjestenjeTest obavjestenje) {
+		public ObavjestenjeDialog(Obavjestenje obavjestenje) {
 
 			Label label = new Label("Vrijeme:");
 			label.setStyle("-fx-font-weight: bold;");
-			Label lblTimestamp = new Label("" + TemporalStringConverters.toString(obavjestenje.getVrijeme()));
+			Label lblTimestamp = new Label("" + TemporalStringConverters.toString(obavjestenje.getDatum()));
 			
 			HBox hbHeader = new HBox();
 			hbHeader.setSpacing(5);
@@ -127,7 +119,7 @@ public class ObavjestenjaRecepcionarController {
 			Scene scene = new Scene(vbContent);
 			primaryStage = new Stage();
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Obavjestenje " + obavjestenje.getId());
+			primaryStage.setTitle("Obavjestenje " + obavjestenje.getIdObavjestenje());
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
 		}
@@ -140,79 +132,3 @@ public class ObavjestenjaRecepcionarController {
 
 }
 
-class ObavjestenjeTest {
-	
-	private static int counter;
-	
-	private int id;
-	private boolean procitano;
-	private String tekst;
-	private LocalDateTime vrijeme;
-
-	public ObavjestenjeTest() {
-		super();
-		counter++;
-		id = counter;
-	}
-
-	public ObavjestenjeTest(String tekst, LocalDateTime vrijeme) {
-		this();
-		this.tekst = tekst;
-		this.vrijeme = vrijeme;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public boolean isProcitano() {
-		return procitano;
-	}
-
-	public void setProcitano(boolean procitano) {
-		this.procitano = procitano;
-	}
-
-	public String getTekst() {
-		return tekst;
-	}
-
-	public void setTekst(String tekst) {
-		this.tekst = tekst;
-	}
-
-	public LocalDateTime getVrijeme() {
-		return vrijeme;
-	}
-
-	public void setVrijeme(LocalDateTime vrijeme) {
-		this.vrijeme = vrijeme;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ObavjestenjeTest other = (ObavjestenjeTest) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
-	
-}
