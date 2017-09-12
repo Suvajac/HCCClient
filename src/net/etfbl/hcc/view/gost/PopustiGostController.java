@@ -29,7 +29,7 @@ public class PopustiGostController{
 			statusLabel.setText("Dobili ste popust od "+RootGostController.gost.getRacun().getPopust().getProcenat()+"%.");	
 		}
 		else{
-			statusLabel.setText("    Kod nije validan.");
+			statusLabel.setText("     Kod nije validan.");
 		}
 		
 	}
