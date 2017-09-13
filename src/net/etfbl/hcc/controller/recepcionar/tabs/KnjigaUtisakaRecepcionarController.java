@@ -52,7 +52,7 @@ public class KnjigaUtisakaRecepcionarController {
     @FXML
     void handleObrisi(ActionEvent event) {
     	Utisak utisak = table.getSelectionModel().getSelectedItem();
-    	if (Client.getInstance().obrisiUtisak(utisak)) {
+    	if (utisak != null && Client.getInstance().obrisiUtisak(utisak)) {
     		list.remove(utisak);
     	}
     }

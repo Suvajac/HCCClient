@@ -10,9 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import net.etfbl.hcc.Client;
 
 public class RootRecepcionarController {
 
+	@FXML
+	private AnchorPane root;
+	
 	@FXML
 	private Label lblTrenutniKorisnik;
 
@@ -60,7 +65,8 @@ public class RootRecepcionarController {
 
 	@FXML
 	void handleLogout(ActionEvent event) {
-		
+		Client.getInstance().logout();
+		((Stage) root.getScene().getWindow()).close();
 	}
 	
 	public void setTrenutniKorisnik(String username) {

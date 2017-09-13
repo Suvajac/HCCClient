@@ -9,7 +9,7 @@ import javafx.util.StringConverter;
 
 public class TemporalStringConverters {
 	
-	private static final String DATE_PATTERN = "dd.MM.yyyy";
+	private static final String DATE_PATTERN = "dd.MM.yyyy.";
 	private static final String TIME_PATTERN = "HH:mm";
 	private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
 	private static final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(TIME_PATTERN);

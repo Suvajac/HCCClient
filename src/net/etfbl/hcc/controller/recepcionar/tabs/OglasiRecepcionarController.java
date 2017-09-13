@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
@@ -48,9 +49,8 @@ public class OglasiRecepcionarController {
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
 		colTekst.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getPoruka()));
-
-		list = FXCollections.observableArrayList();
-		
+	
+		list = FXCollections.observableArrayList(Client.getInstance().getOglasi());
 		table.setItems(list);
 		ColumnResizer.resize(new Double[] {30.0, 70.0}, table);
     }
@@ -64,7 +64,7 @@ public class OglasiRecepcionarController {
     @FXML
     void handleObrisi(ActionEvent event) {
     	Oglas oglas = table.getSelectionModel().getSelectedItem();
-    	if (oglas != null) {
+    	if (oglas != null && Client.getInstance().obrisiOglas(oglas)) {
     		table.getItems().remove(oglas);
     	}
     }
@@ -72,6 +72,7 @@ public class OglasiRecepcionarController {
 	private class OglasDialog {
 
 		private Stage primaryStage;
+		private Oglas oglas;
 
 		public OglasDialog() {
 
@@ -82,9 +83,11 @@ public class OglasiRecepcionarController {
 
 			Button btnConfirm = new Button("Potvrdi");
 			btnConfirm.setOnAction(e -> {
-				Oglas oglas = new Oglas(0, textArea.getText(), LocalDateTime.now());
-				table.getItems().add(oglas);
-				primaryStage.close();
+				oglas = new Oglas(0, textArea.getText(), LocalDateTime.now());
+//				if (Client.getInstance().dodajOglas(oglas)) {
+//	    			list.add(oglas);
+//	    		}
+//				primaryStage.close();
 			});
 
 			Button btnClose = new Button("Zatvori");

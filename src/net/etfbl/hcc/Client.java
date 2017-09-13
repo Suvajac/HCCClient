@@ -11,6 +11,7 @@ import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
@@ -88,6 +89,8 @@ public class Client {
 		}
 	}
 	
+	/****************************** UTISCI ******************************/
+	
 	public ArrayList<Utisak> getUtisci(){
 		try{
 			ProtokolPoruka ppout = new ProtokolPoruka("Utisak.getUtisci");
@@ -144,6 +147,10 @@ public class Client {
 		return false;
 	}
 	
+	/********************************************************************/
+	
+	/*************************** OBAVJESTENJA ***************************/
+	
 	public ArrayList<Obavjestenje> getObavjestenja(){
 		try{
 			ProtokolPoruka ppout = new ProtokolPoruka("Obavjestenje.getObavjestenja");
@@ -180,6 +187,10 @@ public class Client {
 		}
 		return false;
 	}
+	
+	/********************************************************************/
+	
+	/****************************** OGLASI ******************************/
 
 	public ArrayList<Oglas> getOglasi(){
 		try{
@@ -197,6 +208,49 @@ public class Client {
 		}
 		return null;
 	}
+	
+	public int dodajOglas(Oglas o) {
+		try {
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(o);
+			ProtokolPoruka ppout = new ProtokolPoruka("Oglas.dodaj",lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			if (ppin != null) {
+				return (int) ppin.getListaObjekata().get(0);
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public boolean obrisiOglas(Oglas o) {
+		try {
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(o);
+			ProtokolPoruka ppout = new ProtokolPoruka("Oglas.obrisi", lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			
+			if("response".equals(ppin.getTip())) {
+				return true;
+			}
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	/********************************************************************/
+	
+	/****************************** POPUSTI *****************************/
 	
 	public ArrayList<Popust> getPopusti() {
 		try {
@@ -275,6 +329,10 @@ public class Client {
 		return false;
 	}
 	
+	/********************************************************************/
+	
+	/***************************** PROIZVODI ****************************/
+	
 	public boolean dodajProizvod(Proizvod p) {
 		try{
 			ArrayList<Object> lista = new ArrayList<>();
@@ -330,5 +388,24 @@ public class Client {
 		}
 		return null;
 	}
+	
+	public ArrayList<SportskaOprema> getSportskaOprema(){
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("SportskaOprema.getOprema");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<SportskaOprema> lista = (ArrayList<SportskaOprema>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/********************************************************************/
 
 }

@@ -79,7 +79,7 @@ public class ProizvodiRecepcionarController {
 	@FXML
 	void handleObrisi(ActionEvent event) {
 		Proizvod proizvod = table.getSelectionModel().getSelectedItem();
-		if (Client.getInstance().obrisiProizvod(proizvod)) {
+		if (proizvod != null && Client.getInstance().obrisiProizvod(proizvod)) {
 			list.remove(proizvod);
 		}
 	}

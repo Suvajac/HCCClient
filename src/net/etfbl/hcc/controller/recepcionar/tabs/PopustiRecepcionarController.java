@@ -77,7 +77,7 @@ public class PopustiRecepcionarController {
     @FXML
     void handleObrisi(ActionEvent event) {
     	Popust popust = table.getSelectionModel().getSelectedItem();
-    	if (Client.getInstance().obrisiPopust(popust)) {
+    	if (popust != null && Client.getInstance().obrisiPopust(popust)) {
     		list.remove(popust);
     	}
     }
