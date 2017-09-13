@@ -2,6 +2,7 @@ package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,15 +38,15 @@ public class RestoranController {
 	private JFXComboBox<Integer> brojStolicaComboBox;
 	@FXML
 	private Label brojacLabel;
-	
+
 	private Korpa korpa;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
-	
+
 	public void initialize(){
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
-//		
+//
 //		for(int i=0;i<5;i++){
 //			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
 //			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
@@ -56,17 +57,17 @@ public class RestoranController {
 //			meni.add(p3);
 //			meni.add(p4);
 //		}
-		
+
 		if(UslugaController.meni==null)
 			UslugaController.meni = Client.getInstance().getProizvodi();
-		
+
 		brojStolicaComboBox.getItems().addAll(2,3,4,5,6,7,8,9,10);
 		brojStolicaComboBox.setValue(2);
 		vrijemeTimePicker.setValue(LocalTime.now().plusMinutes(30));
 		prikaziMeni();
 		brojacLabel.setText("");
 	}
-	
+
 	@FXML
 	public void handleKorpa(){
 		try{
@@ -79,10 +80,10 @@ public class RestoranController {
 			controller.prikaziProizvode();
 			controller.setStackPane(stackPane);
 			controller.setBrojacLabel(brojacLabel);
-			
+
 			AnchorPane parent = new AnchorPane();
 			controller.setParent(parent);
-			
+
 			parent.getChildren().add(korpaAnchorPane);
 			stackPane.getChildren().add(parent);
 			korpaAnchorPane.toFront();
@@ -91,7 +92,7 @@ public class RestoranController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void prikaziMeni(){
 		for(Proizvod p : UslugaController.meni){
 			StringBuilder tackeSb = new StringBuilder();
@@ -114,7 +115,7 @@ public class RestoranController {
 			if(p.getTip().equals("Hrana")){
 				hranaVBox.getChildren().add(label);
 			}
-			else if(p.getTip().equals("Pice")){	
+			else if(p.getTip().equals("Pice")){
 				piceVBox.getChildren().add(label);
 			}
 		}
@@ -123,7 +124,7 @@ public class RestoranController {
 	public void setStackPane(StackPane stackPane) {
 		this.stackPane = stackPane;
 	}
-	
+
 	@FXML
 	public void handleNaruci(){
 		String vrijeme = TemporalStringConverters.toString(vrijemeTimePicker.getValue());
@@ -138,5 +139,5 @@ public class RestoranController {
 			System.out.println(returnValue);
 		}
 	}
-	
+
 }
