@@ -84,10 +84,12 @@ public class OglasiRecepcionarController {
 			Button btnConfirm = new Button("Potvrdi");
 			btnConfirm.setOnAction(e -> {
 				oglas = new Oglas(0, textArea.getText(), LocalDateTime.now());
-//				if (Client.getInstance().dodajOglas(oglas)) {
-//	    			list.add(oglas);
-//	    		}
-//				primaryStage.close();
+				int idOglasa = 0;
+				if ((idOglasa = Client.getInstance().dodajOglas(oglas)) != -1) {
+					oglas.setIdOglasa(idOglasa);
+	    			list.add(oglas);
+	    		}
+				primaryStage.close();
 			});
 
 			Button btnClose = new Button("Zatvori");

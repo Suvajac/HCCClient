@@ -69,7 +69,9 @@ public class ProizvodiRecepcionarController {
 			proizvod.setNaziv(tfNaziv.getText());
 			proizvod.setCijena(new Double(tfCijena.getText()));
 			proizvod.setTip(cmbTip.getValue());
-			if (Client.getInstance().dodajProizvod(proizvod)) {
+			int idProizvoda = 0;
+			if ((idProizvoda = Client.getInstance().dodajProizvod(proizvod)) != -1) {
+				proizvod.setIdProizvoda(idProizvoda);
 				list.add(proizvod);
 				clearFields();
 			}

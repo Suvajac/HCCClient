@@ -333,8 +333,8 @@ public class Client {
 	
 	/***************************** PROIZVODI ****************************/
 	
-	public boolean dodajProizvod(Proizvod p) {
-		try{
+	public int dodajProizvod(Proizvod p) {
+		try {
 			ArrayList<Object> lista = new ArrayList<>();
 			lista.add(p);
 			ProtokolPoruka ppout = new ProtokolPoruka("Proizvod.dodaj",lista);
@@ -342,14 +342,14 @@ public class Client {
 			out.writeObject(ppout);
 			out.flush();
 			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
-			if(ppin!=null){
-				return true;
+			if (ppin != null) {
+				return (int) ppin.getListaObjekata().get(0);
 			}
 		}
 		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();
 		}
-		return false;
+		return -1;
 	}
 	
 	public boolean obrisiProizvod(Proizvod p){
