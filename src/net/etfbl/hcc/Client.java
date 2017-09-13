@@ -11,6 +11,7 @@ import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.Racun;
 import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ConnectionProperty;
@@ -89,6 +90,42 @@ public class Client {
 		}
 	}
 	
+	/******************************* GOSTI ******************************/
+	
+	public ArrayList<Gost> getGosti() {
+		try {
+			ProtokolPoruka ppout = new ProtokolPoruka("Gost.getKorisnike");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Gost> lista = (ArrayList<Gost>) ppin.getListaObjekata().get(0);
+			return lista;
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean platiRacun(Racun r) {
+		try {
+			ProtokolPoruka ppout = new ProtokolPoruka("Racun.azuriraj");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			return "response".equals(ppin.getTip());
+		} 
+		catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	/********************************************************************/
+	
 	/****************************** UTISCI ******************************/
 	
 	public ArrayList<Utisak> getUtisci(){
@@ -137,9 +174,7 @@ public class Client {
 			out.flush();
 			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
 			
-			if("response".equals(ppin.getTip())) {
-				return true;
-			}
+			return "response".equals(ppin.getTip());
 		}
 		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();
@@ -238,9 +273,7 @@ public class Client {
 			out.flush();
 			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
 			
-			if("response".equals(ppin.getTip())) {
-				return true;
-			}
+			return "response".equals(ppin.getTip());
 		}
 		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();
@@ -296,11 +329,9 @@ public class Client {
 			out.reset();
 			out.writeObject(ppout);
 			out.flush();
-			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
 			
-			if("response".equals(ppin.getTip())) {
-				return true;
-			}
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			return "response".equals(ppin.getTip());
 		}
 		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();
@@ -360,11 +391,9 @@ public class Client {
 			out.reset();
 			out.writeObject(ppout);
 			out.flush();
-			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
 			
-			if("response".equals(ppin.getTip())) {
-				return true;
-			}
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			return "response".equals(ppin.getTip());
 		}
 		catch(IOException | ClassNotFoundException e){
 			e.printStackTrace();

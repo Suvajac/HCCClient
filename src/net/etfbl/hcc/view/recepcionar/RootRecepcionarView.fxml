@@ -54,15 +54,15 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" />
                      </content>
                   </Tab>
-                <Tab fx:id="tabRegistracija" text="Registracija">
+                <Tab fx:id="tabGosti" text="Gosti">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                  <Tab fx:id="tabRacun" text="Račun">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
+                  <Tab fx:id="tabProizvodi" text="Proizvodi">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
                   </Tab>
                   <Tab fx:id="tabPopusti" text="Popusti">
                      <content>
@@ -74,11 +74,6 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                  <Tab fx:id="tabProizvodi" text="Proizvodi">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
-                  </Tab>
                   <Tab fx:id="tabKnjigaUtisaka" text="Knjiga utisaka">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />

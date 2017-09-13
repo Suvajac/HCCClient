@@ -28,7 +28,7 @@ public class RootRecepcionarController {
 	private Tab tabObavjestenja;
 
 	@FXML
-	private Tab tabRegistracija;
+	private Tab tabGosti;
 
 	@FXML
 	private Tab tabRacun;
@@ -51,8 +51,7 @@ public class RootRecepcionarController {
 		// Ucitaj sve tabove
 		try {
 			loadIntoTab(tabObavjestenja, "/net/etfbl/hcc/view/recepcionar/tabs/ObavjestenjaRecepcionarView.fxml");
-			loadIntoTab(tabRegistracija, "/net/etfbl/hcc/view/recepcionar/tabs/RegistracijaRecepcionarView.fxml");
-			loadIntoTab(tabRacun, "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
+			loadIntoTab(tabGosti, "/net/etfbl/hcc/view/recepcionar/tabs/GostiRecepcionarView.fxml");
 			loadIntoTab(tabPopusti, "/net/etfbl/hcc/view/recepcionar/tabs/PopustiRecepcionarView.fxml");
 			loadIntoTab(tabOglasi, "/net/etfbl/hcc/view/recepcionar/tabs/OglasiRecepcionarView.fxml");
 			loadIntoTab(tabProizvodi, "/net/etfbl/hcc/view/recepcionar/tabs/ProizvodiRecepcionarView.fxml");
@@ -84,6 +83,9 @@ public class RootRecepcionarController {
 		AnchorPane.setLeftAnchor(root, 0.0);
 		AnchorPane.setRightAnchor(root, 0.0);
 		AnchorPane.setTopAnchor(root, 0.0);
+		if (tab.selectedProperty().get()) {
+			pane.getChildren().add(root);
+		}
 	}
 
 }
