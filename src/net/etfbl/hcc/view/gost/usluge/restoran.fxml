@@ -48,6 +48,6 @@
          </padding>
       </Label>
       <Label layoutX="138.0" layoutY="452.0" styleClass="piceHranaLabel" text="Vrijeme:" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="50.0" />
-      <JFXButton buttonType="RAISED" layoutX="243.0" layoutY="489.0" styleClass="naruciButton" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="25.0" />
+      <JFXButton buttonType="RAISED" layoutX="243.0" layoutY="489.0" onAction="#handleNaruci" styleClass="naruciButton" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="25.0" />
    </children>
 </AnchorPane>

@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -65,7 +66,7 @@ public class LoginController {
 		Korisnik ulogovanKorisnik = Client.getInstance().login(k);
 		if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Gost){
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"));
-			BorderPane borderPane = loader.load();
+			StackPane stackPane = (StackPane) loader.load();
 			Stage stage = new Stage();
 
 			RootGostController controller = loader.getController();
@@ -74,7 +75,7 @@ public class LoginController {
 			controller.init();
 			
 			
-			Scene scene = new Scene(borderPane);
+			Scene scene = new Scene(stackPane);
 
 			stage.setScene(scene);
 			stage.setFullScreen(true);

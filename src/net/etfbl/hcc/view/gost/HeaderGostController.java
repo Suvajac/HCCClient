@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
 
@@ -16,6 +17,7 @@ public class HeaderGostController {
 	 private Label usernameLabel;
 	 
 	 private Stage stage;
+	 private StackPane stackPane;
 	 
 	 public void initialize(){
 		 	usernameLabel.setText(RootGostController.gost.getUsername());
@@ -52,4 +54,10 @@ public class HeaderGostController {
 	    public void setStage(Stage stage) {
 	        this.stage = stage;
 	    }
+
+		public void setStackPane(StackPane stackPane) {
+			this.stackPane = stackPane;
+		}
+	    
+	    
 }

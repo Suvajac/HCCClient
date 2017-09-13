@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -18,8 +19,12 @@ import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.UslugaRestorana;
+import net.etfbl.hcc.util.TemporalStringConverters;
 import net.etfbl.hcc.view.gost.KorpaController;
+import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class RestoranController {
 	@FXML
@@ -29,7 +34,7 @@ public class RestoranController {
 	@FXML
 	private JFXTimePicker vrijemeTimePicker;
 	@FXML
-	private JFXComboBox<String> brojStolicaComboBox;
+	private JFXComboBox<Integer> brojStolicaComboBox;
 	@FXML
 	private Label brojacLabel;
 	
@@ -55,7 +60,8 @@ public class RestoranController {
 		if(UslugaController.meni==null)
 			UslugaController.meni = Client.getInstance().getProizvodi();
 		
-		brojStolicaComboBox.getItems().addAll("2","3","4","5","6","7");
+		brojStolicaComboBox.getItems().addAll(2,3,4,5,6,7,8,9,10);
+		brojStolicaComboBox.setValue(2);
 		vrijemeTimePicker.setValue(LocalTime.now().plusMinutes(30));
 		prikaziMeni();
 		brojacLabel.setText("");
@@ -118,5 +124,19 @@ public class RestoranController {
 		this.stackPane = stackPane;
 	}
 	
+	@FXML
+	public void handleNaruci(){
+		String vrijeme = TemporalStringConverters.toString(vrijemeTimePicker.getValue());
+		UslugaRestorana usluga = new UslugaRestorana(0,"Usluga restorana",korpa.getUkupnaCijena(),vrijeme,brojStolicaComboBox.getValue());
+		usluga.setListaProizvoda(korpa.getListaProizvoda());
+		int returnValue = -1;
+		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
+			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
+			System.out.println(usluga.getCijena());
+		}
+		if(returnValue>0){
+			System.out.println(returnValue);
+		}
+	}
 	
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -14,8 +15,11 @@ import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SobnaUsluga;
 import net.etfbl.hcc.view.gost.KorpaController;
+import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class SobaController {
 	@FXML
@@ -55,12 +59,28 @@ public class SobaController {
 	
 	@FXML
 	public void handlePospremanjeSobe(){
-		
+		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Pospremanje sobe");
+		int returnValue = -1;
+		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
+			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
+			System.out.println(usluga.getCijena());
+		}
+		if(returnValue>0){
+			System.out.println(returnValue);
+		}
 	}
 	
 	@FXML
 	public void handleVeseraj(){
-		
+		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Veseraj");
+		int returnValue = -1;
+		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
+			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
+			System.out.println(usluga.getCijena());
+		}
+		if(returnValue>0){
+			System.out.println(returnValue);
+		}
 	}
 	
 	@FXML
