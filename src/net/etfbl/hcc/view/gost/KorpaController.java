@@ -1,21 +1,23 @@
 package net.etfbl.hcc.view.gost;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SobnaUsluga;
 import net.etfbl.hcc.model.SportskaOprema;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class KorpaController {
 	@FXML
@@ -75,6 +77,7 @@ public class KorpaController {
 						korpa.remove(p);
 						kolicina.setText(kolicinaTemp+"");
 						izracunajCijenu();
+						promjenaLabela();
 					}
 				});
 				JFXButton plusButton = new JFXButton("+");
@@ -84,6 +87,7 @@ public class KorpaController {
 					korpa.add(p);
 					kolicina.setText(kolicinaTemp+"");
 					izracunajCijenu();
+					promjenaLabela();
 				});
 				kolicinaHBox.getChildren().addAll(minusButton,kolicina,plusButton);
 				
@@ -101,6 +105,7 @@ public class KorpaController {
 					}
 					vBox.getChildren().clear();
 					prikaziProizvode();
+					promjenaLabela();
 				});
 				
 				anchorPane.getChildren().addAll(naziv,kolicinaHBox,cijena,closeButton);
@@ -119,29 +124,28 @@ public class KorpaController {
 	}
 	
 	public void izracunajCijenu(){
-		double cijena = 0;
-		for(Proizvod p : korpa.getListaProizvoda()){
-			cijena+=p.getCijena();
-		}
-		ukupnoLabel.setText("Ukupno: "+cijena+" EUR");
+		ukupnoLabel.setText(String.format("Ukupno: %3.2f EUR",korpa.getUkupnaCijena()));
 	}
 	
 	@FXML
 	public void handleNaruci(){
-		
+		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Dostava");
+		usluga.setListaProizvoda(korpa.getListaProizvoda());
+		int returnValue = -1;
+		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
+			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
+			System.out.println(usluga.getCijena());
+		}
+		if(returnValue>0){
+			System.out.println(returnValue);
+			handleClose();
+		}
 	}
 	
 	@FXML
 	private void handleClose(){
 		parent.toBack();
-		stackPane.getChildren().remove(parent);
-		if(korpa.getListaProizvoda().size()==0){
-			brojacLabel.setText("");
-		}
-		else{
-			brojacLabel.setText(korpa.getListaProizvoda().size()+"");
-		}
-		
+		stackPane.getChildren().remove(parent);		
 	}
 
 	public void setKorpa(Korpa korpa) {
@@ -160,8 +164,14 @@ public class KorpaController {
 		this.brojacLabel = brojacLabel;
 	}
 
-	
-	
+	public void promjenaLabela(){
+		if(korpa.getListaProizvoda().size()==0){
+			brojacLabel.setText("");
+		}
+		else{
+			brojacLabel.setText(korpa.getListaProizvoda().size()+"");
+		}
+	}
 	
 	
 }

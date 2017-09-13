@@ -1,5 +1,8 @@
 package net.etfbl.hcc.view.gost;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
@@ -7,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.view.gost.usluge.RestoranController;
 import net.etfbl.hcc.view.gost.usluge.SobaController;
 import net.etfbl.hcc.view.gost.usluge.SportController;
@@ -24,6 +29,10 @@ public class UslugaController {
     private JFXButton wellnessButton;
     @FXML
     private AnchorPane infoAnchorPane;
+    
+	public static ArrayList<Proizvod> meni;
+	public static List<SportskaOprema> oprema;
+
     
     public void initialize(){
     	try{

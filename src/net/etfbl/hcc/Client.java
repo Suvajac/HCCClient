@@ -5,15 +5,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import net.etfbl.hcc.model.Gost;
-import net.etfbl.hcc.model.Korisnik;
-import net.etfbl.hcc.model.Obavjestenje;
-import net.etfbl.hcc.model.Oglas;
-import net.etfbl.hcc.model.Popust;
-import net.etfbl.hcc.model.Proizvod;
-import net.etfbl.hcc.model.Racun;
-import net.etfbl.hcc.model.SportskaOprema;
-import net.etfbl.hcc.model.Utisak;
+import net.etfbl.hcc.model.*;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.ProtokolPoruka;
 
@@ -435,6 +427,46 @@ public class Client {
 		return null;
 	}
 	
-	/********************************************************************/
-
+/********************************************************************/
+	
+	/****************************** UTISCI *****************************/
+	
+	//Prijem
+	//Prvi-termin true false
+	//Drugi-idUsluge, ja saljem 0
+	//Treci--Da li je upisao sportsku opremu
+	
+	//Slanje
+	//Prvi-objekat tipa SportUsluga sa id=0
+	//Drugi-gost
+	public int dodajUslugu(Usluga usluga,Racun racun){
+		try{
+			ProtokolPoruka ppout = null;
+			if(usluga instanceof SportUsluga)
+				ppout = new ProtokolPoruka("SportUsluga.dodaj");
+			else if(usluga instanceof WellnessUsluga)
+				ppout = new ProtokolPoruka("WellnessUsluga.dodaj");
+			else if(usluga instanceof UslugaRestorana)
+				ppout = new ProtokolPoruka("UslugaRestorana.dodaj");
+			else if(usluga instanceof SobnaUsluga)
+				ppout = new ProtokolPoruka("SobnaUsluga.dodaj");
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(usluga);
+			lista.add(racun);
+			
+			ppout.setListaObjekata(lista);
+			
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			int idUsluge = (int) ppin.getListaObjekata().get(1);
+			return idUsluge;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }

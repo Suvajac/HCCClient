@@ -2,9 +2,7 @@ package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -12,12 +10,10 @@ import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
@@ -38,12 +34,10 @@ public class RestoranController {
 	private Label brojacLabel;
 	
 	private Korpa korpa;
-	public static ArrayList<Proizvod> meni;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
 	
 	public void initialize(){
-		meni= new ArrayList<Proizvod>();
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 //		
@@ -58,8 +52,9 @@ public class RestoranController {
 //			meni.add(p4);
 //		}
 		
+		if(UslugaController.meni==null)
+			UslugaController.meni = Client.getInstance().getProizvodi();
 		
-		meni = Client.getInstance().getProizvodi();
 		brojStolicaComboBox.getItems().addAll("2","3","4","5","6","7");
 		vrijemeTimePicker.setValue(LocalTime.now().plusMinutes(30));
 		prikaziMeni();
@@ -92,7 +87,7 @@ public class RestoranController {
 	}
 	
 	public void prikaziMeni(){
-		for(Proizvod p : meni){
+		for(Proizvod p : UslugaController.meni){
 			StringBuilder tackeSb = new StringBuilder();
 			for(int i=0;i<28-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
@@ -107,7 +102,7 @@ public class RestoranController {
 				else{
 					brojacLabel.setText(korpa.getListaProizvoda().size()+"");
 				}
-				handleKorpa();
+//				handleKorpa();
 			});
 			mapaLabelProizvod.put(label, p);
 			if(p.getTip().equals("Hrana")){
@@ -117,10 +112,6 @@ public class RestoranController {
 				piceVBox.getChildren().add(label);
 			}
 		}
-	}
-	
-	public List<Proizvod> getMeni(){
-		return meni;
 	}
 
 	public void setStackPane(StackPane stackPane) {

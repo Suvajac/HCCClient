@@ -10,6 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import net.etfbl.hcc.Client;
+import net.etfbl.hcc.model.Gost;
+import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.model.Stavka;
 import net.etfbl.hcc.model.Usluga;
@@ -32,13 +35,7 @@ public class RacunGostController {
 	private ArrayList<Stavka> listaStavki;
 	
 	public void initialize(){
-		listaStavki = new ArrayList<>();
-		for(int i=0;i<10;i++){
-			Stavka s = new Stavka(0,LocalDateTime.now(),new Usluga(0,"Usluga restorana",23));
-			Stavka s2 = new Stavka(0,LocalDateTime.now(),new Usluga(0,"Sport usluga",23));
-			listaStavki.add(s);
-			listaStavki.add(s2);
-		}
+		RootGostController.gost =(Gost) Client.getInstance().login((Korisnik)RootGostController.gost);
 		prikaziRacun();
 	}
 
@@ -55,7 +52,7 @@ public class RacunGostController {
 		headAnchorPane.getStyleClass().add("artikal");
 		vBox.getChildren().add(headAnchorPane);
 		
-		for(Stavka s : listaStavki){
+		for(Stavka s : RootGostController.gost.getRacun().getStavke()){
 				AnchorPane anchorPane = new AnchorPane();
 				anchorPane.setPrefHeight(30);
 				String nazivStr = new String();

@@ -1,10 +1,9 @@
 package net.etfbl.hcc.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Korpa {
-	private List<Proizvod> listaProizvoda;
+	private ArrayList<Proizvod> listaProizvoda;
 	
 	public Korpa(){
 		listaProizvoda = new ArrayList<>();
@@ -16,6 +15,14 @@ public class Korpa {
 	
 	public boolean remove(Proizvod p){
 		return listaProizvoda.remove(p);
+	}
+	
+	public double getUkupnaCijena(){
+		double cijena = 0.0;
+		for(Proizvod p : listaProizvoda){
+			cijena+=p.cijena;
+		}
+		return cijena;
 	}
 
 	@Override
@@ -43,11 +50,11 @@ public class Korpa {
 		return true;
 	}
 
-	public List<Proizvod> getListaProizvoda() {
+	public ArrayList<Proizvod> getListaProizvoda() {
 		return listaProizvoda;
 	}
 
-	public void setListaProizvoda(List<Proizvod> listaProizvoda) {
+	public void setListaProizvoda(ArrayList<Proizvod> listaProizvoda) {
 		this.listaProizvoda = listaProizvoda;
 	}
 }

@@ -22,6 +22,8 @@ public class Popust implements Serializable{
 		this.aktivan = aktivan;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

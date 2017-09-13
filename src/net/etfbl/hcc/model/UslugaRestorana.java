@@ -1,6 +1,7 @@
 package net.etfbl.hcc.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class UslugaRestorana extends Usluga implements Serializable{
 	/**
@@ -8,19 +9,19 @@ public class UslugaRestorana extends Usluga implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Sto sto;
 	private String vrijeme;
+	private ArrayList<Proizvod> listaProizvoda;
+	private int brojStolica;
 
 	public UslugaRestorana() {
 		// TODO Auto-generated constructor stub
-		sto=null;
 	}
 
-	public UslugaRestorana(int idUsluge, String naziv,double c,String vrijeme) {
+	public UslugaRestorana(int idUsluge, String naziv,double c,String vrijeme,int brojStolica) {
 		super(idUsluge, naziv,c);
 		// TODO Auto-generated constructor stub
 		this.vrijeme=vrijeme;
-		sto=null;
+		this.brojStolica=brojStolica;
 	}
 
 	public String getVrijeme() {
@@ -31,12 +32,14 @@ public class UslugaRestorana extends Usluga implements Serializable{
 		this.vrijeme = vrijeme;
 	}
 
-	public Sto getSto() {
-		return sto;
+	public ArrayList<Proizvod> getListaProizvoda() {
+		return listaProizvoda;
 	}
 
-	public void setSto(Sto sto) {
-		this.sto = sto;
+	public void setListaProizvoda(ArrayList<Proizvod> listaProizvoda) {
+		this.listaProizvoda = listaProizvoda;
 	}
+	
+	
 
 }

@@ -2,9 +2,10 @@ package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -12,6 +13,7 @@ import com.jfoenix.controls.JFXDatePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -20,8 +22,13 @@ import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SportTermin;
+import net.etfbl.hcc.model.SportUsluga;
 import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.view.gost.KorpaController;
+import net.etfbl.hcc.view.gost.RootGostController;
+import net.etfbl.hcc.view.gost.UslugaController;
+import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class SportController {
 	@FXML
@@ -34,12 +41,10 @@ public class SportController {
 	private Label brojacLabel;
 	
 	private Korpa korpa;
-	private List<SportskaOprema> meni;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
 	
 	public void initialize(){
-		meni= new ArrayList<>();
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 		
@@ -56,10 +61,13 @@ public class SportController {
 //			meni.add(o5);
 //		}
 		
-		meni = Client.getInstance().getSportskaOprema();
+		if(UslugaController.oprema==null)
+			UslugaController.oprema = Client.getInstance().getSportskaOprema();
 		
 		datumDatePicker.setValue(LocalDate.now());
-		
+		vrijemeComboBox.getItems().addAll("09:00","10:00","11:00","12:00","13:00","14:00","15:00",
+				"16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00");
+		vrijemeComboBox.setValue("09:00");
 		prikaziMeni();
 		brojacLabel.setText("");
 	}
@@ -91,13 +99,31 @@ public class SportController {
 	
 	@FXML
 	public void handleNaruci(){
-		
+		Date date = Date.from(datumDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		SportTermin termin = new SportTermin(0,date,vrijemeComboBox.getValue());
+		SportUsluga usluga = new SportUsluga(0,"Sport usluga",korpa.getUkupnaCijena()+10);
+		ArrayList<SportskaOprema> listaOpreme = new ArrayList<>();
+		for(Proizvod p : korpa.getListaProizvoda()){
+			listaOpreme.add((SportskaOprema) p);
+		}
+		usluga.setListaOpreme(listaOpreme);
+		usluga.setSportTermin(termin);
+		int returnValue = -1;
+		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
+			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
+		}
+		if(returnValue>0){
+			System.out.println(returnValue);
+		}
+		else{
+			System.out.println("Pogresan termin");		
+		}
 	}
 	
 	public void prikaziMeni(){
-		for(Proizvod p : meni){
+		for(Proizvod p : UslugaController.oprema){
 			StringBuilder tackeSb = new StringBuilder();
-			for(int i=0;i<45-p.getNaziv().length()-(p.getCijena()+"").length()-((SportskaOprema)p).getVelicina().length();i++){
+			for(int i=0;i<50-p.getNaziv().length()-(p.getCijena()+"").length()-((SportskaOprema)p).getVelicina().length();i++){
 				tackeSb.append(".");
 			}
 			Label label = new Label(p.getNaziv()+" vel. "+((SportskaOprema)p).getVelicina()+tackeSb.toString()+p.getCijena()+" EUR");
@@ -110,15 +136,11 @@ public class SportController {
 				else{
 					brojacLabel.setText(korpa.getListaProizvoda().size()+"");
 				}
-				handleOprema();
+//				handleOprema();
 			});
 			mapaLabelProizvod.put(label, p);
 			opremaVBox.getChildren().add(label);
 		}
-	}
-	
-	public List<SportskaOprema> getMeni(){
-		return meni;
 	}
 
 	public void setStackPane(StackPane stackPane) {

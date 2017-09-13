@@ -1,9 +1,7 @@
 package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javafx.fxml.FXML;
@@ -12,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.view.gost.KorpaController;
+import net.etfbl.hcc.view.gost.UslugaController;
 
 public class SobaController {
 	@FXML
@@ -26,12 +26,10 @@ public class SobaController {
 	private Label brojacLabel;
 	
 	private Korpa korpa;
-	private List<Proizvod> meni;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
 	
 	public void initialize(){
-		meni= new ArrayList<>();
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 		
@@ -48,7 +46,8 @@ public class SobaController {
 //			meni.add(p5);
 //		}
 		
-		meni = RestoranController.meni;
+		if(UslugaController.meni==null)
+			UslugaController.meni = Client.getInstance().getProizvodi();
 		
 		prikaziMeni();
 		brojacLabel.setText("");
@@ -90,7 +89,7 @@ public class SobaController {
 	}
 	
 	public void prikaziMeni(){
-		for(Proizvod p : meni){
+		for(Proizvod p : UslugaController.meni){
 			StringBuilder tackeSb = new StringBuilder();
 			for(int i=0;i<28-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
@@ -105,7 +104,7 @@ public class SobaController {
 				else{
 					brojacLabel.setText(korpa.getListaProizvoda().size()+"");
 				}
-				handleKorpa();
+//				handleKorpa();
 			});
 			mapaLabelProizvod.put(label, p);
 			if(p.getTip().equals("Hrana")){
@@ -115,10 +114,6 @@ public class SobaController {
 				piceVBox.getChildren().add(label);
 			}
 		}
-	}
-	
-	public List<Proizvod> getMeni(){
-		return meni;
 	}
 
 	public void setStackPane(StackPane stackPane) {

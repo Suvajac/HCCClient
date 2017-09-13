@@ -35,6 +35,8 @@ public class HeaderGostController {
 	    }
 
 	    public void handleLogout(){
+	    	UslugaController.meni = null;
+	    	UslugaController.oprema = null;
 	    	Client.getInstance().logout();
 	        stage.close();
 	    }
