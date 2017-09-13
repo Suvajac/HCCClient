@@ -17,8 +17,8 @@
                <children>
                   <Label styleClass="piceHranaLabel" text="Hrana" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0" />
                   <Label styleClass="piceHranaLabel" text="Piće" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="0.0" />
-                  <VBox fx:id="hranaVBox" prefWidth="230.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0" />
-                  <VBox fx:id="piceVBox" prefWidth="230.0" spacing="5.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0" />
+                  <VBox fx:id="hranaVBox" prefWidth="250.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0" />
+                  <VBox fx:id="piceVBox" prefWidth="250.0" spacing="5.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
          </content>

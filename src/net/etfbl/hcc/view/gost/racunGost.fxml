@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.RacunGostController">
-   <children>
-      <TableView fx:id="tabela" layoutX="107.0" layoutY="152.0" prefHeight="278.0" prefWidth="548.0" />
-      <Label layoutX="305.0" layoutY="107.0" text="FISKALNI RACUN">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="107.0" layoutY="449.0" text="UKUPNO:" />
-      <TextField fx:id="ukupno" layoutX="158.0" layoutY="445.0" />
-      <Label layoutX="299.0" layoutY="483.0" text="*HVALA DOĐITE OPET*">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="102.0" layoutY="54.0" text="HCC Application" />
-      <Label layoutX="107.0" layoutY="81.0" text="Patre 5" />
-   </children>
-</AnchorPane>
+<ScrollPane hbarPolicy="NEVER" prefHeight="568.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.RacunGostController">
+   <content>
+      <BorderPane fx:id="borderPane" prefHeight="568.0" prefWidth="1366.0">
+         <center>
+            <AnchorPane id="korpaAnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1000.0" stylesheets="@../../res/css/style.css">
+               <children>
+                  <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="453.0" layoutY="10.0" text="Račun" AnchorPane.topAnchor="10.0" />
+                     </children>
+                  </AnchorPane>
+                  <VBox fx:id="vBox" layoutY="70.0" prefHeight="200.0" prefWidth="600.0" styleClass="racunVBox" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+                     <padding>
+                        <Insets left="100.0" right="100.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Label fx:id="ukupnoLabel" layoutX="37.0" layoutY="434.0" styleClass="ukupnoLabel" text="Ukupno: " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0" />
+               </children>
+            </AnchorPane>
+         </center>
+         <padding>
+            <Insets bottom="35.0" top="15.0" />
+         </padding>
+      </BorderPane>
+   </content>
+</ScrollPane>

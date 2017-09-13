@@ -110,10 +110,10 @@ public class RestoranController {
 				handleKorpa();
 			});
 			mapaLabelProizvod.put(label, p);
-			if(p.getTip().equals("jelo")){
+			if(p.getTip().equals("Hrana")){
 				hranaVBox.getChildren().add(label);
 			}
-			else if(p.getTip().equals("pice")){	
+			else if(p.getTip().equals("Pice")){	
 				piceVBox.getChildren().add(label);
 			}
 		}

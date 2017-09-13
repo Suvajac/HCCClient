@@ -35,18 +35,20 @@ public class SobaController {
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 		
-		for(int i=0;i<5;i++){
-			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
-			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
-			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
-			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
-			Proizvod p5 = new Proizvod(5,"Hrana","Presnac",0.3);
-			meni.add(p1);
-			meni.add(p2);
-			meni.add(p3);
-			meni.add(p4);
-			meni.add(p5);
-		}
+//		for(int i=0;i<5;i++){
+//			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
+//			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
+//			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
+//			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
+//			Proizvod p5 = new Proizvod(5,"Hrana","Presnac",0.3);
+//			meni.add(p1);
+//			meni.add(p2);
+//			meni.add(p3);
+//			meni.add(p4);
+//			meni.add(p5);
+//		}
+		
+		meni = RestoranController.meni;
 		
 		prikaziMeni();
 		brojacLabel.setText("");
@@ -90,7 +92,7 @@ public class SobaController {
 	public void prikaziMeni(){
 		for(Proizvod p : meni){
 			StringBuilder tackeSb = new StringBuilder();
-			for(int i=0;i<20-p.getNaziv().length()-(p.getCijena()+"").length();i++){
+			for(int i=0;i<28-p.getNaziv().length()-(p.getCijena()+"").length();i++){
 				tackeSb.append(".");
 			}
 			Label label = new Label(p.getNaziv()+tackeSb.toString()+p.getCijena()+" EUR");

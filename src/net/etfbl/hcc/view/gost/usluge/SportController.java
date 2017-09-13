@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
@@ -33,7 +34,7 @@ public class SportController {
 	private Label brojacLabel;
 	
 	private Korpa korpa;
-	private List<Proizvod> meni;
+	private List<SportskaOprema> meni;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
 	
@@ -55,7 +56,7 @@ public class SportController {
 //			meni.add(o5);
 //		}
 		
-		meni = RestoranController.meni;
+		meni = Client.getInstance().getSportskaOprema();
 		
 		datumDatePicker.setValue(LocalDate.now());
 		
@@ -116,7 +117,7 @@ public class SportController {
 		}
 	}
 	
-	public List<Proizvod> getMeni(){
+	public List<SportskaOprema> getMeni(){
 		return meni;
 	}
 

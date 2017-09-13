@@ -224,6 +224,15 @@
 	-fx-font-weight:bold;
 }*/
 
+/**********************R A C U N**************************************/
+
+.racunVBox{
+	-fx-background-color:#ffffff;
+	-fx-border-width:0 0 1 0;
+	-fx-border-color:#173e43;
+}
+
+
 /**********************P O P U S T I**********************************/
 
 .popustiAnchorPane{
@@ -363,7 +372,7 @@
 #korpaAnchorPane .artikal{
 	-fx-font-size:18px;
 	-fx-border-width:0 0 1 0;
-	-fx-border-color:#173e43;
+	-fx-border-color:rgba(0,0,0,0.5);
 }
 
 #korpaAnchorPane .closeButton{
