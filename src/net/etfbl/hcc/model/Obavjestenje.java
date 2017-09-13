@@ -76,9 +76,9 @@ public class Obavjestenje implements Serializable{
 		return procitano;
 	}
 
-	public void setProcitano(boolean procitano) {
+	public void setProctiano(boolean procitano) {
 		this.procitano = procitano;
 	}
-	
+
 
 }

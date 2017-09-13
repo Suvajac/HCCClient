@@ -1,9 +1,10 @@
 package net.etfbl.hcc.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Korpa {
-	private ArrayList<Proizvod> listaProizvoda;
+	private List<Proizvod> listaProizvoda;
 	
 	public Korpa(){
 		listaProizvoda = new ArrayList<>();
@@ -50,11 +51,11 @@ public class Korpa {
 		return true;
 	}
 
-	public ArrayList<Proizvod> getListaProizvoda() {
+	public List<Proizvod> getListaProizvoda() {
 		return listaProizvoda;
 	}
 
-	public void setListaProizvoda(ArrayList<Proizvod> listaProizvoda) {
+	public void setListaProizvoda(List<Proizvod> listaProizvoda) {
 		this.listaProizvoda = listaProizvoda;
 	}
 }

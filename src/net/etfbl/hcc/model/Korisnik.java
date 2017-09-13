@@ -8,11 +8,11 @@ public class Korisnik implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected String username;
-	protected String ime;
-	protected String prezime;
-	protected String brojTelefona;
-	protected String lozinkaHash;
+	private String username;
+	private String ime;
+	private String prezime;
+	private String brojTelefona;
+	private String lozinkaHash;
 
 	public Korisnik() {
 	}
