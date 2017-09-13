@@ -13,7 +13,7 @@ import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
-public class PopustiRecepcionarController {
+public class PopustiRecepcionarController implements RefreshableController {
 	
 	private ObservableList<Popust> list;
 
@@ -51,8 +51,7 @@ public class PopustiRecepcionarController {
     	colAktivan.setCellValueFactory(
     			param -> new SimpleStringProperty(param.getValue().isAktivan() ? "Da" : "Ne"));
     	
-    	list = FXCollections.observableArrayList(Client.getInstance().getPopusti());
-    	table.setItems(list);
+    	refresh();
     }
 
     @FXML
@@ -81,6 +80,12 @@ public class PopustiRecepcionarController {
     		list.remove(popust);
     	}
     }
+    
+	@Override
+	public void refresh() {
+    	list = FXCollections.observableArrayList(Client.getInstance().getPopusti());
+    	table.setItems(list);
+	}
     
     /*
      * Postavlja vrijednosti polja na podrazumijevane.

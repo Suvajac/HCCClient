@@ -23,7 +23,7 @@ import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
-public class ObavjestenjaRecepcionarController {
+public class ObavjestenjaRecepcionarController implements RefreshableController {
 	
 	private ObservableList<Obavjestenje> list;
 
@@ -73,9 +73,14 @@ public class ObavjestenjaRecepcionarController {
 			return cell;
 		});
 
+		refresh();
+		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
+	}
+	
+	@Override
+	public void refresh() {
 		list = FXCollections.observableArrayList(Client.getInstance().getObavjestenja());
 		table.setItems(list);
-		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
 	}
 	
 	/*

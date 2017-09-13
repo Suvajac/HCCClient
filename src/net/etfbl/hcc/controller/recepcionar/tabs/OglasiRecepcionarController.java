@@ -23,7 +23,7 @@ import net.etfbl.hcc.model.Oglas;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
-public class OglasiRecepcionarController {
+public class OglasiRecepcionarController implements RefreshableController {
 	
 	private ObservableList<Oglas> list;
 
@@ -50,8 +50,7 @@ public class OglasiRecepcionarController {
 		colTekst.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getPoruka()));
 	
-		list = FXCollections.observableArrayList(Client.getInstance().getOglasi());
-		table.setItems(list);
+		refresh();
 		ColumnResizer.resize(new Double[] {30.0, 70.0}, table);
     }
 
@@ -68,7 +67,13 @@ public class OglasiRecepcionarController {
     		table.getItems().remove(oglas);
     	}
     }
-    
+
+	@Override
+	public void refresh() {
+		list = FXCollections.observableArrayList(Client.getInstance().getOglasi());
+		table.setItems(list);
+	}
+	
 	private class OglasDialog {
 
 		private Stage primaryStage;

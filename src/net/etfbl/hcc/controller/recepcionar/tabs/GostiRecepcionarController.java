@@ -23,7 +23,7 @@ import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
-public class GostiRecepcionarController {
+public class GostiRecepcionarController implements RefreshableController {
 
 	private ObservableList<Gost> list;
 	
@@ -80,8 +80,7 @@ public class GostiRecepcionarController {
 			return new SimpleStringProperty(TemporalStringConverters.toString(datum));
 		});
 
-		list = FXCollections.observableArrayList(Client.getInstance().getGosti());
-    	table.setItems(list);
+		refresh();
     }
     
     @FXML
@@ -98,6 +97,12 @@ public class GostiRecepcionarController {
     void handleRegistracija(ActionEvent event) {
     	loadDialog("Registracija gosta", "/net/etfbl/hcc/view/recepcionar/tabs/RegistracijaRecepcionarView.fxml");
     }
+    
+	@Override
+	public void refresh() {
+		list = FXCollections.observableArrayList(Client.getInstance().getGosti());
+    	table.setItems(list);
+	}
     
     /*
      * Ucitava dati fxml u novi dijalog i prikazuje ga. Vraca controller za dati fxml.

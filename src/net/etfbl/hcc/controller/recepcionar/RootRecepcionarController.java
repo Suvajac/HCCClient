@@ -12,6 +12,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
+import net.etfbl.hcc.controller.recepcionar.tabs.RefreshableController;
 
 public class RootRecepcionarController {
 
@@ -76,16 +77,22 @@ public class RootRecepcionarController {
 	 * Pomocna metoda za ucitavanje fxml fajlova u tabove ovog kontrolera.
 	 */
 	private void loadIntoTab(Tab tab, String fxml) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource(fxml));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+		Parent root = loader.load();
+		RefreshableController controller = loader.getController();
+		
 		AnchorPane pane = (AnchorPane) tab.getContent();
 		pane.getChildren().add(root);
 		AnchorPane.setBottomAnchor(root, 0.0);
 		AnchorPane.setLeftAnchor(root, 0.0);
 		AnchorPane.setRightAnchor(root, 0.0);
 		AnchorPane.setTopAnchor(root, 0.0);
-		if (tab.selectedProperty().get()) {
-			pane.getChildren().add(root);
-		}
+		
+		// Azuriraj podatke svaki put kada se otvori dati tab
+		tab.setOnSelectionChanged(e -> {
+			if (tab.selectedProperty().get())
+				controller.refresh();
+		});
 	}
 
 }

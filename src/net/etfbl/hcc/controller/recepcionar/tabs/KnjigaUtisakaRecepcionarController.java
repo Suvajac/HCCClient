@@ -14,7 +14,7 @@ import net.etfbl.hcc.model.Utisak;
 import net.etfbl.hcc.util.ColumnResizer;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
-public class KnjigaUtisakaRecepcionarController {
+public class KnjigaUtisakaRecepcionarController implements RefreshableController {
 	
 	private ObservableList<Utisak> list;
 
@@ -43,8 +43,7 @@ public class KnjigaUtisakaRecepcionarController {
     	colTekst.setCellValueFactory(
     			new PropertyValueFactory<>("tekst"));
     	
-    	list = FXCollections.observableArrayList(Client.getInstance().getUtisci());
-    	table.setItems(list);
+    	refresh();
     	ColumnResizer.resize(new Double[]{25.0, 25.0, 50.0}, table);
     			
     }
@@ -56,6 +55,12 @@ public class KnjigaUtisakaRecepcionarController {
     		list.remove(utisak);
     	}
     }
+
+	@Override
+	public void refresh() {
+    	list = FXCollections.observableArrayList(Client.getInstance().getUtisci());
+    	table.setItems(list);
+	}
 
 }
 

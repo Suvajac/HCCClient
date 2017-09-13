@@ -15,7 +15,7 @@ import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
-public class ProizvodiRecepcionarController {
+public class ProizvodiRecepcionarController implements RefreshableController {
 
 	private ObservableList<Proizvod> list;
 	
@@ -58,8 +58,7 @@ public class ProizvodiRecepcionarController {
 		
 		cmbTip.getItems().addAll("Hrana", "Pice", "Higijensko sredstvo");
 
-		list = FXCollections.observableArrayList(Client.getInstance().getProizvodi());
-		table.setItems(list);
+		refresh();
 	}
 
 	@FXML
@@ -84,6 +83,12 @@ public class ProizvodiRecepcionarController {
 		if (proizvod != null && Client.getInstance().obrisiProizvod(proizvod)) {
 			list.remove(proizvod);
 		}
+	}
+	
+	@Override
+	public void refresh() {
+		list = FXCollections.observableArrayList(Client.getInstance().getProizvodi());
+		table.setItems(list);
 	}
 	
 	/*
