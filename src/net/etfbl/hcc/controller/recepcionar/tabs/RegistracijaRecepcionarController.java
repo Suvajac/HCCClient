@@ -45,7 +45,7 @@ public class RegistracijaRecepcionarController {
     
     @FXML
     void initialize() {
-    	cbBrojKreveta.getItems().addAll(1, 2, 3, 4);
+    	cbBrojKreveta.getItems().addAll(1, 2, 3, 4, 5, 6);
 		dpDatumOd.setConverter(TemporalStringConverters.getLocalDateConverter());
 		dpDatumDo.setConverter(TemporalStringConverters.getLocalDateConverter());
 		clearFields();

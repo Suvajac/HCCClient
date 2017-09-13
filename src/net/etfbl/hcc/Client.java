@@ -84,15 +84,15 @@ public class Client {
 	
 	/******************************* GOSTI ******************************/
 	
-	public ArrayList<Gost> getGosti() {
+	public ArrayList<Registracija> getRegistracije() {
 		try {
-			ProtokolPoruka ppout = new ProtokolPoruka("Gost.getKorisnike");
+			ProtokolPoruka ppout = new ProtokolPoruka("Registracija.getRegistracije");
 			out.reset();
 			out.writeObject(ppout);
 			out.flush();
 			
 			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
-			ArrayList<Gost> lista = (ArrayList<Gost>) ppin.getListaObjekata().get(0);
+			ArrayList<Registracija> lista = (ArrayList<Registracija>) ppin.getListaObjekata().get(0);
 			return lista;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();

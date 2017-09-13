@@ -16,40 +16,40 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Gost;
+import net.etfbl.hcc.model.Registracija;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class GostiRecepcionarController implements RefreshableController {
 
-	private ObservableList<Gost> list;
+	private ObservableList<Registracija> list;
 	
 	@FXML
-	private TableView<Gost> table;
+	private TableView<Registracija> table;
 	
     @FXML
-    private TableColumn<Gost, String> colIme;
+    private TableColumn<Registracija, String> colIme;
 
     @FXML
-    private TableColumn<Gost, String> colPrezime;
+    private TableColumn<Registracija, String> colPrezime;
 
     @FXML
-    private TableColumn<Gost, String> colUsername;
+    private TableColumn<Registracija, String> colUsername;
 
     @FXML
-    private TableColumn<Gost, String> colBrojTelefona;
+    private TableColumn<Registracija, String> colBrojTelefona;
 
     @FXML
-    private TableColumn<Gost, String> colBrojSobe;
+    private TableColumn<Registracija, String> colBrojSobe;
 
     @FXML
-    private TableColumn<Gost, String> colDatumOd;
+    private TableColumn<Registracija, String> colDatumOd;
 
     @FXML
-    private TableColumn<Gost, String> colDatumDo;
+    private TableColumn<Registracija, String> colDatumDo;
 
     @FXML
     private Button btnRacun;
@@ -61,31 +61,32 @@ public class GostiRecepcionarController implements RefreshableController {
     void initialize() {
     	
     	colIme.setCellValueFactory(
-    			new PropertyValueFactory<>("ime"));
+    			param -> new SimpleStringProperty(param.getValue().getGost().getIme()));
     	colPrezime.setCellValueFactory(
-    			new PropertyValueFactory<>("prezime"));
+    			param -> new SimpleStringProperty(param.getValue().getGost().getPrezime()));
     	colUsername.setCellValueFactory(
-    			new PropertyValueFactory<>("username"));
+    			param -> new SimpleStringProperty(param.getValue().getGost().getUsername()));
     	colBrojTelefona.setCellValueFactory(
-    			new PropertyValueFactory<>("brojTelefona"));
-    	colBrojSobe.setCellValueFactory(param -> 
-    			new SimpleStringProperty("" + param.getValue().getSoba().getBrSobe())
-		);
-		colDatumOd.setCellValueFactory(param -> {
-			LocalDate datum = ((Date)param.getValue().getDatumOd()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-			return new SimpleStringProperty(TemporalStringConverters.toString(datum));
-		});
-		colDatumDo.setCellValueFactory(param -> {
-			LocalDate datum = ((Date)param.getValue().getDatumDo()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-			return new SimpleStringProperty(TemporalStringConverters.toString(datum));
-		});
+    			param -> new SimpleStringProperty(param.getValue().getGost().getBrojTelefona()));
+    	colBrojSobe.setCellValueFactory(
+    			param -> new SimpleStringProperty("" + param.getValue().getSoba().getBrSobe()));
+		colDatumOd.setCellValueFactory(
+				param -> {
+					LocalDate datum = ((Date)param.getValue().getDatumOd()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					return new SimpleStringProperty(TemporalStringConverters.toString(datum));
+				});
+		colDatumDo.setCellValueFactory(
+				param -> {
+					LocalDate datum = ((Date)param.getValue().getDatumDo()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					return new SimpleStringProperty(TemporalStringConverters.toString(datum));
+				});
 
 		refresh();
     }
     
     @FXML
     void handleRacun(ActionEvent event) {
-    	Gost gost = table.getSelectionModel().getSelectedItem();
+    	Gost gost = table.getSelectionModel().getSelectedItem().getGost();
     	if (gost != null) {
 	    	RacunRecepcionarController controller = 
 	    			loadDialog("Racun", "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
@@ -100,7 +101,7 @@ public class GostiRecepcionarController implements RefreshableController {
     
 	@Override
 	public void refresh() {
-		list = FXCollections.observableArrayList(Client.getInstance().getGosti());
+		list = FXCollections.observableArrayList(Client.getInstance().getRegistracije());
     	table.setItems(list);
 	}
     
