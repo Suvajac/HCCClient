@@ -23,7 +23,6 @@ public class Obavjestenje implements Serializable{
 	}
 
 	public Obavjestenje(String tekst, LocalDateTime datum, boolean procitano) {
-		this.idObavjestenje = idObavjestenje;
 		this.tekst = tekst;
 		this.datum = datum;
 		this.procitano = procitano;
