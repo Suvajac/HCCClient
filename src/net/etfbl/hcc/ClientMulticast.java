@@ -6,6 +6,8 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.ArrayList;
 
+import org.controlsfx.control.Notifications;
+
 import net.etfbl.hcc.model.Obavjestenje;
 import net.etfbl.hcc.util.ConnectionProperty;
 import net.etfbl.hcc.util.TemporalStringConverters;
@@ -24,6 +26,10 @@ public class ClientMulticast extends Thread {
                 DatagramPacket msgPacket = new DatagramPacket(buf, buf.length);
                 clientSocket.receive(msgPacket);
                 String msg = new String(msgPacket.getData(), msgPacket.getOffset(), msgPacket.getLength());
+                Notifications.create()
+                	.title("Obavjestenje")
+                	.text("Imate novo neprocitano obavjestenje!")
+                	.showInformation();
                 System.out.println("stiglo");
                 listaObavjestenja.add(new Obavjestenje(msg.split("#")[0],
                 		TemporalStringConverters.parseToLocalDateTime(msg.split("#")[1]),false));

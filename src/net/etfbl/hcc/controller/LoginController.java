@@ -1,6 +1,7 @@
 package net.etfbl.hcc.controller;
 
 import net.etfbl.hcc.Client;
+import net.etfbl.hcc.ClientMulticast;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.controller.recepcionar.RootRecepcionarController;
 import net.etfbl.hcc.model.Gost;
@@ -29,10 +30,10 @@ public class LoginController {
 	private JFXPasswordField passwordPasswordField;
 	@FXML
 	private Label nevalidanLoginLabel;
-	
+
 	private ResourceBundle rb;
 	private String localeString;
-	
+
 	@FXML
 	private void initialize() {
 		setRS();
@@ -41,7 +42,7 @@ public class LoginController {
 
 	private Stage primaryStage;
 
-	public void handleLogin() throws IOException {		
+	public void handleLogin() throws IOException {
 		if(usernameTextField.getText().equals("g")){
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"),rb);
 			BorderPane borderPane = loader.load();
@@ -52,8 +53,8 @@ public class LoginController {
 			controller.setStage(stage);
 			controller.setLoginController(this);
 			controller.init();
-			
-			
+
+
 			Scene scene = new Scene(borderPane);
 
 			stage.setScene(scene);
@@ -63,12 +64,14 @@ public class LoginController {
 		else if(usernameTextField.getText().equals("r")){
 			Parent root = FXMLLoader.load(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
 			Scene scene = new Scene(root);
-			
+
+			new ClientMulticast().start();
+
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.show();
 		}
-		
+
 		Korisnik k = new Korisnik(usernameTextField.getText(), null, null, null, passwordPasswordField.getText().hashCode()+"");
 		Korisnik ulogovanKorisnik = Client.getInstance().login(k);
 		if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Gost){
@@ -81,8 +84,8 @@ public class LoginController {
 			controller.setStage(stage);
 			controller.setLoginController(this);
 			controller.init();
-			
-			
+
+
 			Scene scene = new Scene(stackPane);
 
 			stage.setScene(scene);
@@ -97,26 +100,26 @@ public class LoginController {
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			
+
 			RootRecepcionarController controller = loader.getController();
 			controller.setTrenutniKorisnik(ulogovanKorisnik.getUsername());
 			controller.setPrimaryStage(stage);
-			
+
 			stage.show();
 			nevalidanLoginLabel.setVisible(false);
-		} 
+		}
 		else {
 			nevalidanLoginLabel.setVisible(true);
 		}
-		
+
 	}
-	
+
 	public void setEn(){
 		localeString = "en";
 		Locale locale = new Locale(localeString, "EN");
 		rb= ResourceBundle.getBundle("net/etfbl/hcc/util/MessagesBundle",locale);
 	}
-	
+
 	public void setRS(){
 		localeString = "rs";
 		Locale locale = new Locale(localeString, "RS");
@@ -142,5 +145,5 @@ public class LoginController {
 	public void setLocaleString(String localeString) {
 		this.localeString = localeString;
 	}
-	
+
 }
