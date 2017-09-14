@@ -18,6 +18,7 @@ public class Gost extends Korisnik implements Serializable{
 
 	public Gost(String username, String ime, String prezime, String brojTelefona, String lozinkaHash) {
 		super(username, ime, prezime, brojTelefona, lozinkaHash);
+		// TODO Auto-generated constructor stub
 		usluge=new ArrayList<Usluga>();
 		racun=null;
 	}

@@ -1,10 +1,6 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,17 +15,16 @@ import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
-import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Registracija;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class GostiRecepcionarController implements RefreshableController {
 
 	private ObservableList<Registracija> list;
-	
+
 	@FXML
 	private TableView<Registracija> table;
-	
+
     @FXML
     private TableColumn<Registracija, String> colIme;
 
@@ -53,13 +48,13 @@ public class GostiRecepcionarController implements RefreshableController {
 
     @FXML
     private Button btnRacun;
-    
+
     @FXML
     private Button btnRegistracija;
-    
+
     @FXML
     void initialize() {
-    	
+
     	colIme.setCellValueFactory(
     			param -> new SimpleStringProperty(param.getValue().getGost().getIme()));
     	colPrezime.setCellValueFactory(
@@ -71,26 +66,20 @@ public class GostiRecepcionarController implements RefreshableController {
     	colBrojSobe.setCellValueFactory(
     			param -> new SimpleStringProperty("" + param.getValue().getSoba().getBrSobe()));
 		colDatumOd.setCellValueFactory(
-				param -> {
-					LocalDate datum = ((Date)param.getValue().getDatumOd()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-					return new SimpleStringProperty(TemporalStringConverters.toString(datum));
-				});
+				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatumOd())));
 		colDatumDo.setCellValueFactory(
-				param -> {
-					LocalDate datum = ((Date)param.getValue().getDatumDo()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-					return new SimpleStringProperty(TemporalStringConverters.toString(datum));
-				});
+				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatumDo())));
 
 		refresh();
     }
-    
+
     @FXML
     void handleRacun(ActionEvent event) {
-    	Gost gost = table.getSelectionModel().getSelectedItem().getGost();
-    	if (gost != null) {
-	    	RacunRecepcionarController controller = 
+    	Registracija registracija = table.getSelectionModel().getSelectedItem();
+    	if (registracija != null) {
+	    	RacunRecepcionarController controller =
 	    			loadDialog("Racun", "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
-	    	controller.ucitajRacun(gost);
+	    	controller.ucitajRacun(registracija.getGost());
     	}
     }
 
@@ -98,13 +87,13 @@ public class GostiRecepcionarController implements RefreshableController {
     void handleRegistracija(ActionEvent event) {
     	loadDialog("Registracija gosta", "/net/etfbl/hcc/view/recepcionar/tabs/RegistracijaRecepcionarView.fxml");
     }
-    
+
 	@Override
 	public void refresh() {
 		list = FXCollections.observableArrayList(Client.getInstance().getRegistracije());
     	table.setItems(list);
 	}
-    
+
     /*
      * Ucitava dati fxml u novi dijalog i prikazuje ga. Vraca controller za dati fxml.
      */

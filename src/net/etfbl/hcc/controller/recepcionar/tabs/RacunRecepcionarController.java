@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -51,6 +52,7 @@ public class RacunRecepcionarController {
     
     @FXML
     private Button btnZatvori;    
+    
     @FXML
     void initialize() {
     	
@@ -67,17 +69,20 @@ public class RacunRecepcionarController {
 
     @FXML
     void handlePlati(ActionEvent event) {
-		Racun racun = gost.getRacun();
-		if (!racun.isPlacen()) {
-			if (Client.getInstance().platiRacun(racun)) {
-				racun.setPlacen(true);
-				Dialogs.showInfoDialog("Poruka", "Racun placen",
-						"Racun za gosta " + gost.getIme() + " " + gost.getPrezime() + " je uspjesno placen!");
+    	ButtonType type = Dialogs.showConfirmationDialog("Potvrda", "Potvrda", "Da li zaista zelite da naplatite racun?");
+    	if (ButtonType.OK.equals(type)) {
+			Racun racun = gost.getRacun();
+			if (!racun.isPlacen()) {
+				if (Client.getInstance().platiRacun(racun)) {
+					racun.setPlacen(true);
+					Dialogs.showInfoDialog("Informacija", "Informacija",
+							"Racun za gosta \"" + gost.getIme() + " " + gost.getPrezime() + "\" je uspjesno placen!");
+				}
+			} else {
+				Dialogs.showInfoDialog("Informacija", "Informacija",
+						"Racun za gosta \"" + gost.getIme() + " " + gost.getPrezime() + "\" je vec placen!");
 			}
-		} else {
-			Dialogs.showInfoDialog("Poruka", "Racun placen",
-					"Racun za gosta " + gost.getIme() + " " + gost.getPrezime() + " je vec placen!");
-		}	
+    	}
     }
     
     @FXML

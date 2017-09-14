@@ -102,7 +102,9 @@ public class Client {
 	
 	public boolean platiRacun(Racun r) {
 		try {
-			ProtokolPoruka ppout = new ProtokolPoruka("Racun.azuriraj");
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(r);
+			ProtokolPoruka ppout = new ProtokolPoruka("Racun.plati", lista);
 			out.reset();
 			out.writeObject(ppout);
 			out.flush();
