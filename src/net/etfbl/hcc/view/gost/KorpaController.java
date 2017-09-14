@@ -1,5 +1,6 @@
 package net.etfbl.hcc.view.gost;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,20 +9,19 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import net.etfbl.hcc.Client;
+import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korpa;
 import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.model.SobnaUsluga;
 import net.etfbl.hcc.model.SportskaOprema;
-import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class KorpaController implements Initializable{
 	@FXML
@@ -154,14 +154,21 @@ public class KorpaController implements Initializable{
 	public void handleNaruci(){
 		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Dostava");
 		usluga.setListaProizvoda(korpa.getListaProizvoda());
-		int returnValue = -1;
-		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
-			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
-			System.out.println(usluga.getCijena());
-		}
-		if(returnValue>0){
-			System.out.println(returnValue);
-			handleClose();
+		
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
+			AnchorPane alertAnchorPane;
+			alertAnchorPane = (AnchorPane) loader.load();
+			
+			PotvrdaAlertController controller = loader.getController();
+			controller.setStackPane(stackPane);
+			controller.setAnchorPane(alertAnchorPane);
+			controller.setUsluga(usluga);
+			
+			stackPane.getChildren().add(alertAnchorPane);
+			alertAnchorPane.toFront();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -195,6 +202,4 @@ public class KorpaController implements Initializable{
 			brojacLabel.setText(korpa.getListaProizvoda().size()+"");
 		}
 	}
-	
-	
 }

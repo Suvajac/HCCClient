@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 ServerIpAdress=10.99.178.240
 ServerTCPPort=9001
 MulticastIpAdress=224.0.0.11
 MulticastPort=20000
+=======
+ServerIpAdress=192.168.43.181
+ServerTCPPort=9001
+MulticastIpAdress=224.0.0.11
+MulticastPort=20000
+>>>>>>> branch 'master' of https://github.com/Suvajac/HCCClient.git

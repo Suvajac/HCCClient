@@ -19,6 +19,7 @@ import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.view.gost.usluge.RestoranController;
 import net.etfbl.hcc.view.gost.usluge.SobaController;
 import net.etfbl.hcc.view.gost.usluge.SportController;
+import net.etfbl.hcc.view.gost.usluge.WellnessController;
 
 public class UslugaController implements Initializable{
 	@FXML
@@ -90,10 +91,15 @@ public class UslugaController implements Initializable{
 	  	addClassOnButton(sportButton);
   }
 
-  public void handleWellnessButton() throws Exception{
-      AnchorPane sportAnchorPane = (AnchorPane) FXMLLoader.load(Main.class.getResource("view/gost/usluge/wellness.fxml"),rb);
-      infoAnchorPane.getChildren().clear();
-      infoAnchorPane.getChildren().add(sportAnchorPane);
+  public void handleWellnessButton() throws Exception{      
+      FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/usluge/wellness.fxml"),rb);
+	  AnchorPane wellnessAnchorPane = (AnchorPane) loader.load();
+	  	
+	  WellnessController controller = loader.getController();
+	  controller.setStackPane(stackPane);
+	  
+	  infoAnchorPane.getChildren().clear();
+      infoAnchorPane.getChildren().add(wellnessAnchorPane);
       addClassOnButton(wellnessButton);
   }
 

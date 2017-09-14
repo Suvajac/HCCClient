@@ -30,6 +30,7 @@ import net.etfbl.hcc.model.SportTermin;
 import net.etfbl.hcc.model.SportUsluga;
 import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.view.gost.KorpaController;
+import net.etfbl.hcc.view.gost.PotvrdaAlertController;
 import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
@@ -130,15 +131,21 @@ public class SportController implements Initializable{
 		}
 		usluga.setListaOpreme(listaOpreme);
 		usluga.setSportTermin(termin);
-		int returnValue = -1;
-		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
-			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
-		}
-		if(returnValue>0){
-			System.out.println(returnValue);
-		}
-		else{
-			System.out.println("Pogresan termin");		
+		
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
+			AnchorPane alertAnchorPane;
+			alertAnchorPane = (AnchorPane) loader.load();
+			
+			PotvrdaAlertController controller = loader.getController();
+			controller.setStackPane(stackPane);
+			controller.setAnchorPane(alertAnchorPane);
+			controller.setUsluga(usluga);
+			
+			stackPane.getChildren().add(alertAnchorPane);
+			alertAnchorPane.toFront();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

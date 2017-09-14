@@ -27,6 +27,7 @@ import net.etfbl.hcc.model.Proizvod;
 import net.etfbl.hcc.model.UslugaRestorana;
 import net.etfbl.hcc.util.TemporalStringConverters;
 import net.etfbl.hcc.view.gost.KorpaController;
+import net.etfbl.hcc.view.gost.PotvrdaAlertController;
 import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
@@ -156,13 +157,21 @@ public class RestoranController implements Initializable{
 		String vrijeme = TemporalStringConverters.toString(vrijemeTimePicker.getValue());
 		UslugaRestorana usluga = new UslugaRestorana(0,"Usluga restorana",korpa.getUkupnaCijena(),vrijeme,brojStolicaComboBox.getValue());
 		usluga.setListaProizvoda(korpa.getListaProizvoda());
-		int returnValue = -1;
-		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
-			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
-			System.out.println(usluga.getCijena());
-		}
-		if(returnValue>0){
-			System.out.println(returnValue);
+	
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
+			AnchorPane alertAnchorPane;
+			alertAnchorPane = (AnchorPane) loader.load();
+			
+			PotvrdaAlertController controller = loader.getController();
+			controller.setStackPane(stackPane);
+			controller.setAnchorPane(alertAnchorPane);
+			controller.setUsluga(usluga);
+			
+			stackPane.getChildren().add(alertAnchorPane);
+			alertAnchorPane.toFront();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

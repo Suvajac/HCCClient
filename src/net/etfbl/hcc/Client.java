@@ -84,6 +84,24 @@ public class Client {
 	
 	/******************************* GOSTI ******************************/
 	
+	public Registracija dodajRegistraciju(Registracija r) {
+		try {
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(r);
+			ProtokolPoruka ppout = new ProtokolPoruka("Registracija.dodaj", lista);
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			return (Registracija) ppin.getListaObjekata().get(0);
+			
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public ArrayList<Registracija> getRegistracije() {
 		try {
 			ProtokolPoruka ppout = new ProtokolPoruka("Registracija.getRegistracije");
@@ -450,9 +468,30 @@ public class Client {
 		return null;
 	}
 	
-/********************************************************************/
+	/********************************************************************/
 	
-	/****************************** UTISCI *****************************/
+	/******************************* SOBE *******************************/
+	
+	public ArrayList<Soba> getSlobodneSobe() {
+		try{
+			ProtokolPoruka ppout = new ProtokolPoruka("Soba.getSlobodneSobe");
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			ArrayList<Soba> lista = (ArrayList<Soba>) ppin.getListaObjekata().get(0);
+			return lista;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/********************************************************************/
+	
+	/****************************** UTISCI ******************************/
 	
 	//Prijem
 	//Prvi-termin true false
@@ -492,4 +531,6 @@ public class Client {
 		}
 		return -1;
 	}
+	
+	/********************************************************************/
 }

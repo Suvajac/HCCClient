@@ -1,5 +1,6 @@
 package net.etfbl.hcc.view.gost.usluge;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -9,14 +10,19 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXDatePicker;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import net.etfbl.hcc.Client;
+import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.WellnessTermin;
 import net.etfbl.hcc.model.WellnessUsluga;
+import net.etfbl.hcc.view.gost.PotvrdaAlertController;
 import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
@@ -34,7 +40,11 @@ public class WellnessController implements Initializable{
 	@FXML
 	private Button naruciButton;
 	
+	private StackPane stackPane;
+	private ResourceBundle rb;
+	
 	public void initialize(URL url,ResourceBundle rb){
+		this.rb = rb;
 		wellnessTerminLabel.setText(rb.getString("wellnessTerminLabel"));
 		datumLabel.setText(rb.getString("datumLabel"));
 		vrijemeLabel.setText(rb.getString("vrijemeLabel"));
@@ -51,15 +61,27 @@ public class WellnessController implements Initializable{
 		WellnessTermin termin = new WellnessTermin(0,date,vrijemeComboBox.getValue());
 		WellnessUsluga usluga = new WellnessUsluga(0,"Wellness usluga",40);
 		usluga.setWellnessTermin(termin);
-		int returnValue = -1;
-		if(Dialogs.showConfirmationDialog("Conf", "asdasd", "asdas").equals(ButtonType.OK)){
-			returnValue = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
-		}
-		if(returnValue>0){
-			System.out.println(returnValue);
-		}
-		else{
-			System.out.println("Pogresan termin");		
+		
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
+			AnchorPane alertAnchorPane;
+			alertAnchorPane = (AnchorPane) loader.load();
+			
+			PotvrdaAlertController controller = loader.getController();
+			controller.setStackPane(stackPane);
+			controller.setAnchorPane(alertAnchorPane);
+			controller.setUsluga(usluga);
+			
+			stackPane.getChildren().add(alertAnchorPane);
+			alertAnchorPane.toFront();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
+
+	public void setStackPane(StackPane stackPane) {
+		this.stackPane = stackPane;
+	}
+	
+	
 }
