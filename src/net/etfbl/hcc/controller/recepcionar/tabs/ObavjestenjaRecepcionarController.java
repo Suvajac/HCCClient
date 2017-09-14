@@ -63,8 +63,8 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 						setGraphic(null);
 						setText(null);
 					} else {
-						Obavjestenje o = getTableView().getItems().get(getIndex());
-						btnDetaljno.setOnAction(event -> handleShow(o));
+						Obavjestenje obavjestenje = getTableView().getItems().get(getIndex());
+						btnDetaljno.setOnAction(event -> handleShow(obavjestenje));
 						setGraphic(btnDetaljno);
 						setText(null);
 					}
@@ -86,11 +86,11 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 	/*
 	 * Prikazuje dato obavjestenje u novom dijalogu.
 	 */
-	private void handleShow(Obavjestenje o) {
-		if (Client.getInstance().procitajObavjestenje(o)) {
-			o.setProcitano(true);
+	private void handleShow(Obavjestenje obavjestenje) {
+		if (Client.getInstance().procitajObavjestenje(obavjestenje)) {
+			obavjestenje.setProcitano(true);
 			table.refresh();
-			ObavjestenjeDialog dialog = new ObavjestenjeDialog(o);
+			ObavjestenjeDialog dialog = new ObavjestenjeDialog(obavjestenje);
 			dialog.showAndWait();
 		}
 	}

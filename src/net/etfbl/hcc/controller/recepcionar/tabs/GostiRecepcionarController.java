@@ -1,10 +1,6 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
-import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Registracija;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
@@ -71,24 +66,20 @@ public class GostiRecepcionarController implements RefreshableController {
     	colBrojSobe.setCellValueFactory(
     			param -> new SimpleStringProperty("" + param.getValue().getSoba().getBrSobe()));
 		colDatumOd.setCellValueFactory(
-				param -> {
-					return new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatumOd()));
-				});
+				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatumOd())));
 		colDatumDo.setCellValueFactory(
-				param -> {
-					return new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatumDo()));
-				});
+				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatumDo())));
 
 		refresh();
     }
 
     @FXML
     void handleRacun(ActionEvent event) {
-    	Gost gost = table.getSelectionModel().getSelectedItem().getGost();
-    	if (gost != null) {
+    	Registracija registracija = table.getSelectionModel().getSelectedItem();
+    	if (registracija != null) {
 	    	RacunRecepcionarController controller =
 	    			loadDialog("Racun", "/net/etfbl/hcc/view/recepcionar/tabs/RacunRecepcionarView.fxml");
-	    	controller.ucitajRacun(gost);
+	    	controller.ucitajRacun(registracija.getGost());
     	}
     }
 

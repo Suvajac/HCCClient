@@ -17,7 +17,7 @@ import net.etfbl.hcc.controller.recepcionar.tabs.RefreshableController;
 public class RootRecepcionarController {
 
 	@FXML
-	private AnchorPane root;
+	private Stage primaryStage;
 	
 	@FXML
 	private Label lblTrenutniKorisnik;
@@ -65,12 +65,21 @@ public class RootRecepcionarController {
 
 	@FXML
 	void handleLogout(ActionEvent event) {
-		Client.getInstance().logout();
-		((Stage) root.getScene().getWindow()).close();
+		logout();
 	}
 	
 	public void setTrenutniKorisnik(String username) {
 		lblTrenutniKorisnik.setText(username);
+	}
+	
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+		primaryStage.setOnCloseRequest(value -> logout());
+	}
+	
+	private void logout() {
+		Client.getInstance().logout();
+		primaryStage.close();
 	}
 	
 	/*

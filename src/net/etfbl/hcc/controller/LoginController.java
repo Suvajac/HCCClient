@@ -85,12 +85,15 @@ public class LoginController {
 		else if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Recepcionar){
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
 			Parent root = loader.load();
-			RootRecepcionarController controller = loader.getController();
-			controller.setTrenutniKorisnik(ulogovanKorisnik.getUsername());
-			
+
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);
+			
+			RootRecepcionarController controller = loader.getController();
+			controller.setTrenutniKorisnik(ulogovanKorisnik.getUsername());
+			controller.setPrimaryStage(stage);
+			
 			stage.show();
 			nevalidanLoginLabel.setVisible(false);
 		} 

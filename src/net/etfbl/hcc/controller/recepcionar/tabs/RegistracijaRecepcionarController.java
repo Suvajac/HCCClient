@@ -1,6 +1,10 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,10 +12,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import net.etfbl.hcc.model.Registracija;
 import net.etfbl.hcc.util.TemporalStringConverters;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class RegistracijaRecepcionarController {
+	
+	private ObservableList<Registracija> registracije;
 
     @FXML
     private TextField tfKorisnickoIme;
@@ -58,6 +65,10 @@ public class RegistracijaRecepcionarController {
     	}
 		pfLozinka.setText("");
 		pfPotvrdiLozinku.setText("");
+    }
+    
+    public void setRegistracije(List<Registracija> registracije) {
+    	this.registracije = FXCollections.observableArrayList(registracije);
     }
     
     /*
