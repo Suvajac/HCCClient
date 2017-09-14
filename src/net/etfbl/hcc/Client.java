@@ -116,6 +116,27 @@ public class Client {
 		return false;
 	}
 	
+	public boolean promjenaLozinke(Gost gost){
+		try{
+			ArrayList<Object> lista = new ArrayList<>();
+			lista.add(gost);
+			ProtokolPoruka ppout = new ProtokolPoruka("Gost.azuriraj",lista);
+			ppout.setListaObjekata(lista);
+			
+			out.reset();
+			out.writeObject(ppout);
+			out.flush();
+			
+			ProtokolPoruka ppin = (ProtokolPoruka) in.readObject();
+			boolean returnValue = (boolean) ppin.getListaObjekata().get(0);
+			return returnValue;
+		}
+		catch(IOException | ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	/********************************************************************/
 	
 	/****************************** UTISCI ******************************/

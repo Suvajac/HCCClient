@@ -381,7 +381,19 @@
 	-fx-border-color:#173e43;
 }
 
+/*******************************S E T T I N G S**********************************/
 
+.settingsPane{
+	
+}
+
+.settingsPane Label{
+	-fx-font-size:20px;
+}
+
+.settingsPane JFXPasswordField{
+	-fx-font-size:20px;
+}
 
 
 
