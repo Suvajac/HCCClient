@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="korpaAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="600.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.PotvrdaAlertController">
+   <children>
+      <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="potvrdaLabel" layoutX="240.0" layoutY="9.0" text="Potvrda" AnchorPane.topAnchor="9.0" />
+            <JFXButton onAction="#handleNe" styleClass="closeButton" text=" X " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="70.0" prefHeight="360.0" prefWidth="600.0" styleClass="settingsPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <JFXButton fx:id="daButton" buttonType="RAISED" layoutX="234.0" layoutY="278.0" onAction="#handleDa" prefHeight="48.0" prefWidth="120.0" styleClass="dodajUtisakButtons" text="Da" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="220.0" />
+            <JFXButton fx:id="neButton" buttonType="RAISED" layoutX="429.0" layoutY="278.0" onAction="#handleNe" prefHeight="48.0" prefWidth="120.0" styleClass="dodajUtisakButtons" text="Ne" AnchorPane.rightAnchor="70.0" />
+            <Label fx:id="statusLabel" layoutX="70.0" layoutY="191.0" prefHeight="30.0" prefWidth="508.0" wrapText="true" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="170.0" />
+            <Label fx:id="tekstLabel" layoutX="66.0" layoutY="61.0" prefHeight="120.0" prefWidth="508.0" text="Label" wrapText="true" AnchorPane.topAnchor="50.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
