@@ -22,6 +22,13 @@ public class Obavjestenje implements Serializable{
 		this.procitano = procitano;
 	}
 
+	public Obavjestenje(String tekst, LocalDateTime datum, boolean procitano) {
+		this.idObavjestenje = idObavjestenje;
+		this.tekst = tekst;
+		this.datum = datum;
+		this.procitano = procitano;
+	}
+
 	public Obavjestenje() {
 		// TODO Auto-generated constructor stub
 	}
