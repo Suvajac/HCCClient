@@ -1,24 +1,36 @@
 package net.etfbl.hcc.view.gost;
 
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextArea;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Utisak;
 
-public class DodajUtisakController {
+public class DodajUtisakController implements Initializable{
 	@FXML
 	private JFXTextArea textArea;
+	
+	@FXML
+	private Button dodajButton;
+	@FXML
+	private Button otkaziButton;
 	
 	KnjigaUtisakaGostController controller;
 	private AnchorPane anchorPane;
 	
-	public void initialize(){
+	public void initialize(URL url,ResourceBundle rb){
+		dodajButton.setText(rb.getString("dodajButton"));
+		otkaziButton.setText(rb.getString("otkaziButton"));
+		
 		Platform.runLater(() -> {
 			textArea.requestFocus();
 		});

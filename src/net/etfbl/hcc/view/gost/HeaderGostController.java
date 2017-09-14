@@ -1,19 +1,23 @@
 package net.etfbl.hcc.view.gost;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.controller.LoginController;
 
-public class HeaderGostController {
+public class HeaderGostController implements Initializable{
 	 @FXML
 	 private JFXButton rsButton;
 	 @FXML
@@ -23,22 +27,37 @@ public class HeaderGostController {
 	 
 	 private Stage stage;
 	 private StackPane stackPane;
+	 private LoginController loginController;
+	 private ResourceBundle rb;
 	 
-	 public void initialize(){
+	 public void initialize(URL url,ResourceBundle rb){
+		 this.rb = rb;
 		 	usernameLabel.setText(RootGostController.gost.getUsername());
-	        handleRS();
 	    }
+	 public void init(){
+		 setActiveLocale();
+	 }
 	 	@FXML
 	    public void handleRS(){
-	        enButton.getStyleClass().remove("lanSelected");
-	        if(!rsButton.getStyleClass().contains("lanSelected"))
-	            rsButton.getStyleClass().add("lanSelected");
+	 		try{
+		 		handleLogout();
+		 		loginController.setRS();
+		 		loginController.handleLogin();
+	 		}
+	 		catch(IOException e){
+	 			e.printStackTrace();
+	 		}
 	    }
 	    @FXML
 	    public void handleEN(){
-	        rsButton.getStyleClass().remove("lanSelected");
-	        if(!enButton.getStyleClass().contains("lanSelected"))
-	            enButton.getStyleClass().add("lanSelected");
+	    	try{
+		    	handleLogout();
+		    	loginController.setEn();
+		    	loginController.handleLogin();
+		    }
+	    	catch(IOException e){
+	    		e.printStackTrace();
+	    	}
 	    }
 
 	    @FXML
@@ -52,7 +71,7 @@ public class HeaderGostController {
 	    @FXML
 	    public void handleSettings(){
 	    	try{
-	    		FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/settings.fxml"));
+	    		FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/settings.fxml"),rb);
 	    		AnchorPane settingsAnchorPane = (AnchorPane) loader.load();
 	    		
 	    		SettingsController controller = loader.getController();
@@ -65,6 +84,19 @@ public class HeaderGostController {
 	    	catch(IOException e){
 	    		e.printStackTrace();
 	    	}
+	    }
+	    
+	    public void setActiveLocale(){
+	    	if(loginController.getLocaleString().equals("en")){
+	    		rsButton.getStyleClass().remove("lanSelected");
+	    		if(!enButton.getStyleClass().contains("lanSelected"))
+	    			enButton.getStyleClass().add("lanSelected");
+	    	}
+	        if(loginController.getLocaleString().equals("rs")){
+		        enButton.getStyleClass().remove("lanSelected");
+		        if(!rsButton.getStyleClass().contains("lanSelected"))
+		            rsButton.getStyleClass().add("lanSelected");
+	        }
 	    }
 
 	    public Stage getStage() {
@@ -81,6 +113,9 @@ public class HeaderGostController {
 
 		public void setStackPane(StackPane stackPane) {
 			this.stackPane = stackPane;
+		}
+		public void setLoginController(LoginController loginController) {
+			this.loginController = loginController;
 		}
 	    
 	    

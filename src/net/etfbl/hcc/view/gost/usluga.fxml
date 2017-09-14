@@ -21,7 +21,7 @@
                               <Image url="@../../res/img/restoran2.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="6.0" layoutY="108.0" styleClass="uslugeButtonLabel" text="Usluge restorana" />
+                        <Label fx:id="uslugaRestoranaLabel" layoutX="6.0" layoutY="108.0" styleClass="uslugeButtonLabel" text="Usluge restorana" />
                      </children>
                   </Pane>
                </graphic>
@@ -35,7 +35,7 @@
                               <Image url="@../../res/img/sport.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="14.0" layoutY="123.0" styleClass="uslugeButtonLabel" text="Sport usluge" />
+                        <Label fx:id="sportUslugeLabel" layoutX="14.0" layoutY="123.0" styleClass="uslugeButtonLabel" text="Sport usluge" />
                      </children>
                   </Pane>
                </graphic>
@@ -49,7 +49,7 @@
                               <Image url="@../../res/img/wellness.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="10.0" layoutY="121.0" styleClass="uslugeButtonLabel" text="Wellness usluge" />
+                        <Label fx:id="wellnesUslugeLabel" layoutX="10.0" layoutY="121.0" styleClass="uslugeButtonLabel" text="Wellness usluge" />
                      </children>
                   </Pane>
                </graphic>
@@ -63,7 +63,7 @@
                               <Image url="@../../res/img/tetacistisobu.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="11.0" layoutY="130.0" styleClass="uslugeButtonLabel" text="Sobne usluge" />
+                        <Label fx:id="sobneUslugeLabel" layoutX="11.0" layoutY="130.0" styleClass="uslugeButtonLabel" text="Sobne usluge" />
                      </children>
                   </Pane>
                </graphic>

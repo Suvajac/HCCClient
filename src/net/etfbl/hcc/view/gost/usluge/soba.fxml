@@ -10,13 +10,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="600.0" stylesheets="@../../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.usluge.SobaController">
    <children>
-      <Label layoutX="51.0" layoutY="48.0" styleClass="nameLabel" text="Dostava u sobu" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
+      <Label fx:id="dostavaUSobuLabel" layoutX="51.0" layoutY="48.0" styleClass="nameLabel" text="Dostava u sobu" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0" />
       <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="126.0" styleClass="restoranScrollPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <content>
             <AnchorPane prefHeight="300.0" prefWidth="600.0">
                <children>
-                  <Label styleClass="piceHranaLabel" text="Hrana" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0" />
-                  <Label styleClass="piceHranaLabel" text="Piće" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="hranaLabel" styleClass="piceHranaLabel" text="Hrana" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="piceLabel" styleClass="piceHranaLabel" text="Piće" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="0.0" />
                   <VBox fx:id="hranaVBox" prefWidth="250.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0" />
                   <VBox fx:id="piceVBox" prefWidth="250.0" spacing="5.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
                </children>
@@ -36,8 +36,8 @@
             </AnchorPane>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" onAction="#handleVeseraj" styleClass="naruciButton" text="Vešeraj" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="30.0" />
-      <JFXButton buttonType="RAISED" onAction="#handlePospremanjeSobe" styleClass="naruciButton" text="Pospremanje sobe" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" />
+      <JFXButton fx:id="veserajButton" buttonType="RAISED" onAction="#handleVeseraj" styleClass="naruciButton" text="Vešeraj" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="30.0" />
+      <JFXButton fx:id="pospremanjeSobeButton" buttonType="RAISED" onAction="#handlePospremanjeSobe" styleClass="naruciButton" text="Pospremanje sobe" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" />
       <Label fx:id="brojacLabel" styleClass="brojacLabel" text="0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="7.0" />
    </children>
 </AnchorPane>

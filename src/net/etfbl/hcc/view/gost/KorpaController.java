@@ -1,11 +1,15 @@
 package net.etfbl.hcc.view.gost;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -19,11 +23,30 @@ import net.etfbl.hcc.model.SobnaUsluga;
 import net.etfbl.hcc.model.SportskaOprema;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
-public class KorpaController {
+public class KorpaController implements Initializable{
 	@FXML
 	protected VBox vBox;
 	@FXML
 	protected Label ukupnoLabel;
+	@FXML
+	protected Label korpaLabel;
+	@FXML
+	protected Label opremaLabel;
+	@FXML
+	private Button naruciButton;
+	
+	protected ResourceBundle rb;
+	
+	public void initialize(URL url,ResourceBundle rb){
+		this.rb = rb;
+		ukupnoLabel.setText(rb.getString("ukupnaCijena"));
+		if(opremaLabel!=null)
+			opremaLabel.setText(rb.getString("opremaLabel"));
+		if(korpaLabel!=null)
+			korpaLabel.setText(rb.getString("korpaLabel"));
+		if(naruciButton!=null)
+			naruciButton.setText(rb.getString("naruciButton"));
+	}
 	
 	protected Korpa korpa;
 	protected Map<Proizvod, Label> mapaProizvoda;
@@ -33,11 +56,11 @@ public class KorpaController {
 
 	public void prikaziProizvode(){
 		AnchorPane headAnchorPane = new AnchorPane();
-		Label artikal = new Label("Artikal");
+		Label artikal = new Label(rb.getString("artikalLabel"));
 		AnchorPane.setLeftAnchor(artikal,20.0);
-		Label kolicinaL = new Label("Kolicina");
+		Label kolicinaL = new Label(rb.getString("kolicinaLabel"));
 		AnchorPane.setLeftAnchor(kolicinaL,205.0);
-		Label cijenaL = new Label("Cijena");
+		Label cijenaL = new Label(rb.getString("cijena"));
 		AnchorPane.setRightAnchor(cijenaL, 110.0);
 		
 		headAnchorPane.getChildren().addAll(artikal,kolicinaL,cijenaL);
@@ -124,7 +147,7 @@ public class KorpaController {
 	}
 	
 	public void izracunajCijenu(){
-		ukupnoLabel.setText(String.format("Ukupno: %3.2f EUR",korpa.getUkupnaCijena()));
+		ukupnoLabel.setText(String.format("%s: %3.2f EUR",rb.getString("ukupnaCijena"),korpa.getUkupnaCijena()));
 	}
 	
 	@FXML

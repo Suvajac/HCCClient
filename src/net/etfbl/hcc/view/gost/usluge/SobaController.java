@@ -1,11 +1,15 @@
 package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -21,19 +25,38 @@ import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
-public class SobaController {
+public class SobaController implements Initializable{
 	@FXML
 	private VBox hranaVBox;
 	@FXML
 	private VBox piceVBox;
 	@FXML
 	private Label brojacLabel;
+	@FXML
+	private Label dostavaUSobuLabel;
+	@FXML
+	private Label hranaLabel;
+	@FXML
+	private Label piceLabel;
+	@FXML
+	private Button pospremanjeSobeButton;
+	@FXML
+	private Button veserajButton;
 	
 	private Korpa korpa;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
 	
-	public void initialize(){
+	private ResourceBundle rb;
+	
+	public void initialize(URL url,ResourceBundle rb){
+		this.rb = rb;
+		dostavaUSobuLabel.setText(rb.getString("dostavaUSobuLabel"));
+		hranaLabel.setText(rb.getString("hranaLabel"));
+		piceLabel.setText(rb.getString("piceLabel"));
+		veserajButton.setText(rb.getString("veserajButton"));
+		pospremanjeSobeButton.setText(rb.getString("pospremanjeSobeButton"));
+		
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 		
@@ -86,7 +109,7 @@ public class SobaController {
 	@FXML
 	public void handleKorpa(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/korpa.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/korpa.fxml"),rb);
 			AnchorPane korpaAnchorPane = (AnchorPane) loader.load();
 			AnchorPane.setTopAnchor(korpaAnchorPane,5.0);
 			AnchorPane.setLeftAnchor(korpaAnchorPane,383.0);

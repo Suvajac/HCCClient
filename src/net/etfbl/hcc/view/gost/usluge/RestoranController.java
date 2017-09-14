@@ -1,16 +1,20 @@
 package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +31,7 @@ import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
-public class RestoranController {
+public class RestoranController implements Initializable{
 	@FXML
 	private VBox hranaVBox;
 	@FXML
@@ -38,12 +42,34 @@ public class RestoranController {
 	private JFXComboBox<Integer> brojStolicaComboBox;
 	@FXML
 	private Label brojacLabel;
+	@FXML
+	private Label restoranLabel;
+	@FXML
+	private Label hranaLabel;
+	@FXML
+	private Label piceLabel;
+	@FXML
+	private Label vrijemeLabel;
+	@FXML
+	private Label brojStolicaLabel;
+	@FXML
+	private Button naruciButton;
 
 	private Korpa korpa;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
+	
+	private ResourceBundle rb;
 
-	public void initialize(){
+	public void initialize(URL url, ResourceBundle rb){
+		this.rb = rb;
+		restoranLabel.setText(rb.getString("restoranLabel"));
+		hranaLabel.setText(rb.getString("hranaLabel"));
+		piceLabel.setText(rb.getString("piceLabel"));
+		vrijemeLabel.setText(rb.getString("vrijemeLabel"));
+		brojStolicaLabel.setText(rb.getString("brojStolicaLabel"));
+		naruciButton.setText(rb.getString("naruciButton"));
+		
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 //
@@ -71,7 +97,7 @@ public class RestoranController {
 	@FXML
 	public void handleKorpa(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/restoranKorpa.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/restoranKorpa.fxml"),rb);
 			AnchorPane korpaAnchorPane = (AnchorPane) loader.load();
 			AnchorPane.setTopAnchor(korpaAnchorPane,5.0);
 			AnchorPane.setLeftAnchor(korpaAnchorPane,383.0);

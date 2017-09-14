@@ -12,7 +12,7 @@
       <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
    </padding>
    <children>
-      <Label layoutX="317.0" layoutY="235.0" text="Unesite kod:" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="180.0">
+      <Label fx:id="unesiteKodLabel" layoutX="317.0" layoutY="235.0" text="Unesite kod:" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="180.0">
          <font>
             <Font size="17.0" />
          </font>
@@ -20,6 +20,6 @@
       <TextField fx:id="unosKoda" layoutX="546.0" layoutY="228.0" prefWidth="300.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="180.0" />
       <Label fx:id="statusLabel" layoutX="500.0" layoutY="355.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="320.0" />
       <Label layoutX="320.0" layoutY="14.0" styleClass="hccLabel" text="Hotel Customer Care" AnchorPane.topAnchor="-20.0" />
-      <JFXButton buttonType="RAISED" layoutX="856.0" layoutY="231.0" onAction="#handlePotvrdi" styleClass="dodajUtisakButtons" text="Potvrdi" AnchorPane.leftAnchor="770.0" AnchorPane.topAnchor="182.0" />
+      <JFXButton fx:id="potvrdiKodButton" buttonType="RAISED" layoutX="856.0" layoutY="231.0" onAction="#handlePotvrdi" styleClass="dodajUtisakButtons" text="Potvrdi" AnchorPane.leftAnchor="770.0" AnchorPane.topAnchor="182.0" />
    </children>
 </AnchorPane>

@@ -19,6 +19,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoginController {
 	@FXML
@@ -28,8 +30,12 @@ public class LoginController {
 	@FXML
 	private Label nevalidanLoginLabel;
 	
+	private ResourceBundle rb;
+	private String localeString;
+	
 	@FXML
 	private void initialize() {
+		setRS();
 		nevalidanLoginLabel.setVisible(false);
 	}
 
@@ -37,13 +43,14 @@ public class LoginController {
 
 	public void handleLogin() throws IOException {		
 		if(usernameTextField.getText().equals("g")){
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"),rb);
 			BorderPane borderPane = loader.load();
 			Stage stage = new Stage();
 
 			RootGostController controller = loader.getController();
 			RootGostController.gost = new Gost("username","ime","prezime","asd","asd");
 			controller.setStage(stage);
+			controller.setLoginController(this);
 			controller.init();
 			
 			
@@ -65,13 +72,14 @@ public class LoginController {
 		Korisnik k = new Korisnik(usernameTextField.getText(), null, null, null, passwordPasswordField.getText().hashCode()+"");
 		Korisnik ulogovanKorisnik = Client.getInstance().login(k);
 		if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Gost){
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/rootGost.fxml"),rb);
 			StackPane stackPane = (StackPane) loader.load();
 			Stage stage = new Stage();
 
 			RootGostController controller = loader.getController();
 			RootGostController.gost = (Gost) ulogovanKorisnik;
 			controller.setStage(stage);
+			controller.setLoginController(this);
 			controller.init();
 			
 			
@@ -102,6 +110,18 @@ public class LoginController {
 		}
 		
 	}
+	
+	public void setEn(){
+		localeString = "en";
+		Locale locale = new Locale(localeString, "EN");
+		rb= ResourceBundle.getBundle("net/etfbl/hcc/util/MessagesBundle",locale);
+	}
+	
+	public void setRS(){
+		localeString = "rs";
+		Locale locale = new Locale(localeString, "RS");
+		rb = ResourceBundle.getBundle("net/etfbl/hcc/util/MessagesBundle",locale);
+	}
 
 	public void handleCancel() {
 		primaryStage.close();
@@ -114,4 +134,13 @@ public class LoginController {
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
+
+	public String getLocaleString() {
+		return localeString;
+	}
+
+	public void setLocaleString(String localeString) {
+		this.localeString = localeString;
+	}
+	
 }

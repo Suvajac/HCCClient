@@ -1,8 +1,12 @@
 package net.etfbl.hcc.view.gost;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXPasswordField;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -10,7 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import net.etfbl.hcc.Client;
 
-public class SettingsController {
+public class SettingsController implements Initializable{
 	@FXML
 	private JFXPasswordField staraLozinkaPasswordField;
 	@FXML
@@ -21,6 +25,14 @@ public class SettingsController {
 	private Label statusLabel;
 	@FXML
 	private Button promijeniButton;
+	@FXML
+	private Label promjenaLozinkeLabel;
+	@FXML
+	private Label staraLozinkaLabel;
+	@FXML
+	private Label novaLozinkaLabel;
+	@FXML
+	private Label potvrdiLozinkuLabel;
 	
 	private StackPane stackPane;
 	private AnchorPane anchorPane;
@@ -28,7 +40,16 @@ public class SettingsController {
 	private boolean novaLozinka;
 	private boolean ponovljenaLozinka;
 	
-	public void initialize(){
+	private ResourceBundle rb;
+	
+	public void initialize(URL url,ResourceBundle rb){
+		this.rb = rb;
+		promjenaLozinkeLabel.setText(rb.getString("promjenaLozinkeLabel"));
+		staraLozinkaLabel.setText(rb.getString("staraLozinkaLabel"));
+		novaLozinkaLabel.setText(rb.getString("novaLozinkaLabel"));
+		potvrdiLozinkuLabel.setText(rb.getString("potvrdiLozinkuLabel"));
+		promijeniButton.setText(rb.getString("promijeniButton"));
+		
 		staraLozinka = false;
 		novaLozinka = false;
 		ponovljenaLozinka = false;
@@ -38,7 +59,7 @@ public class SettingsController {
 				if(staraLozinkaPasswordField.getText().hashCode()!=Integer.parseInt(RootGostController.gost.getLozinkaHash())){
 					staraLozinkaPasswordField.setFocusColor(Color.valueOf("#e31414"));
 					staraLozinkaPasswordField.setUnFocusColor(Color.valueOf("#e31414"));
-					setStatus("Pogresno ste unijeli staru lozinku!");
+					setStatus(rb.getString("pogresnaStaraLozinka"));
 					staraLozinka = true;
 				}
 				else{
@@ -54,7 +75,7 @@ public class SettingsController {
 				if(novaLozinkaPasswordField.getText().length()<8){
 					novaLozinkaPasswordField.setFocusColor(Color.valueOf("#e31414"));
 					novaLozinkaPasswordField.setUnFocusColor(Color.valueOf("#e31414"));
-					setStatus("Lozinka mora biti minimalno 8 karaktera!");
+					setStatus(rb.getString("lozinkaManjaOdOsam"));
 					novaLozinka = false;
 				}
 				else{
@@ -70,7 +91,7 @@ public class SettingsController {
 				if(ponovljenaLozinkaPasswordField.getText().hashCode()!=novaLozinkaPasswordField.getText().hashCode()){
 					ponovljenaLozinkaPasswordField.setFocusColor(Color.valueOf("#e31414"));
 					ponovljenaLozinkaPasswordField.setUnFocusColor(Color.valueOf("#e31414"));
-					setStatus("Lozinke se ne poklapaju!");
+					setStatus(rb.getString("lozinkeSeNePoklapaju"));
 					ponovljenaLozinka = false;
 
 				}
@@ -94,10 +115,10 @@ public class SettingsController {
 		if(checkFields()){
 			RootGostController.gost.setLozinkaHash(String.valueOf(ponovljenaLozinkaPasswordField.getText().hashCode()));
 			if(Client.getInstance().promjenaLozinke(RootGostController.gost)){
-				statusLabel.setText("Uspjesno ste promijenili lozinku!");
+				statusLabel.setText(rb.getString("uspjesnaPromjenaLozinke"));
 			}
 			else{
-				statusLabel.setText("Greska");
+				statusLabel.setText(rb.getString("greska"));
 			}
 		}
 	}

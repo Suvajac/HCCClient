@@ -12,7 +12,7 @@
             <Font size="18.0" />
          </font>
       </JFXTextArea>
-      <JFXButton buttonType="RAISED" layoutX="320.0" layoutY="321.0" onAction="#handleDodaj" styleClass="dodajUtisakButtons" text="Dodaj" />
-      <JFXButton buttonType="RAISED" layoutX="454.0" layoutY="321.0" onAction="#handleCancel" styleClass="dodajUtisakButtons" text="Otkaži" />
+      <JFXButton fx:id="dodajButton" buttonType="RAISED" layoutX="320.0" layoutY="321.0" onAction="#handleDodaj" styleClass="dodajUtisakButtons" text="Dodaj" />
+      <JFXButton fx:id="otkaziButton" buttonType="RAISED" layoutX="454.0" layoutY="321.0" onAction="#handleCancel" styleClass="dodajUtisakButtons" text="Otkaži" />
    </children>
 </AnchorPane>

@@ -1,10 +1,13 @@
 package net.etfbl.hcc.view.gost;
 
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -18,7 +21,7 @@ import net.etfbl.hcc.model.Stavka;
 import net.etfbl.hcc.model.Usluga;
 import net.etfbl.hcc.util.TemporalStringConverters;
 
-public class RacunGostController {
+public class RacunGostController implements Initializable{
 	@FXML
 	private BorderPane borderPane;
 	@FXML
@@ -27,25 +30,30 @@ public class RacunGostController {
 	protected VBox vBox;
 	@FXML
 	protected Label ukupnoLabel;
+	@FXML
+	private Label racunLabel;
 	
 	protected Map<Proizvod, Label> mapaProizvoda;
 	protected StackPane stackPane;
 	protected AnchorPane parent;
 	protected Label brojacLabel;
 	private ArrayList<Stavka> listaStavki;
+	private ResourceBundle rb;
 	
-	public void initialize(){
+	public void initialize(URL url,ResourceBundle rb){
+		this.rb = rb;
+		racunLabel.setText(rb.getString("racunTab"));
 		RootGostController.gost =(Gost) Client.getInstance().login((Korisnik)RootGostController.gost);
 		prikaziRacun();
 	}
 
 	public void prikaziRacun(){
 		AnchorPane headAnchorPane = new AnchorPane();
-		Label nazivL = new Label("Naziv");
+		Label nazivL = new Label(rb.getString("naziv"));
 		AnchorPane.setLeftAnchor(nazivL,50.0);
-		Label datumL = new Label("Datum");
+		Label datumL = new Label(rb.getString("datum"));
 		AnchorPane.setLeftAnchor(datumL,350.0);
-		Label cijenaL = new Label("Cijena");
+		Label cijenaL = new Label(rb.getString("cijena"));
 		AnchorPane.setRightAnchor(cijenaL, 50.0);
 		
 		headAnchorPane.getChildren().addAll(nazivL,datumL,cijenaL);
@@ -74,7 +82,7 @@ public class RacunGostController {
 				vBox.getChildren().add(anchorPane);
 				this.anchorPane.setPrefHeight(this.anchorPane.getPrefHeight()+22);
 		}
-		ukupnoLabel.setText(String.format("Ukupna cijena: %3.2f EUR",RootGostController.gost.getRacun().getUkupnaCijena()));
+		ukupnoLabel.setText(String.format("%s: %3.2f EUR",rb.getString("ukupnaCijena"),RootGostController.gost.getRacun().getUkupnaCijena()));
 	}
 
 	public void setStackPane(StackPane stackPane) {

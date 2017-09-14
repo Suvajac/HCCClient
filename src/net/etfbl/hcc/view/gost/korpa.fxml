@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="254.0" layoutY="14.0" text="Korpa" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="korpaLabel" layoutX="254.0" layoutY="14.0" text="Korpa" AnchorPane.topAnchor="5.0" />
             <JFXButton onAction="#handleClose" styleClass="closeButton" text=" X " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
@@ -24,7 +24,7 @@
             </VBox>
          </content>
       </ScrollPane>
-      <JFXButton buttonType="RAISED" onAction="#handleNaruci" styleClass="dodajUtisakButtons" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0" />
+      <JFXButton fx:id="naruciButton" buttonType="RAISED" onAction="#handleNaruci" styleClass="dodajUtisakButtons" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0" />
       <Label fx:id="ukupnoLabel" layoutX="37.0" layoutY="434.0" styleClass="ukupnoLabel" text="Ukupno: " AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
    </children>
 </AnchorPane>

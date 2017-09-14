@@ -1,6 +1,7 @@
 package net.etfbl.hcc.view.gost;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -8,37 +9,42 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
 import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Utisak;
 
-public class KnjigaUtisakaGostController {
+public class KnjigaUtisakaGostController implements Initializable{
 	@FXML
 	private StackPane stackPane;
 	@FXML
 	private FlowPane flowPane;
+	@FXML
+	private Label dodajUtisakLabel;
 	
 	public static List<Utisak> listaUtisaka;
 	
-	public int brojacUtisaka=0;
-	public int josUtisakaCounter=0;
+	private int brojacUtisaka=0;
+	private int josUtisakaCounter=0;
+	private ResourceBundle rb;
 	
-	public void initialize(){
+	public void initialize(URL url,ResourceBundle rb){
+		this.rb = rb;
+		dodajUtisakLabel.setText(rb.getString("dodajUtisakLabel"));
+		
 		listaUtisaka = new ArrayList<>();
 		Korisnik k = new Korisnik("user","ime","prezi","1234","hash");
 		String text = "Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri.";
@@ -103,7 +109,7 @@ public class KnjigaUtisakaGostController {
 		Label tritacke = new Label("...");
 		tritacke.setLayoutX(120.0);
 		tritacke.setLayoutY(30.0);
-		Label jos = new Label("Još utisaka");
+		Label jos = new Label(rb.getString("josUtisakaLabel"));
 		jos.setLayoutX(55.0);
 		jos.setLayoutY(82.0);
 		pane.getChildren().add(tritacke);
@@ -127,7 +133,7 @@ public class KnjigaUtisakaGostController {
 		Label plus = new Label("+");
 		plus.setLayoutX(125.0);
 		plus.setLayoutY(30.0);
-		Label dodajUtisak = new Label("Dodaj utisak");
+		Label dodajUtisak = new Label(rb.getString("dodajUtisakLabel"));
 		dodajUtisak.setLayoutX(40.0);
 		dodajUtisak.setLayoutY(82.0);
 		pane.getChildren().add(plus);
@@ -268,7 +274,7 @@ public class KnjigaUtisakaGostController {
 	@FXML
 	public void handleDodajUtisak(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/dodajUtisak.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/dodajUtisak.fxml"),rb);
 			AnchorPane dodajUtisakAnchorPane = (AnchorPane) loader.load();
 			DodajUtisakController controller = loader.getController();
 			controller.setController(this);

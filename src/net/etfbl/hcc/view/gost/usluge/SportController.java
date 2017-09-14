@@ -1,18 +1,22 @@
 package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -30,7 +34,7 @@ import net.etfbl.hcc.view.gost.RootGostController;
 import net.etfbl.hcc.view.gost.UslugaController;
 import net.etfbl.hcc.view.recepcionar.Dialogs;
 
-public class SportController {
+public class SportController implements Initializable{
 	@FXML
 	private VBox opremaVBox;
 	@FXML
@@ -39,12 +43,30 @@ public class SportController {
 	private JFXComboBox<String> vrijemeComboBox;
 	@FXML
 	private Label brojacLabel;
+	@FXML
+	private Label sportUslugeLabel;
+	@FXML
+	private Label opremaLabel;
+	@FXML
+	private Label datumLabel;
+	@FXML
+	private Label vrijemeLabel;
+	@FXML
+	private Button naruciButton;
 	
 	private Korpa korpa;
 	private Map<Label, Proizvod> mapaLabelProizvod;
 	private StackPane stackPane;
+	private ResourceBundle rb;
 	
-	public void initialize(){
+	public void initialize(URL url, ResourceBundle rb){
+		this.rb = rb;
+		sportUslugeLabel.setText(rb.getString("sportUslugeLabel"));
+		opremaLabel.setText(rb.getString("opremaLabel"));
+		datumLabel.setText(rb.getString("datumLabel"));
+		vrijemeLabel.setText(rb.getString("vrijemeLabel"));
+		naruciButton.setText(rb.getString("naruciButton"));
+		
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
 		
@@ -75,7 +97,7 @@ public class SportController {
 	@FXML
 	public void handleOprema(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/opremaKorpa.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/opremaKorpa.fxml"),rb);
 			AnchorPane korpaAnchorPane = (AnchorPane) loader.load();
 			AnchorPane.setTopAnchor(korpaAnchorPane,5.0);
 			AnchorPane.setLeftAnchor(korpaAnchorPane,383.0);

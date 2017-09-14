@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <ScrollPane hbarPolicy="NEVER" prefHeight="568.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.RacunGostController">
    <content>
       <BorderPane fx:id="borderPane" prefHeight="568.0" prefWidth="1366.0">
@@ -16,7 +15,7 @@
                <children>
                   <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="453.0" layoutY="10.0" text="Račun" AnchorPane.topAnchor="10.0" />
+                        <Label fx:id="racunLabel" layoutX="453.0" layoutY="10.0" text="Račun" AnchorPane.topAnchor="10.0" />
                      </children>
                   </AnchorPane>
                   <VBox fx:id="vBox" layoutY="70.0" prefHeight="200.0" prefWidth="600.0" styleClass="racunVBox" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
