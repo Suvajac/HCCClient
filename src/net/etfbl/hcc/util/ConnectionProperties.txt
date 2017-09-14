@@ -1,4 +1,4 @@
-ServerIpAdress=192.168.137.63
+ServerIpAdress=192.168.43.181
 ServerTCPPort=9001
 MulticastIpAdress=224.0.0.11
 MulticastPort=20000
