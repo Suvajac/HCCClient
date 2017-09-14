@@ -4,17 +4,14 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.util.ArrayList;
 
 import org.controlsfx.control.Notifications;
 
-import net.etfbl.hcc.model.Obavjestenje;
+import javafx.application.Platform;
+import javafx.util.Duration;
 import net.etfbl.hcc.util.ConnectionProperty;
-import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class ClientMulticast extends Thread {
-
-	public static ArrayList<Obavjestenje> listaObavjestenja=new ArrayList<>();
 
 	public void run(){
 		InetAddress groupAddress = null;
@@ -22,17 +19,20 @@ public class ClientMulticast extends Thread {
         try (MulticastSocket clientSocket = new MulticastSocket(ConnectionProperty.getInstance().getMulticastPort())){
             groupAddress=InetAddress.getByName(ConnectionProperty.getInstance().getMulticastIpAdress());
         	clientSocket.joinGroup(groupAddress);
-            while (true) {
+        	while (true) {
                 DatagramPacket msgPacket = new DatagramPacket(buf, buf.length);
                 clientSocket.receive(msgPacket);
-                String msg = new String(msgPacket.getData(), msgPacket.getOffset(), msgPacket.getLength());
-                Notifications.create()
-                	.title("Obavjestenje")
-                	.text("Imate novo neprocitano obavjestenje!")
-                	.showInformation();
-                System.out.println("stiglo");
-                listaObavjestenja.add(new Obavjestenje(msg.split("#")[0],
-                		TemporalStringConverters.parseToLocalDateTime(msg.split("#")[1]),false));
+              //  String msg = new String(msgPacket.getData(), msgPacket.getOffset(), msgPacket.getLength());
+                Platform.runLater(new Runnable(){
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						Notifications.create()
+	                	.hideAfter(new Duration(7000)).title("Obavjestenje")
+	                	.text("Imate novo neprocitano obavjestenje!")
+	                	.showInformation();
+					}
+                });
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -40,6 +40,7 @@ public class ClientMulticast extends Thread {
 
 	}
 	public ClientMulticast() {
+		this.start();
 		// TODO Auto-generated constructor stub
 	}
 

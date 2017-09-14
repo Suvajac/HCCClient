@@ -65,8 +65,6 @@ public class LoginController {
 			Parent root = FXMLLoader.load(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
 			Scene scene = new Scene(root);
 
-			new ClientMulticast().start();
-
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.show();
@@ -85,7 +83,6 @@ public class LoginController {
 			controller.setLoginController(this);
 			controller.init();
 
-
 			Scene scene = new Scene(stackPane);
 
 			stage.setScene(scene);
@@ -94,6 +91,7 @@ public class LoginController {
 			nevalidanLoginLabel.setVisible(false);
 		}
 		else if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Recepcionar){
+			new ClientMulticast();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
 			Parent root = loader.load();
 

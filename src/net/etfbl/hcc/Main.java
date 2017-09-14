@@ -24,12 +24,13 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws Exception{
-        launch(args);
+    	launch(args);
+
 //    	try {
 //			Socket sock = new Socket(InetAddress.getByName(ConnectionProperty.getInstance().getServerIpAddress()), ConnectionProperty.getInstance().getServerTCPPort());
 //			ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream());
 //			ObjectInputStream in = new ObjectInputStream(sock.getInputStream());
-//			
+//
 //			out.writeObject(new ProtokolPoruka("Korisnik.getKorisnik"));
 //			ProtokolPoruka p = (ProtokolPoruka) in.readObject();
 //			System.out.println(((Gost)p.getListaObjekata().get(0)).getLozinkaHash());
@@ -46,10 +47,10 @@ public class Main extends Application {
 //        JSONObject json = new JSONObject(por);
 //        Gson gson = new Gson();
 //        ProtokolPoruka poruka = gson.fromJson(json.toString(), ProtokolPoruka.class);
-//        
+//
 //        System.out.println(poruka.getTip());
-//        System.out.println(poruka.getListaObjekata()); 
-//        
-        
+//        System.out.println(poruka.getListaObjekata());
+//
+
     }
 }
