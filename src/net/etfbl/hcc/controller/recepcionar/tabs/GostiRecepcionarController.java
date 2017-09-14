@@ -20,7 +20,7 @@ import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class GostiRecepcionarController implements RefreshableController {
 
-	private ObservableList<Registracija> list;
+	public static ObservableList<Registracija> list;
 
 	@FXML
 	private TableView<Registracija> table;
@@ -92,6 +92,10 @@ public class GostiRecepcionarController implements RefreshableController {
 	public void refresh() {
 		list = FXCollections.observableArrayList(Client.getInstance().getRegistracije());
     	table.setItems(list);
+	}
+	
+	public void addRegistracija(Registracija r) {
+		list.add(r);
 	}
 
     /*
