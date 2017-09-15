@@ -40,6 +40,7 @@ public class ClientMulticast extends Thread {
 
 	}
 	public ClientMulticast() {
+		setDaemon(true);
 		this.start();
 		// TODO Auto-generated constructor stub
 	}
