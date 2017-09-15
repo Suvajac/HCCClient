@@ -147,30 +147,9 @@ public class KorpaController implements Initializable{
 	}
 	
 	public void izracunajCijenu(){
-		ukupnoLabel.setText(String.format("%s: %3.2f EUR",rb.getString("ukupnaCijena"),korpa.getUkupnaCijena()));
+		ukupnoLabel.setText(String.format("%s %3.2f EUR",rb.getString("ukupnaCijena"),korpa.getUkupnaCijena()));
 	}
 	
-	@FXML
-	public void handleNaruci(){
-		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Dostava");
-		usluga.setListaProizvoda(korpa.getListaProizvoda());
-		
-		try {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
-			AnchorPane alertAnchorPane;
-			alertAnchorPane = (AnchorPane) loader.load();
-			
-			PotvrdaAlertController controller = loader.getController();
-			controller.setStackPane(stackPane);
-			controller.setAnchorPane(alertAnchorPane);
-			controller.setUsluga(usluga);
-			
-			stackPane.getChildren().add(alertAnchorPane);
-			alertAnchorPane.toFront();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	@FXML
 	private void handleClose(){

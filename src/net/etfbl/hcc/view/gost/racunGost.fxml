@@ -11,7 +11,7 @@
    <content>
       <BorderPane fx:id="borderPane" prefHeight="568.0" prefWidth="1366.0">
          <center>
-            <AnchorPane id="korpaAnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1000.0" stylesheets="@../../res/css/style.css">
+            <AnchorPane id="korpaAnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" stylesheets="@../../res/css/style.css">
                <children>
                   <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -23,7 +23,9 @@
                         <Insets left="100.0" right="100.0" top="10.0" />
                      </padding>
                   </VBox>
-                  <Label fx:id="ukupnoLabel" layoutX="37.0" layoutY="434.0" styleClass="ukupnoLabel" text="Ukupno: " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0" />
+                  <Label fx:id="cijenaLabel" layoutX="37.0" layoutY="434.0" styleClass="ukupnoLabel" text="Cijena:" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0" />
+                  <Label fx:id="popustLabel" layoutX="418.0" layoutY="464.0" styleClass="ukupnoLabel" text="Popust:" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="400.0" />
+                  <Label fx:id="ukupnaCijenaLabel" layoutX="775.0" layoutY="474.0" styleClass="ukupnoLabel" text="Ukupna Cijena:" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0" />
                </children>
             </AnchorPane>
          </center>

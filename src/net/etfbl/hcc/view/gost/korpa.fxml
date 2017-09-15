@@ -24,7 +24,6 @@
             </VBox>
          </content>
       </ScrollPane>
-      <JFXButton fx:id="naruciButton" buttonType="RAISED" onAction="#handleNaruci" styleClass="dodajUtisakButtons" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0" />
       <Label fx:id="ukupnoLabel" layoutX="37.0" layoutY="434.0" styleClass="ukupnoLabel" text="Ukupno: " AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" />
    </children>
 </AnchorPane>

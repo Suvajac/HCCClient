@@ -43,6 +43,8 @@ public class SobaController implements Initializable{
 	private Button pospremanjeSobeButton;
 	@FXML
 	private Button veserajButton;
+	@FXML
+	private Button naruciDostavuButton;
 	
 	private Korpa korpa;
 	private Map<Label, Proizvod> mapaLabelProizvod;
@@ -57,6 +59,8 @@ public class SobaController implements Initializable{
 		piceLabel.setText(rb.getString("piceLabel"));
 		veserajButton.setText(rb.getString("veserajButton"));
 		pospremanjeSobeButton.setText(rb.getString("pospremanjeSobeButton"));
+		naruciDostavuButton.setText(rb.getString("naruciDostavuButton"));
+
 		
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
@@ -106,6 +110,28 @@ public class SobaController implements Initializable{
 	public void handleVeseraj(){
 		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",0,"Veseraj");
 
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
+			AnchorPane alertAnchorPane;
+			alertAnchorPane = (AnchorPane) loader.load();
+			
+			PotvrdaAlertController controller = loader.getController();
+			controller.setStackPane(stackPane);
+			controller.setAnchorPane(alertAnchorPane);
+			controller.setUsluga(usluga);
+			
+			stackPane.getChildren().add(alertAnchorPane);
+			alertAnchorPane.toFront();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void handleNaruciDostavu(){
+		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Dostava");
+		usluga.setListaProizvoda(korpa.getListaProizvoda());
+		
 		try {
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
 			AnchorPane alertAnchorPane;

@@ -36,8 +36,9 @@
             </AnchorPane>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="veserajButton" buttonType="RAISED" onAction="#handleVeseraj" styleClass="naruciButton" text="Vešeraj" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="30.0" />
-      <JFXButton fx:id="pospremanjeSobeButton" buttonType="RAISED" onAction="#handlePospremanjeSobe" styleClass="naruciButton" text="Pospremanje sobe" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" />
+      <JFXButton fx:id="veserajButton" buttonType="RAISED" onAction="#handleVeseraj" prefHeight="55.0" prefWidth="266.0" styleClass="naruciButton" text="Vešeraj" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="30.0" />
+      <JFXButton fx:id="pospremanjeSobeButton" buttonType="RAISED" onAction="#handlePospremanjeSobe" prefWidth="266.0" styleClass="naruciButton" text="Pospremanje sobe" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="30.0" />
       <Label fx:id="brojacLabel" styleClass="brojacLabel" text="0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="7.0" />
+      <JFXButton fx:id="naruciDostavuButton" buttonType="RAISED" layoutX="40.0" layoutY="428.0" onAction="#handleNaruciDostavu" prefHeight="55.0" styleClass="naruciButton" text="Naruci dostavu" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="30.0" />
    </children>
 </AnchorPane>
