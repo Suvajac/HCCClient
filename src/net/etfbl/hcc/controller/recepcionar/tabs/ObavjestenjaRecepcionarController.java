@@ -13,7 +13,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -47,8 +46,8 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 		
 		colVrijeme.setCellValueFactory(param -> 
 				new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
-		colTekst.setCellValueFactory(
-				new PropertyValueFactory<>("tekst"));
+		colTekst.setCellValueFactory(param ->
+				new SimpleStringProperty(param.getValue().getTekst().split("\n")[0]));
 		colProcitano.setCellValueFactory(param -> 
 				new SimpleStringProperty(param.getValue().isProcitano() ? "Da" : "Ne"));
 		colAkcija.setCellFactory(param -> {
