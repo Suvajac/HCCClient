@@ -29,6 +29,7 @@ public class DodajUtisakController implements Initializable{
 	
 	public void initialize(URL url,ResourceBundle rb){
 		dodajButton.setText(rb.getString("dodajButton"));
+		dodajButton.setPrefWidth(100.0);
 		otkaziButton.setText(rb.getString("otkaziButton"));
 		
 		Platform.runLater(() -> {

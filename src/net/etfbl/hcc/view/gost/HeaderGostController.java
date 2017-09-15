@@ -39,24 +39,28 @@ public class HeaderGostController implements Initializable{
 	 }
 	 	@FXML
 	    public void handleRS(){
-	 		try{
-		 		handleLogout();
-		 		loginController.setRS();
-		 		loginController.handleLogin();
-	 		}
-	 		catch(IOException e){
-	 			e.printStackTrace();
+	 		if(LoginController.en){
+		 		try{
+			 		handleLogout();
+			 		loginController.setRS();
+			 		loginController.handleLogin();
+		 		}
+		 		catch(IOException e){
+		 			e.printStackTrace();
+		 		}
 	 		}
 	    }
 	    @FXML
 	    public void handleEN(){
-	    	try{
-		    	handleLogout();
-		    	loginController.setEn();
-		    	loginController.handleLogin();
-		    }
-	    	catch(IOException e){
-	    		e.printStackTrace();
+	    	if(!LoginController.en){
+		    	try{
+			    	handleLogout();
+			    	loginController.setEn();
+			    	loginController.handleLogin();
+			    }
+		    	catch(IOException e){
+		    		e.printStackTrace();
+		    	}
 	    	}
 	    }
 

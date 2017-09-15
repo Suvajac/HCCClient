@@ -53,6 +53,7 @@ public class SettingsController implements Initializable{
 		staraLozinka = false;
 		novaLozinka = false;
 		ponovljenaLozinka = false;
+		statusLabel.getStyleClass().add("crveniLabel");
 		statusLabel.setVisible(false);
 		staraLozinkaPasswordField.focusedProperty().addListener((arg0, oldValue, newValue) -> {
 			if (!newValue) { 
@@ -66,6 +67,7 @@ public class SettingsController implements Initializable{
 					staraLozinkaPasswordField.setFocusColor(Color.valueOf("#23a429"));
 					staraLozinkaPasswordField.setUnFocusColor(Color.valueOf("#23a429"));
 					staraLozinka = true;
+					statusLabel.setVisible(false);
 				}
 			}
 		});
@@ -82,6 +84,8 @@ public class SettingsController implements Initializable{
 					novaLozinkaPasswordField.setFocusColor(Color.valueOf("#23a429"));
 					novaLozinkaPasswordField.setUnFocusColor(Color.valueOf("#23a429"));
 					novaLozinka = true;
+					if(staraLozinka)
+						statusLabel.setVisible(false);
 				}
 			}
 		});
@@ -98,7 +102,9 @@ public class SettingsController implements Initializable{
 				else{
 					ponovljenaLozinkaPasswordField.setFocusColor(Color.valueOf("#23a429"));
 					ponovljenaLozinkaPasswordField.setUnFocusColor(Color.valueOf("#23a429"));
-					ponovljenaLozinka = true;					
+					ponovljenaLozinka = true;
+					if(novaLozinka)
+						statusLabel.setVisible(false);
 				}
 			}
 		});
@@ -115,6 +121,8 @@ public class SettingsController implements Initializable{
 		if(checkFields()){
 			RootGostController.gost.setLozinkaHash(String.valueOf(ponovljenaLozinkaPasswordField.getText().hashCode()));
 			if(Client.getInstance().promjenaLozinke(RootGostController.gost)){
+				statusLabel.getStyleClass().remove("crveniLabel");
+				statusLabel.getStyleClass().add("plaviLabel");
 				statusLabel.setText(rb.getString("uspjesnaPromjenaLozinke"));
 			}
 			else{

@@ -83,7 +83,7 @@ public class SobaController implements Initializable{
 	
 	@FXML
 	public void handlePospremanjeSobe(){
-		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Pospremanje sobe");
+		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",0,"Pospremanje sobe");
 		
 		try {
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
@@ -104,7 +104,7 @@ public class SobaController implements Initializable{
 	
 	@FXML
 	public void handleVeseraj(){
-		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",korpa.getUkupnaCijena(),"Veseraj");
+		SobnaUsluga usluga = new SobnaUsluga(0,"Sobna usluga",0,"Veseraj");
 
 		try {
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);

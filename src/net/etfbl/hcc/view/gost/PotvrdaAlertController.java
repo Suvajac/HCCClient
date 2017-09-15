@@ -41,7 +41,12 @@ public class PotvrdaAlertController implements Initializable{
 	public void handleDa(){
 		int idUsluge = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
 		if(idUsluge>0){
+			statusLabel.getStyleClass().add("plaviLabel");
 			statusLabel.setText(rb.getString("uspjesno"));
+		}
+		else{
+			statusLabel.getStyleClass().add("crveniLabel");
+			statusLabel.setText(rb.getString("neuspjesno"));
 		}
 		daButton.setDisable(true);
 	}

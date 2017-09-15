@@ -24,6 +24,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LoginController {
+	public static boolean en;
+	
 	@FXML
 	private JFXTextField usernameTextField;
 	@FXML
@@ -116,12 +118,14 @@ public class LoginController {
 		localeString = "en";
 		Locale locale = new Locale(localeString, "EN");
 		rb= ResourceBundle.getBundle("net/etfbl/hcc/util/MessagesBundle",locale);
+		en=true;
 	}
 
 	public void setRS(){
 		localeString = "rs";
 		Locale locale = new Locale(localeString, "RS");
 		rb = ResourceBundle.getBundle("net/etfbl/hcc/util/MessagesBundle",locale);
+		en=false;
 	}
 
 	public void handleCancel() {
