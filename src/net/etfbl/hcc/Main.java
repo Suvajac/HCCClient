@@ -1,11 +1,22 @@
 package net.etfbl.hcc;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.controller.LoginController;
+import net.etfbl.hcc.model.Proizvod;
+import net.etfbl.hcc.model.SobnaUsluga;
+import net.etfbl.hcc.model.SportUsluga;
+import net.etfbl.hcc.model.SportskaOprema;
+import net.etfbl.hcc.model.Termin;
+import net.etfbl.hcc.model.UslugaRestorana;
+import net.etfbl.hcc.model.WellnessTermin;
+import net.etfbl.hcc.model.WellnessUsluga;
 
 
 public class Main extends Application {
@@ -51,6 +62,6 @@ public class Main extends Application {
 //        System.out.println(poruka.getTip());
 //        System.out.println(poruka.getListaObjekata());
 //
-
+    	
     }
 }

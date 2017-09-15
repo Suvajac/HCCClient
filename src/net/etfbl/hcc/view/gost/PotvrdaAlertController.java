@@ -34,7 +34,8 @@ public class PotvrdaAlertController implements Initializable{
 	}
 	
 	public void setTekstLabel(){
-		tekstLabel.setText(rb.getString("daLiZelite")+" "+usluga.getNaziv()+" "+rb.getString("poCijeni")+" "+usluga.getCijena()+" EUR?");
+		String tekst = String.format("%s %s %s %3.2f EUR?", rb.getString("daLiZelite"),usluga.getNaziv(),rb.getString("poCijeni"),usluga.getCijena());
+		tekstLabel.setText(tekst);
 	}
 	
 	@FXML
