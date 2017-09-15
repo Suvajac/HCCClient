@@ -12,7 +12,7 @@
       <Label fx:id="datumLabel" layoutX="100.0" layoutY="142.0" styleClass="nameLabel" text="Datum:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="142.0" />
       <JFXDatePicker fx:id="datumDatePicker" defaultColor="#173e43" layoutX="321.0" layoutY="148.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="148.0" />
       <Label fx:id="vrijemeLabel" layoutX="93.0" layoutY="292.0" styleClass="nameLabel" text="Vrijeme:" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="292.0" />
-      <JFXComboBox fx:id="vrijemeComboBox" focusColor="#173e43" layoutX="321.0" layoutY="300.0" prefHeight="25.0" prefWidth="171.0" unFocusColor="#173e43" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="300.0" />
+      <JFXComboBox fx:id="vrijemeComboBox" focusColor="#173e43" layoutX="321.0" layoutY="300.0" prefHeight="25.0" prefWidth="171.0" unFocusColor="#173e43" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="290.0" />
       <JFXButton fx:id="naruciButton" buttonType="RAISED" layoutX="228.0" layoutY="423.0" onAction="#handleNaruci" styleClass="naruciButton" text="Naruči" AnchorPane.leftAnchor="75.0" />
    </children>
 </AnchorPane>

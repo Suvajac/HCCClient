@@ -24,6 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.controller.LoginController;
 import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Utisak;
 
@@ -110,7 +111,10 @@ public class KnjigaUtisakaGostController implements Initializable{
 		tritacke.setLayoutX(120.0);
 		tritacke.setLayoutY(30.0);
 		Label jos = new Label(rb.getString("josUtisakaLabel"));
-		jos.setLayoutX(55.0);
+		if(LoginController.en)
+			jos.setLayoutX(5.0);
+		else
+			jos.setLayoutX(50.0);
 		jos.setLayoutY(82.0);
 		pane.getChildren().add(tritacke);
 		pane.getChildren().add(jos);
@@ -134,7 +138,10 @@ public class KnjigaUtisakaGostController implements Initializable{
 		plus.setLayoutX(125.0);
 		plus.setLayoutY(30.0);
 		Label dodajUtisak = new Label(rb.getString("dodajUtisakLabel"));
-		dodajUtisak.setLayoutX(40.0);
+		if(LoginController.en)
+			dodajUtisak.setLayoutX(15.0);
+		else
+			dodajUtisak.setLayoutX(40.0);
 		dodajUtisak.setLayoutY(82.0);
 		pane.getChildren().add(plus);
 		pane.getChildren().add(dodajUtisak);
@@ -175,7 +182,7 @@ public class KnjigaUtisakaGostController implements Initializable{
 			Label date = new Label(dateString);
 			headerAnchorPane.getChildren().add(date);
 			AnchorPane.setTopAnchor(date, 10.0);
-			AnchorPane.setLeftAnchor(date,250.0);
+			AnchorPane.setRightAnchor(date,85.0);
 			
 			JFXButton closeButton = new JFXButton("X");
 			headerAnchorPane.getChildren().add(closeButton);

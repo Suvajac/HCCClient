@@ -75,7 +75,7 @@ public class OglasnaTablaGostController {
 			Label date = new Label(dateString);
 			headerAnchorPane.getChildren().add(date);
 			AnchorPane.setTopAnchor(date, 10.0);
-			AnchorPane.setLeftAnchor(date,250.0);
+			AnchorPane.setLeftAnchor(date,20.0);
 			
 			JFXButton closeButton = new JFXButton("X");
 			headerAnchorPane.getChildren().add(closeButton);
@@ -102,7 +102,7 @@ public class OglasnaTablaGostController {
 			stackPane.getChildren().add(parent);
 			parent.toFront();
 		});
-		oglasAnchorPane.getStyleClass().add("zeleniStil");
+		oglasAnchorPane.getStyleClass().add("zutiStil");
 		
 		AnchorPane headerAnchorPane = new AnchorPane();
 		headerAnchorPane.setPrefWidth(280);
@@ -116,7 +116,7 @@ public class OglasnaTablaGostController {
 		Label date = new Label(dateString);
 		headerAnchorPane.getChildren().add(date);
 		AnchorPane.setTopAnchor(date, 5.0);
-		AnchorPane.setRightAnchor(date,10.0);
+		AnchorPane.setLeftAnchor(date,10.0);
 		
 		oglasAnchorPane.getChildren().add(headerAnchorPane);
 		Label text = new Label(o.getPoruka());

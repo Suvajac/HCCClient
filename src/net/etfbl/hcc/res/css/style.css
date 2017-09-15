@@ -200,20 +200,20 @@
 	-fx-background-color:#173e43;
 }
 
-.jfx-combo-box .list-view .list-cell:hover{
-	-fx-background-color:#fae596;
-}
-
 .jfx-combo-box .list-view .list-cell:hover > .cell{
 	-fx-text-fill:red;
 }
 
-.jfx-combo-box .list-view .list-cell:selected{
+.jfx-combo-box .list-cell .text{
+	-fx-text-fill:red;
+}*/
+
+.jfx-combo-box .list-view .list-cell:hover{
 	-fx-background-color:#fae596;
 }
 
-.jfx-combo-box .list-cell .text{
-	-fx-text-fill:red;
+.jfx-combo-box .list-view .list-cell:selected{
+	-fx-background-color:#fae596;
 }
 
 .jfx-combo-box .cell{
@@ -222,7 +222,7 @@
     -fx-effect: dropshadow(three-pass-box, black, 2, 0.2, 0, 0);
     -fx-font-family: "Calibri";
 	-fx-font-weight:bold;
-}*/
+}
 
 /**********************R A C U N**************************************/
 
@@ -236,7 +236,7 @@
 /**********************P O P U S T I**********************************/
 
 .popustiAnchorPane{
-	-fx-background-color:#ffffff;
+	-fx-background-color:#fae596;
 }
 
 .popustiAnchorPane Label{
@@ -252,13 +252,13 @@
 
 .hccLabel{
 	-fx-font-size:70px;
-	-fx-text-fill:#fae596;
+	-fx-text-fill:#173e43;
 	-fx-font-family:"Merienda One";
 }
 
-.hccLabel .text{
-	-fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
-}
+/*.hccLabel .text{
+	-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}*/
 
 /*****************K NJ I G A  U T I S A K A**********************/
 
@@ -280,11 +280,15 @@
 }
 
 .zutiStil{
-	-fx-background-color:#f7f26d;
+	-fx-background-color:#fae596;
 }
 
 .crveniStil{
-	-fx-background-color:#ff5959;
+	-fx-background-color:#eb7070;
+}
+
+.sucmurastStil{
+	-fx-background-color:#90e2d7;
 }
 
 .utisak:hover{
@@ -389,13 +393,22 @@
 
 .settingsPane Label{
 	-fx-font-size:20px;
+	-fx-text-fill:#173e43;
 }
 
 .settingsPane JFXPasswordField{
 	-fx-font-size:20px;
 }
 
+/******************************P O T V R D A **************************************/
 
+.crveniLabel{
+	-fx-text-fill:#e42929;
+}
+
+.plaviLabel{
+	-fx-text-fill:#0072ff;
+}
 
 
 

@@ -17,7 +17,7 @@
             <JFXButton fx:id="daButton" buttonType="RAISED" layoutX="234.0" layoutY="278.0" onAction="#handleDa" prefHeight="48.0" prefWidth="120.0" styleClass="dodajUtisakButtons" text="Da" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="220.0" />
             <JFXButton fx:id="neButton" buttonType="RAISED" layoutX="429.0" layoutY="278.0" onAction="#handleNe" prefHeight="48.0" prefWidth="120.0" styleClass="dodajUtisakButtons" text="Ne" AnchorPane.rightAnchor="70.0" />
             <Label fx:id="statusLabel" layoutX="70.0" layoutY="191.0" prefHeight="30.0" prefWidth="508.0" wrapText="true" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="170.0" />
-            <Label fx:id="tekstLabel" layoutX="66.0" layoutY="61.0" prefHeight="120.0" prefWidth="508.0" text="Label" wrapText="true" AnchorPane.topAnchor="50.0" />
+            <Label fx:id="tekstLabel" layoutX="66.0" layoutY="61.0" prefHeight="120.0" prefWidth="508.0" text="Label" wrapText="true" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
    </children>

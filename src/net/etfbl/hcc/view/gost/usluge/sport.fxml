@@ -37,9 +37,9 @@
          </graphic>
       </JFXButton>
       <Label fx:id="datumLabel" layoutX="32.0" layoutY="423.0" styleClass="piceHranaLabel" text="Datum:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="410.0" />
-      <JFXDatePicker fx:id="datumDatePicker" defaultColor="#173e43" layoutX="105.0" layoutY="422.0" prefWidth="160.0" styleClass="jfx-time-picker" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="407.0" />
+      <JFXDatePicker fx:id="datumDatePicker" defaultColor="#173e43" layoutX="105.0" layoutY="422.0" prefWidth="160.0" styleClass="jfx-time-picker" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="407.0" />
       <Label fx:id="vrijemeLabel" layoutX="385.0" layoutY="422.0" styleClass="piceHranaLabel" text="Vrijeme:" AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="410.0" />
-      <JFXComboBox fx:id="vrijemeComboBox" focusColor="#173e43" layoutX="483.0" layoutY="424.0" prefWidth="100.0" unFocusColor="#173e43" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="415.0" />
+      <JFXComboBox fx:id="vrijemeComboBox" focusColor="#173e43" layoutX="483.0" layoutY="424.0" prefWidth="120.0" unFocusColor="#173e43" AnchorPane.leftAnchor="440.0" AnchorPane.topAnchor="400.0" />
       <JFXButton fx:id="naruciButton" buttonType="RAISED" layoutX="228.0" layoutY="470.0" onAction="#handleNaruci" styleClass="naruciButton" text="Naruči" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="25.0" />
       <Label fx:id="brojacLabel" styleClass="brojacLabel" text="0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="7.0" />
    </children>
