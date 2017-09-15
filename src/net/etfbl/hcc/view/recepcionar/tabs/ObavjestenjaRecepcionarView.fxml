@@ -9,7 +9,7 @@
    <children>
       <TableView fx:id="table" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn fx:id="colVrijeme" prefWidth="75.0" resizable="false" text="Vrijeme" />
+          <TableColumn fx:id="colVrijeme" prefWidth="75.0" resizable="false" sortType="DESCENDING" text="Vrijeme" />
             <TableColumn fx:id="colTekst" prefWidth="75.0" resizable="false" text="Tekst" />
             <TableColumn fx:id="colProcitano" prefWidth="75.0" resizable="false" text="Procitano" />
             <TableColumn fx:id="colAkcija" prefWidth="75.0" resizable="false" text="Akcija" />

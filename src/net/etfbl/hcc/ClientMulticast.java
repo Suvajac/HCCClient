@@ -22,7 +22,7 @@ public class ClientMulticast extends Thread {
         	while (true) {
                 DatagramPacket msgPacket = new DatagramPacket(buf, buf.length);
                 clientSocket.receive(msgPacket);
-              //  String msg = new String(msgPacket.getData(), msgPacket.getOffset(), msgPacket.getLength());
+//                String msg = new String(msgPacket.getData(), msgPacket.getOffset(), msgPacket.getLength());
                 Platform.runLater(new Runnable(){
 					@Override
 					public void run() {
