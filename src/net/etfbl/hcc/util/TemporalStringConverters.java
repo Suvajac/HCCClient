@@ -58,13 +58,23 @@ public class TemporalStringConverters {
 		};
 	}
 	
-	public static String toString(LocalDateTime value) {
-		if (value != null) {
-			return dateTimeFormatter.format(value);
+	public static LocalDate parseToLocalDate(String string) {
+		if (string != null && !string.isEmpty()) {
+			return LocalDate.parse(string, dateFormatter);
 		} else {
-			return "";
+			return null;
 		}
 	}
+	
+	public static LocalTime parseToLocalTime(String string) {
+		if (string != null && !string.isEmpty()) {
+			return LocalTime.parse(string, timeFormatter);
+		} else {
+			return null;
+		}
+	}
+	
+	
 	
 	public static LocalDateTime parseToLocalDateTime(String string) {
 		if (string != null && !string.isEmpty()) {
@@ -82,14 +92,6 @@ public class TemporalStringConverters {
 		}
 	}
 	
-	public static LocalDate parseToLocalDate(String string) {
-		if (string != null && !string.isEmpty()) {
-			return LocalDate.parse(string, dateFormatter);
-		} else {
-			return null;
-		}
-	}
-	
 	public static String toString(LocalTime value) {
 		if (value != null) {
 			return timeFormatter.format(value);
@@ -98,11 +100,11 @@ public class TemporalStringConverters {
 		}
 	}
 	
-	public static LocalTime parseToLocalTime(String string) {
-		if (string != null && !string.isEmpty()) {
-			return LocalTime.parse(string, timeFormatter);
+	public static String toString(LocalDateTime value) {
+		if (value != null) {
+			return dateTimeFormatter.format(value);
 		} else {
-			return null;
+			return "";
 		}
 	}
 

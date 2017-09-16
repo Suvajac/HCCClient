@@ -53,7 +53,7 @@ public class OglasiRecepcionarController implements RefreshableController {
 				param -> new SimpleStringProperty(param.getValue().getPoruka()));
 
 		refresh();
-		ColumnResizer.resize(new Double[] { 30.0, 70.0 }, table);
+		ColumnResizer.resize(new Double[] {30.0, 70.0}, table);
 	}
 
 	@FXML
@@ -71,6 +71,9 @@ public class OglasiRecepcionarController implements RefreshableController {
 			if (ButtonType.OK.equals(type)) {
 				if (Client.getInstance().obrisiOglas(oglas)) {
 					table.getItems().remove(oglas);
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", 
+							"Desila se greska prilikom brisanja oglasa.");
 				}
 			}
 		}
@@ -101,6 +104,9 @@ public class OglasiRecepcionarController implements RefreshableController {
 				if ((idOglasa = Client.getInstance().dodajOglas(oglas)) != -1) {
 					oglas.setIdOglasa(idOglasa);
 					list.add(oglas);
+				}  else {
+					Dialogs.showErrorDialog("Greska", "Greska", 
+							"Desila se greska prilikom dodavanja oglasa.");
 				}
 				primaryStage.close();
 			});

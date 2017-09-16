@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -43,6 +44,21 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 
 	@FXML
 	void initialize() {
+		
+		// Boldiraj tekst u redovima za neprocitana obavjestenja
+		table.setRowFactory(param ->
+				new TableRow<Obavjestenje>() {
+					@Override
+					protected void updateItem(Obavjestenje item, boolean empty) {
+					    super.updateItem(item, empty);
+					    if (item == null || item.isProcitano()) {
+					        setStyle("");
+					    } else  {
+					        setStyle("-fx-font-weight: bold");
+					    }
+
+					}
+				});
 		
 		colVrijeme.setCellValueFactory(param -> 
 				new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));

@@ -112,7 +112,6 @@ public class RegistracijaRecepcionarController {
 																map(e -> e.getGost()).
 																collect(Collectors.toList());
 
-			// Provjeri da li postoji gost sa datim username-om
 			if (!gosti.contains(gost)) {
 				Registracija registracija = new Registracija();
 				registracija.setGost(gost);
@@ -126,8 +125,9 @@ public class RegistracijaRecepcionarController {
 					Dialogs.showInfoDialog("Informacija", "Informacija",
 							"Korisnik \"" + gost.getUsername() + "\" uspjesno registrovan.");
 					closeStage();
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom registracije gosta.");
 				}
-				clearFields();
 			} else {
 				Dialogs.showErrorDialog("Greska", "Greska",
 						"Gost sa korisnickim imenom \"" + gost.getUsername() + "\" vec postoji.");

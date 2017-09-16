@@ -46,7 +46,7 @@ public class KnjigaUtisakaRecepcionarController implements RefreshableController
 				new PropertyValueFactory<>("tekst"));
 
 		refresh();
-		ColumnResizer.resize(new Double[] { 25.0, 25.0, 50.0 }, table);
+		ColumnResizer.resize(new Double[] {25.0, 25.0, 50.0}, table);
 
 	}
 
@@ -59,6 +59,8 @@ public class KnjigaUtisakaRecepcionarController implements RefreshableController
 			if (ButtonType.OK.equals(type)) {
 				if (Client.getInstance().obrisiUtisak(utisak)) {
 					list.remove(utisak);
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom brisanja utiska.");
 				}
 			}
 		}

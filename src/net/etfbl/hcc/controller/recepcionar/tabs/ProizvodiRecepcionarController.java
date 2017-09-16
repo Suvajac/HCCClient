@@ -57,7 +57,7 @@ public class ProizvodiRecepcionarController implements RefreshableController {
 		colTip.setCellValueFactory(
 				new PropertyValueFactory<>("tip"));
 		
-		cmbTip.getItems().addAll("Hrana", "Pice", "Higijensko sredstvo");
+		cmbTip.getItems().addAll("Hrana", "Pice");
 
 		refresh();
 	}
@@ -74,6 +74,8 @@ public class ProizvodiRecepcionarController implements RefreshableController {
 				proizvod.setIdProizvoda(idProizvoda);
 				list.add(proizvod);
 				clearFields();
+			} else {
+				Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom dodavanja proizvoda.");
 			}
 		}
 	}
@@ -87,6 +89,8 @@ public class ProizvodiRecepcionarController implements RefreshableController {
 			if (ButtonType.OK.equals(type)) {
 				if (Client.getInstance().obrisiProizvod(proizvod)) {
 					list.remove(proizvod);
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom brisanja proizvoda.");
 				}
 			}
 		}

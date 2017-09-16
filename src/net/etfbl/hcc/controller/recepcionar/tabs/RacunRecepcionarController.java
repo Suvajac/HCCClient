@@ -77,6 +77,8 @@ public class RacunRecepcionarController {
 					racun.setPlacen(true);
 					Dialogs.showInfoDialog("Informacija", "Informacija",
 							"Racun za gosta \"" + gost.getIme() + " " + gost.getPrezime() + "\" je uspjesno placen!");
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom placanja racuna.");
 				}
 			} else {
 				Dialogs.showInfoDialog("Informacija", "Informacija",

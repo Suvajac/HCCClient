@@ -62,11 +62,12 @@ public class PopustiRecepcionarController implements RefreshableController {
 			popust.setKodPopusta(Integer.valueOf(tfKod.getText()));
 			popust.setProcenat(Double.valueOf(tfProcenat.getText()));
 			popust.setAktivan(true);
-			if (!list.contains(popust)) { // Zabrani dodavanje popusta sa istim
-											// kodom
+			if (!list.contains(popust)) { // Zabrani dodavanje popusta sa istim kodom
 				if (Client.getInstance().dodajPopust(popust)) {
 					list.add(popust);
 					clearFields();
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom dodavanja popusta.");
 				}
 			} else {
 				Dialogs.showErrorDialog("Greska", "Nevalidan kod", "Popust sa datim kodom vec postoji.");
@@ -84,6 +85,8 @@ public class PopustiRecepcionarController implements RefreshableController {
 			if (ButtonType.OK.equals(type)) {
 				if (Client.getInstance().obrisiPopust(popust)) {
 					list.remove(popust);
+				} else {
+					Dialogs.showErrorDialog("Greska", "Greska", "Desila se greska prilikom brisanja popusta.");
 				}
 			}
 		}
