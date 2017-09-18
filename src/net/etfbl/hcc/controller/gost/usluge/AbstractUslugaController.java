@@ -2,23 +2,14 @@ package net.etfbl.hcc.controller.gost.usluge;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import net.etfbl.hcc.Main;
-import net.etfbl.hcc.controller.gost.KorpaController;
-import net.etfbl.hcc.controller.gost.PotvrdaAlertController;
-import net.etfbl.hcc.controller.gost.UslugaController;
-import net.etfbl.hcc.model.Korpa;
-import net.etfbl.hcc.model.Proizvod;
-import net.etfbl.hcc.model.SportskaOprema;
-import net.etfbl.hcc.model.Usluga;
+import net.etfbl.hcc.controller.gost.*;
+import net.etfbl.hcc.model.*;
 
 public abstract class AbstractUslugaController {
 	@FXML
