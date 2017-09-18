@@ -26,11 +26,11 @@ public class OglasnaTablaGostController {
 		Collections.reverse(listaOglasa);
 		
 		for(Oglas og : listaOglasa){
-			iscrtajOglas(og);
+			prikaziOglas(og);
 		}
 	}
 	
-	public void iscrtajOglas(Oglas o){
+	public void prikaziOglas(Oglas o){
 		AnchorPane oglasAnchorPane = new AnchorPane();
 		oglasAnchorPane.setPrefWidth(280);
 		oglasAnchorPane.setPrefHeight(150);

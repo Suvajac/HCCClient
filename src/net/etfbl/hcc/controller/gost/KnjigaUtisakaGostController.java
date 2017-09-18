@@ -15,9 +15,7 @@ import net.etfbl.hcc.*;
 import net.etfbl.hcc.controller.LoginController;
 import net.etfbl.hcc.model.Utisak;
 
-public class KnjigaUtisakaGostController implements Initializable{
-	public static List<Utisak> listaUtisaka;
-	
+public class KnjigaUtisakaGostController implements Initializable{	
 	@FXML
 	private StackPane stackPane;
 	@FXML
@@ -25,6 +23,7 @@ public class KnjigaUtisakaGostController implements Initializable{
 	@FXML
 	private Label dodajUtisakLabel;
 	
+	private List<Utisak> listaUtisaka;
 	private int brojacUtisaka=0;
 	private int josUtisakaCounter=0;
 	private ResourceBundle rb;
@@ -219,6 +218,7 @@ public class KnjigaUtisakaGostController implements Initializable{
 		}
 	}	
 	
+	@FXML
 	public void handleJosUtisaka(){
 		josUtisakaCounter++;
 		iscrtaj();
@@ -256,4 +256,13 @@ public class KnjigaUtisakaGostController implements Initializable{
 		this.stackPane = stackPane;
 	}
 
+
+	public List<Utisak> getListaUtisaka() {
+		return listaUtisaka;
+	}
+
+
+	public void setListaUtisaka(List<Utisak> listaUtisaka) {
+		this.listaUtisaka = listaUtisaka;
+	}
 }

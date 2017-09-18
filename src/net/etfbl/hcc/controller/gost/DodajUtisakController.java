@@ -40,7 +40,7 @@ public class DodajUtisakController implements Initializable{
 	public void handleDodaj(){
 		if(!textArea.getText().isEmpty()){
 			Utisak u = new Utisak(-1,textArea.getText(),LocalDateTime.now(),RootGostController.gost);
-			KnjigaUtisakaGostController.listaUtisaka.add(u);
+			controller.getListaUtisaka().add(u);
 			Client.getInstance().dodajUtisak(u);
 			controller.iscrtaj();
 			handleCancel();

@@ -143,6 +143,15 @@ public class KorpaController implements Initializable{
 		parent.toBack();
 		stackPane.getChildren().remove(parent);		
 	}
+	
+	public void promjenaLabela(){
+		if(korpa.getListaProizvoda().size()==0){
+			brojacLabel.setText("");
+		}
+		else{
+			brojacLabel.setText(korpa.getListaProizvoda().size()+"");
+		}
+	}
 
 	public void setKorpa(Korpa korpa) {
 		this.korpa = korpa;
@@ -158,14 +167,5 @@ public class KorpaController implements Initializable{
 
 	public void setBrojacLabel(Label brojacLabel) {
 		this.brojacLabel = brojacLabel;
-	}
-
-	public void promjenaLabela(){
-		if(korpa.getListaProizvoda().size()==0){
-			brojacLabel.setText("");
-		}
-		else{
-			brojacLabel.setText(korpa.getListaProizvoda().size()+"");
-		}
 	}
 }

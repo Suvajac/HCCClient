@@ -33,14 +33,13 @@ public class LoginController {
 	private Label nevalidanLoginLabel;
 
 	private ResourceBundle rb;
+	private Stage primaryStage;
 
 	@FXML
 	private void initialize() {
 		setRS();
 		nevalidanLoginLabel.setVisible(false);
 	}
-
-	private Stage primaryStage;
 
 	public void handleLogin() throws IOException {
 		Korisnik k = new Korisnik(usernameTextField.getText(), null, null, null, passwordPasswordField.getText().hashCode()+"");
@@ -85,7 +84,7 @@ public class LoginController {
 
 	}
 
-	public void setEn(){
+	public void setEN(){
 		Locale locale = new Locale("en", "EN");
 		rb= ResourceBundle.getBundle("net/etfbl/hcc/util/MessagesBundle",locale);
 		en=true;

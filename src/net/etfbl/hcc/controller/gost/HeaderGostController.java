@@ -54,7 +54,7 @@ public class HeaderGostController implements Initializable{
         if(!LoginController.en){
             try{
                 handleLogout();
-                loginController.setEn();
+                loginController.setEN();
                 loginController.handleLogin();
             }
             catch(IOException e){
