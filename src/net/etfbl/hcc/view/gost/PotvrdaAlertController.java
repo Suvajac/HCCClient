@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import net.etfbl.hcc.Client;
+import net.etfbl.hcc.model.SobnaUsluga;
 import net.etfbl.hcc.model.Usluga;
+import net.etfbl.hcc.model.UslugaRestorana;
 
 public class PotvrdaAlertController implements Initializable{
 	@FXML
@@ -33,13 +35,21 @@ public class PotvrdaAlertController implements Initializable{
 		this.rb = rb;
 	}
 	
+	public void check(){
+		if((usluga instanceof UslugaRestorana && ((UslugaRestorana)usluga).getListaProizvoda().isEmpty()) || (usluga instanceof SobnaUsluga && ((SobnaUsluga)usluga).getTip().equals("Dostava") && ((SobnaUsluga)usluga).getListaProizvoda().isEmpty())){
+			daButton.setDisable(true);
+			statusLabel.getStyleClass().add("crveniLabel");
+			statusLabel.setText(rb.getString("praznaKorpa"));
+		}
+	}
+	
 	public void setTekstLabel(){
 		String tekst = String.format("%s %s %s %3.2f EUR?", rb.getString("daLiZelite"),usluga.getNaziv(),rb.getString("poCijeni"),usluga.getCijena());
 		tekstLabel.setText(tekst);
 	}
 	
 	@FXML
-	public void handleDa(){
+	public void handleDa(){			
 		int idUsluge = Client.getInstance().dodajUslugu(usluga,RootGostController.gost.getRacun());
 		if(idUsluge>0){
 			statusLabel.getStyleClass().add("plaviLabel");

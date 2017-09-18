@@ -167,6 +167,7 @@ public class RestoranController implements Initializable{
 			controller.setStackPane(stackPane);
 			controller.setAnchorPane(alertAnchorPane);
 			controller.setUsluga(usluga);
+			controller.check();
 			
 			stackPane.getChildren().add(alertAnchorPane);
 			alertAnchorPane.toFront();
