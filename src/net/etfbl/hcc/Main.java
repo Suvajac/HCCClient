@@ -1,23 +1,11 @@
 package net.etfbl.hcc;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.controller.LoginController;
-import net.etfbl.hcc.model.Proizvod;
-import net.etfbl.hcc.model.SobnaUsluga;
-import net.etfbl.hcc.model.SportUsluga;
-import net.etfbl.hcc.model.SportskaOprema;
-import net.etfbl.hcc.model.Termin;
-import net.etfbl.hcc.model.UslugaRestorana;
-import net.etfbl.hcc.model.WellnessTermin;
-import net.etfbl.hcc.model.WellnessUsluga;
-
 
 public class Main extends Application {
 
@@ -36,32 +24,5 @@ public class Main extends Application {
 
     public static void main(String[] args) throws Exception{
     	launch(args);
-
-//    	try {
-//			Socket sock = new Socket(InetAddress.getByName(ConnectionProperty.getInstance().getServerIpAddress()), ConnectionProperty.getInstance().getServerTCPPort());
-//			ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream());
-//			ObjectInputStream in = new ObjectInputStream(sock.getInputStream());
-//
-//			out.writeObject(new ProtokolPoruka("Korisnik.getKorisnik"));
-//			ProtokolPoruka p = (ProtokolPoruka) in.readObject();
-//			System.out.println(((Gost)p.getListaObjekata().get(0)).getLozinkaHash());
-//		} catch (UnknownHostException | ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//    	ArrayList<Object> lista = new ArrayList<>();
-//    	lista.add(new Korisnik("asd",null,null,null,null));
-//        ProtokolPoruka por = new ProtokolPoruka("ovo je neki tip",lista);
-//        JSONObject json = new JSONObject(por);
-//        Gson gson = new Gson();
-//        ProtokolPoruka poruka = gson.fromJson(json.toString(), ProtokolPoruka.class);
-//
-//        System.out.println(poruka.getTip());
-//        System.out.println(poruka.getListaObjekata());
-//
-    	
     }
 }

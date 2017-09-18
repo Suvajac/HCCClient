@@ -2,29 +2,15 @@ package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXDatePicker;
-
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import net.etfbl.hcc.Client;
-import net.etfbl.hcc.Main;
-import net.etfbl.hcc.model.WellnessTermin;
-import net.etfbl.hcc.model.WellnessUsluga;
-import net.etfbl.hcc.view.gost.PotvrdaAlertController;
-import net.etfbl.hcc.view.gost.RootGostController;
-import net.etfbl.hcc.view.recepcionar.Dialogs;
+import java.time.*;
+import java.util.*;
+import com.jfoenix.controls.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import net.etfbl.hcc.*;
+import net.etfbl.hcc.model.*;
+import net.etfbl.hcc.view.gost.*;
 
 public class WellnessController implements Initializable{
 	@FXML

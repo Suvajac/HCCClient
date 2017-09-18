@@ -3,23 +3,17 @@ package net.etfbl.hcc.view.gost;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.TextField;
 import net.etfbl.hcc.Client;
-import net.etfbl.hcc.model.Gost;
-import net.etfbl.hcc.model.Korisnik;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import net.etfbl.hcc.model.*;
+import javafx.scene.control.*;
 
 public class PopustiGostController implements Initializable{
-	
 	@FXML
 	private TextField unosKoda;
-	
 	@FXML
 	private Button potvrdiKodButton;
-	
 	@FXML
 	private Label statusLabel;
 	@FXML

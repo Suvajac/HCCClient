@@ -1,19 +1,13 @@
 package net.etfbl.hcc.view.gost;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Oglas;
 
@@ -28,18 +22,6 @@ public class OglasnaTablaGostController {
 	private List<Oglas> listaOglasa;
 	
 	public void initialize(){
-		listaOglasa = new ArrayList<>();
-		Oglas o = new Oglas(-1,"Ovo je neki oglas",LocalDateTime.now());
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
-//		listaOglasa.add(o);
 		listaOglasa = Client.getInstance().getOglasi();
 		Collections.reverse(listaOglasa);
 		

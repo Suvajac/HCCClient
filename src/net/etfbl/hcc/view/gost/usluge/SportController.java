@@ -2,38 +2,15 @@ package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import net.etfbl.hcc.Client;
-import net.etfbl.hcc.Main;
-import net.etfbl.hcc.model.Korpa;
-import net.etfbl.hcc.model.Proizvod;
-import net.etfbl.hcc.model.SportTermin;
-import net.etfbl.hcc.model.SportUsluga;
-import net.etfbl.hcc.model.SportskaOprema;
-import net.etfbl.hcc.view.gost.KorpaController;
-import net.etfbl.hcc.view.gost.PotvrdaAlertController;
-import net.etfbl.hcc.view.gost.RootGostController;
-import net.etfbl.hcc.view.gost.UslugaController;
-import net.etfbl.hcc.view.recepcionar.Dialogs;
+import java.time.*;
+import java.util.*;
+import com.jfoenix.controls.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import net.etfbl.hcc.*;
+import net.etfbl.hcc.model.*;
+import net.etfbl.hcc.view.gost.*;
 
 public class SportController implements Initializable{
 	@FXML
@@ -70,20 +47,7 @@ public class SportController implements Initializable{
 		
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
-		
-//		for(int i=0;i<5;i++){
-//			SportskaOprema o1 = new SportskaOprema(1, "Kopacke Addidas", 1, "43");
-//			SportskaOprema o2 = new SportskaOprema(2, "Kopacke Addidasl", 1, "42");
-//			SportskaOprema o3 = new SportskaOprema(3, "Kopacke Addidas", 1, "44");
-//			SportskaOprema o4 = new SportskaOprema(4, "Majica", 1, "L");
-//			SportskaOprema o5 = new SportskaOprema(5, "Sorc", 1, "L");
-//			meni.add(o1);
-//			meni.add(o2);
-//			meni.add(o3);
-//			meni.add(o4);
-//			meni.add(o5);
-//		}
-		
+				
 		if(UslugaController.oprema==null)
 			UslugaController.oprema = Client.getInstance().getSportskaOprema();
 		

@@ -1,12 +1,8 @@
 package net.etfbl.hcc.view.gost;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tab;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import net.etfbl.hcc.Main;
 
 import java.io.IOException;

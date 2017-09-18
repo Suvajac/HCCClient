@@ -1,6 +1,5 @@
 package net.etfbl.hcc.view.gost;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,34 +7,29 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import net.etfbl.hcc.Main;
-import net.etfbl.hcc.model.Korpa;
-import net.etfbl.hcc.model.Proizvod;
-import net.etfbl.hcc.model.SobnaUsluga;
-import net.etfbl.hcc.model.SportskaOprema;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import net.etfbl.hcc.model.*;
 
 public class KorpaController implements Initializable{
 	@FXML
-	protected VBox vBox;
+	private VBox vBox;
 	@FXML
-	protected Label ukupnoLabel;
+	private Label ukupnoLabel;
 	@FXML
-	protected Label korpaLabel;
+	private Label korpaLabel;
 	@FXML
-	protected Label opremaLabel;
+	private Label opremaLabel;
 	@FXML
 	private Button naruciButton;
 	
-	protected ResourceBundle rb;
+	private ResourceBundle rb;
+	private Korpa korpa;
+	private Map<Proizvod, Label> mapaProizvoda;
+	private StackPane stackPane;
+	private AnchorPane parent;
+	private Label brojacLabel;
 	
 	public void initialize(URL url,ResourceBundle rb){
 		this.rb = rb;
@@ -47,12 +41,6 @@ public class KorpaController implements Initializable{
 		if(naruciButton!=null)
 			naruciButton.setText(rb.getString("naruciButton"));
 	}
-	
-	protected Korpa korpa;
-	protected Map<Proizvod, Label> mapaProizvoda;
-	protected StackPane stackPane;
-	protected AnchorPane parent;
-	protected Label brojacLabel;
 
 	public void prikaziProizvode(){
 		AnchorPane headAnchorPane = new AnchorPane();
@@ -149,7 +137,6 @@ public class KorpaController implements Initializable{
 	public void izracunajCijenu(){
 		ukupnoLabel.setText(String.format("%s %3.2f EUR",rb.getString("ukupnaCijena"),korpa.getUkupnaCijena()));
 	}
-	
 	
 	@FXML
 	private void handleClose(){

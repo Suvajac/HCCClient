@@ -3,40 +3,27 @@ package net.etfbl.hcc.view.gost;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import net.etfbl.hcc.Client;
-import net.etfbl.hcc.Main;
+import javafx.scene.layout.*;
+import net.etfbl.hcc.*;
 import net.etfbl.hcc.controller.LoginController;
-import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Utisak;
 
 public class KnjigaUtisakaGostController implements Initializable{
+	public static List<Utisak> listaUtisaka;
+	
 	@FXML
 	private StackPane stackPane;
 	@FXML
 	private FlowPane flowPane;
 	@FXML
 	private Label dodajUtisakLabel;
-	
-	public static List<Utisak> listaUtisaka;
 	
 	private int brojacUtisaka=0;
 	private int josUtisakaCounter=0;
@@ -253,26 +240,20 @@ public class KnjigaUtisakaGostController implements Initializable{
 		}
 	}
 
-
 	public FlowPane getFlowPane() {
 		return flowPane;
 	}
-
 
 	public void setFlowPane(FlowPane flowPane) {
 		this.flowPane = flowPane;
 	}
 
-
 	public StackPane getStackPane() {
 		return stackPane;
 	}
 
-
 	public void setStackPane(StackPane stackPane) {
 		this.stackPane = stackPane;
 	}
-	
-	
-	
+
 }

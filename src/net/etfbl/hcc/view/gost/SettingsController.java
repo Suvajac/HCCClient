@@ -5,34 +5,31 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXPasswordField;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import net.etfbl.hcc.Client;
 
 public class SettingsController implements Initializable{
 	@FXML
+	private Label promjenaLozinkeLabel;
+	@FXML
+	private Label staraLozinkaLabel;
+	@FXML
 	private JFXPasswordField staraLozinkaPasswordField;
 	@FXML
+	private Label novaLozinkaLabel;
+	@FXML
 	private JFXPasswordField novaLozinkaPasswordField;
+	@FXML
+	private Label potvrdiLozinkuLabel;
 	@FXML
 	private JFXPasswordField ponovljenaLozinkaPasswordField;
 	@FXML
 	private Label statusLabel;
 	@FXML
-	private Button promijeniButton;
-	@FXML
-	private Label promjenaLozinkeLabel;
-	@FXML
-	private Label staraLozinkaLabel;
-	@FXML
-	private Label novaLozinkaLabel;
-	@FXML
-	private Label potvrdiLozinkuLabel;
+	private Button promijeniButton;	
 	
 	private StackPane stackPane;
 	private AnchorPane anchorPane;
@@ -53,8 +50,10 @@ public class SettingsController implements Initializable{
 		staraLozinka = false;
 		novaLozinka = false;
 		ponovljenaLozinka = false;
+		
 		statusLabel.getStyleClass().add("crveniLabel");
 		statusLabel.setVisible(false);
+		
 		staraLozinkaPasswordField.focusedProperty().addListener((arg0, oldValue, newValue) -> {
 			if (!newValue) { 
 				if(staraLozinkaPasswordField.getText().hashCode()!=Integer.parseInt(RootGostController.gost.getLozinkaHash())){
@@ -131,11 +130,11 @@ public class SettingsController implements Initializable{
 		}
 	}
 	
-	private boolean checkFields(){
+	public boolean checkFields(){
 		return staraLozinka&novaLozinka&ponovljenaLozinka;
 	}
 	
-	private void setStatus(String text){
+	public void setStatus(String text){
 		statusLabel.setText(text);
 		statusLabel.setVisible(true);
 	}

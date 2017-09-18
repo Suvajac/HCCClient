@@ -2,29 +2,13 @@ package net.etfbl.hcc.view.gost.usluge;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import net.etfbl.hcc.Client;
-import net.etfbl.hcc.Main;
-import net.etfbl.hcc.model.Korpa;
-import net.etfbl.hcc.model.Proizvod;
-import net.etfbl.hcc.model.SobnaUsluga;
-import net.etfbl.hcc.view.gost.KorpaController;
-import net.etfbl.hcc.view.gost.PotvrdaAlertController;
-import net.etfbl.hcc.view.gost.RootGostController;
-import net.etfbl.hcc.view.gost.UslugaController;
-import net.etfbl.hcc.view.recepcionar.Dialogs;
+import java.util.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import net.etfbl.hcc.*;
+import net.etfbl.hcc.model.*;
+import net.etfbl.hcc.view.gost.*;
 
 public class SobaController implements Initializable{
 	@FXML
@@ -64,19 +48,6 @@ public class SobaController implements Initializable{
 		
 		mapaLabelProizvod = new HashMap<>();
 		korpa = new Korpa();
-		
-//		for(int i=0;i<5;i++){
-//			Proizvod p1 = new Proizvod(1, "Pice", "Coca cola", 3);
-//			Proizvod p2 = new Proizvod(2,"Hrana","Cordon bleu",5);
-//			Proizvod p3 = new Proizvod(3, "Hrana", "Makarone", 1);
-//			Proizvod p4 = new Proizvod(4,"Pice","Nektar",0.5);
-//			Proizvod p5 = new Proizvod(5,"Hrana","Presnac",0.3);
-//			meni.add(p1);
-//			meni.add(p2);
-//			meni.add(p3);
-//			meni.add(p4);
-//			meni.add(p5);
-//		}
 		
 		if(UslugaController.meni==null)
 			UslugaController.meni = Client.getInstance().getProizvodi();

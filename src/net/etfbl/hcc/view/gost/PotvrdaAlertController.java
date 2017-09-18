@@ -3,16 +3,11 @@ package net.etfbl.hcc.view.gost;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import net.etfbl.hcc.Client;
-import net.etfbl.hcc.model.SobnaUsluga;
-import net.etfbl.hcc.model.Usluga;
-import net.etfbl.hcc.model.UslugaRestorana;
+import net.etfbl.hcc.model.*;
 
 public class PotvrdaAlertController implements Initializable{
 	@FXML
@@ -84,7 +79,4 @@ public class PotvrdaAlertController implements Initializable{
 		this.usluga = usluga;
 		setTekstLabel();
 	}
-
-	
-	
 }

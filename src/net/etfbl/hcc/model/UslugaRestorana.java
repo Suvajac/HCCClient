@@ -1,10 +1,7 @@
 package net.etfbl.hcc.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
+import java.util.*;
 public class UslugaRestorana extends Usluga implements Serializable{
 	/**
 	 *

@@ -2,7 +2,6 @@ package net.etfbl.hcc.view.gost;
 
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextArea;
@@ -24,7 +23,7 @@ public class DodajUtisakController implements Initializable{
 	@FXML
 	private Button otkaziButton;
 	
-	KnjigaUtisakaGostController controller;
+	private KnjigaUtisakaGostController controller;
 	private AnchorPane anchorPane;
 	
 	public void initialize(URL url,ResourceBundle rb){
@@ -69,8 +68,5 @@ public class DodajUtisakController implements Initializable{
 
 	public void setController(KnjigaUtisakaGostController controller) {
 		this.controller = controller;
-	}
-	
-	
-	
+	}	
 }
