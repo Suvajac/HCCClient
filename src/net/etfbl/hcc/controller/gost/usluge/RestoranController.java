@@ -1,4 +1,4 @@
-package net.etfbl.hcc.view.gost.usluge;
+package net.etfbl.hcc.controller.gost.usluge;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,9 +9,9 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import net.etfbl.hcc.*;
+import net.etfbl.hcc.controller.gost.*;
 import net.etfbl.hcc.model.*;
 import net.etfbl.hcc.util.TemporalStringConverters;
-import net.etfbl.hcc.view.gost.*;
 
 public class RestoranController implements Initializable{
 	@FXML

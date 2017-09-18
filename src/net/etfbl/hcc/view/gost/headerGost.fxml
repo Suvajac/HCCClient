@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="headerAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.HeaderGostController">
+<AnchorPane id="headerAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.gost.HeaderGostController">
    <children>
       <Label id="username" fx:id="usernameLabel" text="USERNAME" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0" />
       <JFXButton fx:id="rsButton" buttonType="RAISED" onAction="#handleRS" styleClass="otherLabel" text="RS" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="25.0" />

@@ -1,4 +1,4 @@
-package net.etfbl.hcc.view.gost;
+package net.etfbl.hcc.controller.gost;
 
 import java.io.IOException;
 import java.net.URL;

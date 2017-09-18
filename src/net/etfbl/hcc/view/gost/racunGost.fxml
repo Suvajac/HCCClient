@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane hbarPolicy="NEVER" prefHeight="568.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.RacunGostController">
+<ScrollPane hbarPolicy="NEVER" prefHeight="568.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.gost.RacunGostController">
    <content>
       <BorderPane fx:id="borderPane" prefHeight="568.0" prefWidth="1366.0">
          <center>

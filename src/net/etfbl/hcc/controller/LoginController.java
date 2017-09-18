@@ -3,11 +3,11 @@ package net.etfbl.hcc.controller;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.ClientMulticast;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.controller.gost.RootGostController;
 import net.etfbl.hcc.controller.recepcionar.RootRecepcionarController;
 import net.etfbl.hcc.model.Gost;
 import net.etfbl.hcc.model.Korisnik;
 import net.etfbl.hcc.model.Recepcionar;
-import net.etfbl.hcc.view.gost.RootGostController;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;

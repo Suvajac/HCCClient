@@ -1,4 +1,4 @@
-package net.etfbl.hcc.view.gost;
+package net.etfbl.hcc.controller.gost;
 
 import javafx.fxml.*;
 import javafx.scene.control.*;

@@ -1,4 +1,4 @@
-package net.etfbl.hcc.view.gost;
+package net.etfbl.hcc.controller.gost;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import javafx.fxml.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import net.etfbl.hcc.Main;
+import net.etfbl.hcc.controller.gost.usluge.*;
 import net.etfbl.hcc.model.*;
-import net.etfbl.hcc.view.gost.usluge.*;
 
 public class UslugaController implements Initializable{
 	public static ArrayList<Proizvod> meni;
