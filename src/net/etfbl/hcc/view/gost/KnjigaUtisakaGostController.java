@@ -46,47 +46,6 @@ public class KnjigaUtisakaGostController implements Initializable{
 		this.rb = rb;
 		dodajUtisakLabel.setText(rb.getString("dodajUtisakLabel"));
 		
-		listaUtisaka = new ArrayList<>();
-		Korisnik k = new Korisnik("user","ime","prezi","1234","hash");
-		String text = "Lorem ipsum dolor sit amet, ea eum veri dicam. Euismod senserit reprimique qui te. Ne hinc prompta debitis vis, ut aperiam eloquentiam qui, vel id vidit feugiat. Amet vide senserit te vix, ponderum scribentur ad pri. Id dolorem pericula consulatu per, ex his eripuit perpetua, quidam regione assueverit ad pri.";
-		Date date = new Date(System.currentTimeMillis());
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-//		listaUtisaka.add(new Utisak(1,text,date,k));
-		
 		listaUtisaka = Client.getInstance().getUtisci();
 		Collections.reverse(listaUtisaka);
 		

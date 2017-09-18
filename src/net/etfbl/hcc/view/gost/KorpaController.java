@@ -59,7 +59,7 @@ public class KorpaController implements Initializable{
 		Label artikal = new Label(rb.getString("artikalLabel"));
 		AnchorPane.setLeftAnchor(artikal,20.0);
 		Label kolicinaL = new Label(rb.getString("kolicinaLabel"));
-		AnchorPane.setLeftAnchor(kolicinaL,205.0);
+		AnchorPane.setLeftAnchor(kolicinaL,265.0);
 		Label cijenaL = new Label(rb.getString("cijena"));
 		AnchorPane.setRightAnchor(cijenaL, 110.0);
 		
@@ -86,7 +86,7 @@ public class KorpaController implements Initializable{
 			
 				HBox kolicinaHBox = new HBox();
 				AnchorPane.setTopAnchor(kolicinaHBox,5.0);
-				AnchorPane.setLeftAnchor(kolicinaHBox,185.0);
+				AnchorPane.setLeftAnchor(kolicinaHBox,245.0);
 				kolicinaHBox.setSpacing(10.0);
 			
 				Label kolicina = new Label("1");
@@ -116,7 +116,7 @@ public class KorpaController implements Initializable{
 				
 				Label cijena = new Label(p.getCijena()+" EUR");
 				AnchorPane.setTopAnchor(cijena,10.0);
-				AnchorPane.setRightAnchor(cijena,110.0);
+				AnchorPane.setRightAnchor(cijena,100.0);
 				
 				JFXButton closeButton = new JFXButton("x");
 				AnchorPane.setTopAnchor(closeButton,5.0);

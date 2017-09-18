@@ -35,15 +35,17 @@ public class PopustiGostController implements Initializable{
 	
 	@FXML
 	public void handlePotvrdi(){
-		boolean response = Client.getInstance().potvrdiPopust(Integer.parseInt(unosKoda.getText()), RootGostController.gost);
-		if(response){
-			RootGostController.gost =(Gost) Client.getInstance().login((Korisnik)RootGostController.gost);
-			statusLabel.setText(rb.getString("dobiliStePopust")+" "+RootGostController.gost.getRacun().getPopust().getProcenat()+"%.");	
+		if(!unosKoda.getText().isEmpty()){
+			int kod = Integer.parseInt(unosKoda.getText().trim());
+			boolean response = Client.getInstance().potvrdiPopust(kod, RootGostController.gost);
+			if(response){
+				RootGostController.gost =(Gost) Client.getInstance().login((Korisnik)RootGostController.gost);
+				statusLabel.setText(rb.getString("dobiliStePopust")+" "+RootGostController.gost.getRacun().getPopust().getProcenat()+"%.");	
+			}
+			else{
+				statusLabel.setText("    "+rb.getString("kodNijeValidan"));
+			}
 		}
-		else{
-			statusLabel.setText("    "+rb.getString("kodNijeValidan"));
-		}
-		
 	}
 	
 

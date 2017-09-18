@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="korpaAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.KorpaController">
+<AnchorPane id="korpaAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../../res/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.view.gost.KorpaController">
    <children>
       <AnchorPane prefHeight="70.0" styleClass="korpaHeader" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="opremaLabel" layoutX="254.0" layoutY="14.0" text="Oprema" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="5.0" />
+            <Label fx:id="opremaLabel" layoutX="287.0" layoutY="9.0" text="Oprema" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="9.0" />
             <JFXButton onAction="#handleClose" styleClass="closeButton" text=" X " AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <ScrollPane hbarPolicy="NEVER" layoutY="70.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <content>
-            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="600.0">
+            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="700.0">
                <padding>
                   <Insets left="50.0" right="50.0" top="10.0" />
                </padding>

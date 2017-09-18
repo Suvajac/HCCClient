@@ -98,7 +98,7 @@ public class RestoranController implements Initializable{
 	@FXML
 	public void handleKorpa(){
 		try{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/restoranKorpa.fxml"),rb);
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/korpa.fxml"),rb);
 			AnchorPane korpaAnchorPane = (AnchorPane) loader.load();
 			AnchorPane.setTopAnchor(korpaAnchorPane,5.0);
 			AnchorPane.setLeftAnchor(korpaAnchorPane,383.0);
