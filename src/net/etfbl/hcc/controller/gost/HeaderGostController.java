@@ -90,12 +90,12 @@ public class HeaderGostController implements Initializable{
     }
 
     public void setActiveLocale(){
-        if(loginController.getLocaleString().equals("en")){
+        if(LoginController.en){
             rsButton.getStyleClass().remove("lanSelected");
             if(!enButton.getStyleClass().contains("lanSelected"))
                 enButton.getStyleClass().add("lanSelected");
         }
-        if(loginController.getLocaleString().equals("rs")){
+        else{
             enButton.getStyleClass().remove("lanSelected");
             if(!rsButton.getStyleClass().contains("lanSelected"))
                 rsButton.getStyleClass().add("lanSelected");
