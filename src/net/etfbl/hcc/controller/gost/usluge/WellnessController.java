@@ -1,6 +1,5 @@
 package net.etfbl.hcc.controller.gost.usluge;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.*;
 import java.util.*;
@@ -8,11 +7,9 @@ import com.jfoenix.controls.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import net.etfbl.hcc.*;
-import net.etfbl.hcc.controller.gost.PotvrdaAlertController;
 import net.etfbl.hcc.model.*;
 
-public class WellnessController implements Initializable{
+public class WellnessController extends AbstractUslugaController implements Initializable{
 	@FXML
 	private JFXDatePicker datumDatePicker;
 	@FXML
@@ -25,9 +22,6 @@ public class WellnessController implements Initializable{
 	private Label vrijemeLabel;
 	@FXML
 	private Button naruciButton;
-	
-	private StackPane stackPane;
-	private ResourceBundle rb;
 	
 	public void initialize(URL url,ResourceBundle rb){
 		this.rb = rb;
@@ -49,21 +43,7 @@ public class WellnessController implements Initializable{
 		WellnessUsluga usluga = new WellnessUsluga(0,"Wellness usluga",40);
 		usluga.setWellnessTermin(termin);
 		
-		try {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("view/gost/potvrdaAlert.fxml"),rb);
-			AnchorPane alertAnchorPane;
-			alertAnchorPane = (AnchorPane) loader.load();
-			
-			PotvrdaAlertController controller = loader.getController();
-			controller.setStackPane(stackPane);
-			controller.setAnchorPane(alertAnchorPane);
-			controller.setUsluga(usluga);
-			
-			stackPane.getChildren().add(alertAnchorPane);
-			alertAnchorPane.toFront();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		naruci(usluga);
 	}
 
 	public void setStackPane(StackPane stackPane) {
