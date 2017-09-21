@@ -1,5 +1,6 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,9 +44,15 @@ public class RacunRecepcionarController {
 
     @FXML
     private TableColumn<Stavka, String> colCijena;
-
+    
     @FXML
-    private TextField tfUkupnaCijena;
+    private TextField tfCijena;
+    
+    @FXML
+    private TextField tfPopust;
+    
+    @FXML
+    private TextField tfUkupno;
 
     @FXML
     private Button btnPlati;
@@ -63,8 +70,11 @@ public class RacunRecepcionarController {
     	colCijena.setCellValueFactory(param ->
     			new SimpleStringProperty("" + param.getValue().getUsluga().getCijena()));
     	 	
-    	tfUkupnaCijena.prefWidthProperty().bind(colCijena.widthProperty());
-    	btnPlati.setDisable(true);
+    	ReadOnlyDoubleProperty widthProperty = colCijena.widthProperty();
+    	tfCijena.prefWidthProperty().bind(widthProperty);
+    	tfPopust.prefWidthProperty().bind(widthProperty);
+    	tfUkupno.prefWidthProperty().bind(widthProperty);
+       	btnPlati.setDisable(true);
     }
 
     @FXML
@@ -97,7 +107,11 @@ public class RacunRecepcionarController {
     	lblGost.setText(gost.getIme() + " " + gost.getPrezime());
     	list = FXCollections.observableArrayList(gost.getRacun().getStavke());
     	table.setItems(list);
-    	tfUkupnaCijena.setText("" + list.stream().mapToDouble(e -> e.getUsluga().getCijena()).sum());
+    	double cijena = list.stream().mapToDouble(e -> e.getUsluga().getCijena()).sum();
+    	double procenat = gost.getRacun().getPopust().getProcenat();
+    	tfCijena.setText(String.format("%.2f", cijena));
+    	tfPopust.setText(String.format("%.2f", procenat) + " % " + String.format("(%.2f)", cijena*procenat/100));
+    	tfUkupno.setText(String.format("%.2f", cijena * (1 - procenat/100)));
     	if (!list.isEmpty()) // Omoguci placanje samo ako racun nije prazan
     		btnPlati.setDisable(false);
     }

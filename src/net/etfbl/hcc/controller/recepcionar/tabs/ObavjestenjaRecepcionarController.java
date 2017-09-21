@@ -2,7 +2,7 @@ package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,7 +25,7 @@ import net.etfbl.hcc.util.TemporalStringConverters;
 
 public class ObavjestenjaRecepcionarController implements RefreshableController {
 	
-	private ObservableList<Obavjestenje> list;
+	private SortedList<Obavjestenje> list;
 
 	@FXML
 	private TableView<Obavjestenje> table;
@@ -45,9 +45,10 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 	@FXML
 	void initialize() {
 		
-		// Boldiraj tekst u redovima za neprocitana obavjestenja
-		table.setRowFactory(param ->
-				new TableRow<Obavjestenje>() {
+		// Boldiraj tekst u redovima za neprocitana obavjestenja i 
+		// prikazi obavjestenje u novom dijalogu nakon dvoklika
+		table.setRowFactory(param -> {
+				TableRow<Obavjestenje> row = new TableRow<Obavjestenje>() {
 					@Override
 					protected void updateItem(Obavjestenje item, boolean empty) {
 					    super.updateItem(item, empty);
@@ -58,7 +59,14 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 					    }
 
 					}
-				});
+				};
+				row.setOnMouseClicked(e -> {
+			    	if (e.getClickCount() == 2 && !row.isEmpty()) {
+			    		handleShow(row.getItem());
+				    }
+			    });
+				return row;
+		});
 		
 		colVrijeme.setCellValueFactory(param -> 
 				new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
@@ -87,14 +95,16 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 			};
 			return cell;
 		});
-
+		
 		refresh();
 		ColumnResizer.resize(new Double[]{20.0, 60.0, 10.0, 10.0}, table);
 	}
 	
 	@Override
 	public void refresh() {
-		list = FXCollections.observableArrayList(Client.getInstance().getObavjestenja());
+		list = new SortedList<>(
+				FXCollections.observableArrayList(Client.getInstance().getObavjestenja()), 
+				(o1,o2) -> o2.getDatum().compareTo(o1.getDatum()));
 		table.setItems(list);
 	}
 	
