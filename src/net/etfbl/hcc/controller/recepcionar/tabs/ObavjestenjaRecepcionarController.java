@@ -62,7 +62,7 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 				};
 				row.setOnMouseClicked(e -> {
 			    	if (e.getClickCount() == 2 && !row.isEmpty()) {
-			    		handleShow(row.getItem());
+			    		showObavjestenjeDialog(row.getItem());
 				    }
 			    });
 				return row;
@@ -87,7 +87,7 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 						setText(null);
 					} else {
 						Obavjestenje obavjestenje = getTableView().getItems().get(getIndex());
-						btnDetaljno.setOnAction(event -> handleShow(obavjestenje));
+						btnDetaljno.setOnAction(event -> showObavjestenjeDialog(obavjestenje));
 						setGraphic(btnDetaljno);
 						setText(null);
 					}
@@ -111,7 +111,7 @@ public class ObavjestenjaRecepcionarController implements RefreshableController 
 	/*
 	 * Prikazuje dato obavjestenje u novom dijalogu.
 	 */
-	private void handleShow(Obavjestenje obavjestenje) {
+	private void showObavjestenjeDialog(Obavjestenje obavjestenje) {
 		if (Client.getInstance().procitajObavjestenje(obavjestenje)) {
 			obavjestenje.setProcitano(true);
 			table.refresh();
