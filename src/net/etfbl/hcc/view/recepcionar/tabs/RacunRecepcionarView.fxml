@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../res/css/recepcionar_style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.recepcionar.tabs.RacunRecepcionarController">
    <children>
@@ -25,22 +26,34 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <VBox spacing="10.0" VBox.vgrow="NEVER">
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
                <children>
-                  <HBox alignment="CENTER_RIGHT" spacing="5.0">
-                     <children>
-                        <Label styleClass="my-bold-label" stylesheets="@../../../res/css/recepcionar_style.css" text="Ukupna cijena:" />
-                        <TextField fx:id="tfUkupnaCijena" alignment="CENTER" editable="false" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_RIGHT" spacing="10.0">
-                     <children>
-                        <Button fx:id="btnPlati" mnemonicParsing="false" onAction="#handlePlati" prefWidth="65.0" styleClass="my-button" text="Plati" />
-                        <Button fx:id="btnZatvori" mnemonicParsing="false" onAction="#handleZatvori" styleClass="my-button" text="Zatvori" />
-                     </children>
-                  </HBox>
+                  <Label styleClass="my-bold-label" stylesheets="@../../../res/css/recepcionar_style.css" text="Cijena:" />
+                  <TextField fx:id="tfCijena" alignment="CENTER" editable="false" />
                </children>
-            </VBox>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+               <children>
+                  <Label styleClass="my-bold-label" stylesheets="@../../../res/css/recepcionar_style.css" text="Popust:" />
+                  <TextField fx:id="tfPopust" alignment="CENTER" editable="false" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="5.0">
+               <children>
+                  <Label styleClass="my-bold-label" stylesheets="@../../../res/css/recepcionar_style.css" text="Ukupno:" />
+                  <TextField fx:id="tfUkupno" alignment="CENTER" editable="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="btnPlati" mnemonicParsing="false" onAction="#handlePlati" prefWidth="65.0" styleClass="my-button" text="Plati" />
+                  <Button fx:id="btnZatvori" mnemonicParsing="false" onAction="#handleZatvori" styleClass="my-button" text="Zatvori" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

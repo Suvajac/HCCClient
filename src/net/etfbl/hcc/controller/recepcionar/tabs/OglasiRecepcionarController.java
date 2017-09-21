@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -27,7 +28,7 @@ import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class OglasiRecepcionarController implements RefreshableController {
 
-	private ObservableList<Oglas> list;
+	private SortedList<Oglas> list;
 
 	@FXML
 	private TableView<Oglas> table;
@@ -46,6 +47,17 @@ public class OglasiRecepcionarController implements RefreshableController {
 
 	@FXML
 	void initialize() {
+		
+		// Otvori oglas u novom dijalogu nakon dvoklika
+		table.setRowFactory(param -> {
+		    TableRow<Oglas> row = new TableRow<>();
+		    row.setOnMouseClicked(e -> {
+		    	if (e.getClickCount() == 2 && !row.isEmpty()) {
+		    		showOglasDialog(row.getItem());
+			    }
+		    });
+			return row;
+		 });
 
 		colDatum.setCellValueFactory(
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
@@ -58,8 +70,7 @@ public class OglasiRecepcionarController implements RefreshableController {
 
 	@FXML
 	void handleKreiraj(ActionEvent event) {
-		OglasDialog dialog = new OglasDialog();
-		dialog.showAndWait();
+		showOglasDialog(new Oglas(0, null, LocalDateTime.now()));
 	}
 
 	@FXML
@@ -81,25 +92,31 @@ public class OglasiRecepcionarController implements RefreshableController {
 
 	@Override
 	public void refresh() {
-		list = FXCollections.observableArrayList(Client.getInstance().getOglasi());
+		list = new SortedList<>(
+				FXCollections.observableArrayList(Client.getInstance().getOglasi()),
+				(o1,o2) -> o2.getDatum().compareTo(o1.getDatum()));
 		table.setItems(list);
+	}
+	
+	private void showOglasDialog(Oglas oglas) {
+		OglasDialog dialog = new OglasDialog(oglas);
+		dialog.showAndWait();
 	}
 
 	private class OglasDialog {
 
 		private Stage primaryStage;
-		private Oglas oglas;
 
-		public OglasDialog() {
-
+		public OglasDialog(Oglas oglas) {
+			
 			TextArea textArea = new TextArea();
+			textArea.setText(oglas.getPoruka());
 			textArea.setPrefWidth(400);
 			textArea.setPrefHeight(300);
 			textArea.setWrapText(true);
 
 			Button btnConfirm = new Button("Potvrdi");
 			btnConfirm.setOnAction(e -> {
-				oglas = new Oglas(0, textArea.getText(), LocalDateTime.now());
 				int idOglasa = 0;
 				if ((idOglasa = Client.getInstance().dodajOglas(oglas)) != -1) {
 					oglas.setIdOglasa(idOglasa);
@@ -128,7 +145,7 @@ public class OglasiRecepcionarController implements RefreshableController {
 			Scene scene = new Scene(vbContent);
 			primaryStage = new Stage();
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Novi oglas");
+			primaryStage.setTitle("Oglas");
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
 		}
