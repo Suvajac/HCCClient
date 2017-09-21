@@ -12,6 +12,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
+import net.etfbl.hcc.ClientMulticast;
 import net.etfbl.hcc.controller.recepcionar.tabs.RefreshableController;
 
 public class RootRecepcionarController {
@@ -45,6 +46,8 @@ public class RootRecepcionarController {
 
 	@FXML
 	private Tab tabKnjigaUtisaka;
+	
+	private ClientMulticast cm;
 
 	@FXML
 	void initialize() {
@@ -79,6 +82,7 @@ public class RootRecepcionarController {
 	
 	private void logout() {
 		Client.getInstance().logout();
+		cm.close();
 		primaryStage.close();
 	}
 	
@@ -102,6 +106,14 @@ public class RootRecepcionarController {
 			if (tab.selectedProperty().get())
 				controller.refresh();
 		});
+	}
+
+	public ClientMulticast getCm() {
+		return cm;
+	}
+
+	public void setCm(ClientMulticast cm) {
+		this.cm = cm;
 	}
 
 }

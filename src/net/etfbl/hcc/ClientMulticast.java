@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.net.SocketException;
 
 import org.controlsfx.control.Notifications;
 
@@ -12,11 +13,23 @@ import javafx.util.Duration;
 import net.etfbl.hcc.util.ConnectionProperty;
 
 public class ClientMulticast extends Thread {
+	private MulticastSocket clientSocket;
+	
+	public ClientMulticast() {
+		try {
+			setDaemon(true);
+			clientSocket = new MulticastSocket(ConnectionProperty.getInstance().getMulticastPort());
+			this.start();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void run(){
 		InetAddress groupAddress = null;
         byte[] buf = new byte[512];
-        try (MulticastSocket clientSocket = new MulticastSocket(ConnectionProperty.getInstance().getMulticastPort())){
+        try{
             groupAddress=InetAddress.getByName(ConnectionProperty.getInstance().getMulticastIpAdress());
         	clientSocket.joinGroup(groupAddress);
         	while (true) {
@@ -34,15 +47,18 @@ public class ClientMulticast extends Thread {
 					}
                 });
             }
-        } catch (IOException ex) {
+        }
+        catch(SocketException ex) {
+        	System.out.println("Logged out");
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
 
 	}
-	public ClientMulticast() {
-		setDaemon(true);
-		this.start();
-		// TODO Auto-generated constructor stub
+	
+	public void close() {
+		clientSocket.close();
 	}
 
 	public ClientMulticast(Runnable target) {

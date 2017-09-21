@@ -63,7 +63,7 @@ public class LoginController {
 			nevalidanLoginLabel.setVisible(false);
 		}
 		else if(ulogovanKorisnik!=null && ulogovanKorisnik instanceof Recepcionar){
-			new ClientMulticast();
+			ClientMulticast cm = new ClientMulticast();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/net/etfbl/hcc/view/recepcionar/RootRecepcionarView.fxml"));
 			Parent root = loader.load();
 
@@ -74,6 +74,7 @@ public class LoginController {
 			RootRecepcionarController controller = loader.getController();
 			controller.setTrenutniKorisnik(ulogovanKorisnik.getUsername());
 			controller.setPrimaryStage(stage);
+			controller.setCm(cm);
 
 			stage.show();
 			nevalidanLoginLabel.setVisible(false);
