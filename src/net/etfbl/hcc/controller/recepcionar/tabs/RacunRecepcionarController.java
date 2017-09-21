@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import net.etfbl.hcc.Client;
 import net.etfbl.hcc.model.Gost;
+import net.etfbl.hcc.model.Popust;
 import net.etfbl.hcc.model.Racun;
 import net.etfbl.hcc.model.Stavka;
 import net.etfbl.hcc.util.TemporalStringConverters;
@@ -108,7 +109,10 @@ public class RacunRecepcionarController {
     	list = FXCollections.observableArrayList(gost.getRacun().getStavke());
     	table.setItems(list);
     	double cijena = list.stream().mapToDouble(e -> e.getUsluga().getCijena()).sum();
-    	double procenat = gost.getRacun().getPopust().getProcenat();
+    	Popust popust = gost.getRacun().getPopust();
+    	double procenat = 0;
+    	if (popust != null)
+    		procenat = popust.getProcenat(); 
     	tfCijena.setText(String.format("%.2f", cijena));
     	tfPopust.setText(String.format("%.2f", procenat) + " % " + String.format("(%.2f)", cijena*procenat/100));
     	tfUkupno.setText(String.format("%.2f", cijena * (1 - procenat/100)));

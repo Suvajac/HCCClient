@@ -29,6 +29,10 @@
     -fx-font-size: 18px;
 }
 
+.loginAnchorPane JFXButton:hover{
+    -fx-background-color: #20575e;
+}
+
 
 /****************S T A R T   P A G E*******************/
 
@@ -54,16 +58,15 @@
     -fx-font-size: 36px;
 }
 
-.headerButtons{
-    -fx-text-fill: #fcfcfc;
-    -fx-font-family: "Calibri";
-    -fx-font-size: 30pt;
+.headerButtons:hover{
+	-fx-border-color: #ffffff;
+	-fx-border-width: 2, 2, 2, 2;
+	-fx-border-radius: 15px;
 }
 
 .lanSelected{
     -fx-background-color: #fae596;
 }
-
 
 /****************B U T T O N**************************/
 

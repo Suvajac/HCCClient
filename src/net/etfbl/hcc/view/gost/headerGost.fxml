@@ -6,12 +6,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="headerAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.gost.HeaderGostController">
+<AnchorPane id="headerAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.etfbl.hcc.controller.gost.HeaderGostController">
    <children>
       <Label id="username" fx:id="usernameLabel" text="USERNAME" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="10.0" />
       <JFXButton fx:id="rsButton" buttonType="RAISED" onAction="#handleRS" styleClass="otherLabel" text="RS" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="25.0" />
       <JFXButton fx:id="enButton" buttonType="RAISED" layoutX="173.0" layoutY="74.0" onAction="#handleEN" styleClass="otherLabel" text="EN" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="25.0" />
-      <JFXButton buttonType="RAISED" layoutX="280.0" layoutY="49.0" onAction="#handleLogout" ripplerFill="#fae596" text=" " AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="25.0">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="1185.0" layoutY="24.0" onAction="#handleLogout" prefHeight="68.0" prefWidth="80.0" ripplerFill="#fae596" styleClass="headerButtons" text=" " AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="24.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -20,7 +20,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1207.0" layoutY="35.0" onAction="#handleSettings" prefHeight="60.0" prefWidth="80.0" text=" " textFill="#fae596" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="30.0">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="1091.0" layoutY="24.0" onAction="#handleSettings" prefHeight="68.0" prefWidth="80.0" ripplerFill="#fae596" styleClass="headerButtons" text=" " AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="24.0">
          <graphic>
             <ImageView fitHeight="96.0" fitWidth="40.0" onDragDetected="#handleLogout" pickOnBounds="true" preserveRatio="true">
                <image>
