@@ -115,6 +115,7 @@ public class OglasiRecepcionarController implements RefreshableController {
 
 			Button btnConfirm = new Button("Potvrdi");
 			if (oglas.getIdOglasa() != 0) {
+				textArea.setEditable(false);
 				btnConfirm.setDisable(true);
 			}
 			btnConfirm.setOnAction(e -> {
