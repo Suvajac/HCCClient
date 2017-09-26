@@ -1,9 +1,11 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +29,7 @@ import net.etfbl.hcc.view.recepcionar.Dialogs;
 
 public class OglasiRecepcionarController implements RefreshableController {
 
-	private SortedList<Oglas> list;
+	private ObservableList<Oglas> list;
 
 	@FXML
 	private TableView<Oglas> table;
@@ -91,9 +93,8 @@ public class OglasiRecepcionarController implements RefreshableController {
 
 	@Override
 	public void refresh() {
-		list = new SortedList<>(
-				FXCollections.observableArrayList(Client.getInstance().getOglasi()),
-				(o1,o2) -> o2.getDatum().compareTo(o1.getDatum()));
+		list = FXCollections.observableArrayList(Client.getInstance().getOglasi());
+		list.sort((o1,o2) -> o2.getDatum().compareTo(o1.getDatum()));
 		table.setItems(list);
 	}
 	
