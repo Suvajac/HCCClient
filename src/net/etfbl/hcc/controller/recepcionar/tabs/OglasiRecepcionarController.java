@@ -114,13 +114,13 @@ public class OglasiRecepcionarController implements RefreshableController {
 			textArea.setWrapText(true);
 
 			Button btnConfirm = new Button("Potvrdi");
+			if (oglas.getIdOglasa() != 0) {
+				btnConfirm.setDisable(true);
+			}
 			btnConfirm.setOnAction(e -> {
 				int idOglasa = 0;
 				if (oglas.getPoruka() == null) {
 					oglas.setPoruka(textArea.getText());
-				}
-				if (oglas.getIdOglasa() != 0) {
-					btnConfirm.setDisable(true);
 				}
 				if ((idOglasa = Client.getInstance().dodajOglas(oglas)) != -1) {
 					oglas.setIdOglasa(idOglasa);
