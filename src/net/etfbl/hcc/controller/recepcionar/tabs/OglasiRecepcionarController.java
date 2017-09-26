@@ -117,6 +117,8 @@ public class OglasiRecepcionarController implements RefreshableController {
 			Button btnConfirm = new Button("Potvrdi");
 			btnConfirm.setOnAction(e -> {
 				int idOglasa = 0;
+				oglas.setDatum(LocalDateTime.now());
+				oglas.setPoruka(textArea.getText());
 				if ((idOglasa = Client.getInstance().dodajOglas(oglas)) != -1) {
 					oglas.setIdOglasa(idOglasa);
 					list.add(oglas);
