@@ -1,12 +1,9 @@
 package net.etfbl.hcc.controller.recepcionar.tabs;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
