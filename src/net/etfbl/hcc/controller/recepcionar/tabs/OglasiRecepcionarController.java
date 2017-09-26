@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -48,16 +47,16 @@ public class OglasiRecepcionarController implements RefreshableController {
 	@FXML
 	void initialize() {
 		
-		// Otvori oglas u novom dijalogu nakon dvoklika
-		table.setRowFactory(param -> {
-		    TableRow<Oglas> row = new TableRow<>();
-		    row.setOnMouseClicked(e -> {
-		    	if (e.getClickCount() == 2 && !row.isEmpty()) {
-		    		showOglasDialog(row.getItem());
-			    }
-		    });
-			return row;
-		 });
+//		// Otvori oglas u novom dijalogu nakon dvoklika
+//		table.setRowFactory(param -> {
+//		    TableRow<Oglas> row = new TableRow<>();
+//		    row.setOnMouseClicked(e -> {
+//		    	if (e.getClickCount() == 2 && !row.isEmpty()) {
+//		    		showOglasDialog(row.getItem());
+//			    }
+//		    });
+//			return row;
+//		 });
 
 		colDatum.setCellValueFactory(
 				param -> new SimpleStringProperty(TemporalStringConverters.toString(param.getValue().getDatum())));
